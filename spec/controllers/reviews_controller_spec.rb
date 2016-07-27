@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::ReviewsController do
+describe Spree::ReviewsController, type: :controller do
   let(:user) { create(:user) }
   let(:product) { create(:product) }
   let(:review_params) do
@@ -119,7 +119,7 @@ describe Spree::ReviewsController do
 
       it 'does not create a review' do
         expect(Spree::Review.count).to eq 0
-        spree_post :create, review_params[:review].merge!({rating: 'not_a_number'})
+        spree_post :create, review_params.merge({review: {rating: 'not_a_number'}})
         expect(Spree::Review.count).to eq 0
       end
     end

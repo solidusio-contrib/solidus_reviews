@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Review Admin', js: true do
+RSpec.feature 'Review Admin' do
   stub_authorization!
 
   given!(:review) { create(:review) }

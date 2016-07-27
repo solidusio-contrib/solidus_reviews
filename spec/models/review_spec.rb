@@ -82,8 +82,7 @@ describe Spree::Review do
       end
 
       it 'uses oldest_first for preview' do
-        reset_spree_preferences
-        Spree::Review.preview.to_a.should eq([review_1, review_3, review_2])
+        Spree::Review.preview.to_a.should eq([review_1, review_3])
       end
     end
 
