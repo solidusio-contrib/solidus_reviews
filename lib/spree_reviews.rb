@@ -1,4 +1,6 @@
 require 'sass/rails'
-require 'spree_core'
+require 'solidus'
+require 'deface'
+require 'solidus_auth_devise'
 require 'spree_reviews/engine'
 require 'coffee_script'
