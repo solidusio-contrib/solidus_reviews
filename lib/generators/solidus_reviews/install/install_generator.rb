@@ -1,4 +1,4 @@
-module SpreeReviews
+module SolidusReviews
   module Generators
     class InstallGenerator < Rails::Generators::Base
 
@@ -14,7 +14,7 @@ module SpreeReviews
       end
 
       def add_migrations
-        run 'bundle exec rake railties:install:migrations FROM=spree_reviews'
+        run 'bundle exec rake railties:install:migrations FROM=solidus_reviews'
       end
 
       def run_migrations
