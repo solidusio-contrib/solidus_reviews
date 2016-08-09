@@ -48,6 +48,15 @@ Three partials:
 
 Administrator can edit and/or approve and/or delete reviews.
 
+## Factories
+
+If you want factories for our models available in your application, simply
+require our factories in your `spec_helper.rb`:
+
+```ruby
+require "solidus_reviews/factories"
+```
+
 ## Implementation
 
 Reviews table is quite obvious - and note the "approved" flag which is for the

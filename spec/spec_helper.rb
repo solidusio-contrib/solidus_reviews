@@ -20,6 +20,8 @@ require 'spree/testing_support/authorization_helpers'
 require 'spree/testing_support/preferences'
 require 'spree/testing_support/url_helpers'
 
+require 'solidus_reviews/factories'
+
 FactoryGirl.find_definitions
 
 RSpec.configure do |config|
