@@ -21,7 +21,7 @@ Now bundle up with:
 
 Next, run the rake task that copies the necessary migrations and assets to your project:
 
-    rails g spree_reviews:install
+    rails g solidus_reviews:install
 
 And finish with a migrate:
 
