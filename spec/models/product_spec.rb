@@ -21,7 +21,7 @@ describe Spree::Product do
       product.stub(:avg_rating).and_return(nil)
       expect {
         expect(product.stars).to eq(0)
-      }.not_to raise_error
+      }.not_to raise_error RuntimeError
     end
   end
 

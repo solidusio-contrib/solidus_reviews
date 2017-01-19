@@ -49,7 +49,7 @@ describe Spree::ReviewsController, type: :controller do
       expect {
         post :new, product_id: product.slug
         assert_match 'ryanbig', response.body
-      }.to raise_error
+      }.to raise_error RuntimeError
     end
 
     it 'render the new template' do
@@ -85,7 +85,7 @@ describe Spree::ReviewsController, type: :controller do
       controller.stub(:authorize!) { raise }
       expect{
         post :create, review_params
-      }.to raise_error
+      }.to raise_error RuntimeError
     end
 
     it 'flashes the notice' do
