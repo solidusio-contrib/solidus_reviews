@@ -18,7 +18,7 @@ describe Spree::Admin::ReviewsController do
         create(:review, product: product)
       ]
       get :index, product_id: product.slug
-      assigns[:reviews].should =~ reviews
+      expect(assigns[:reviews]).to match_array reviews
     end
   end
 
@@ -26,21 +26,21 @@ describe Spree::Admin::ReviewsController do
     it 'show notice message when approved' do
       review.update_attribute(:approved, true)
       get :approve, id: review.id
-      response.should redirect_to spree.admin_reviews_path
-      flash[:notice].should eq Spree.t(:info_approve_review)
+      expect(response).to redirect_to spree.admin_reviews_path
+      expect(flash[:notice]).to eq Spree.t(:info_approve_review)
     end
 
     it 'show error message when not approved' do
       Spree::Review.any_instance.stub(:update_attribute).and_return(false)
       get :approve, id: review.id
-      flash[:error].should eq Spree.t(:error_approve_review)
+      expect(flash[:error]).to eq Spree.t(:error_approve_review)
     end
   end
 
   context '#edit' do
     specify do
       get :edit, id: review.id
-      response.status.should eq(200)
+      expect(response.status).to eq(200)
     end
 
     context 'when product is nil' do
@@ -51,12 +51,12 @@ describe Spree::Admin::ReviewsController do
 
       it 'flash error' do
         get :edit, id: review.id
-        flash[:error].should eq Spree.t(:error_no_product)
+        expect(flash[:error]).to eq Spree.t(:error_no_product)
       end
 
       it 'redirect to admin-reviews page' do
         get :edit, id: review.id
-        response.should redirect_to spree.admin_reviews_path
+        expect(response).to redirect_to spree.admin_reviews_path
       end
     end
   end

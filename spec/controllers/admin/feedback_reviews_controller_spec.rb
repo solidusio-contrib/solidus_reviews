@@ -21,9 +21,9 @@ describe Spree::Admin::FeedbackReviewsController do
 
     it 'looks up feedback reviews for the specified review and renders the template' do
       get :index, review_id: review.id
-      response.status.should eq(200)
-      response.should render_template(:index)
-      assigns(:collection).should eq([feedback_review_2, feedback_review_3, feedback_review_1])
+      expect(response.status).to eq(200)
+      expect(response).to render_template(:index)
+      expect(assigns(:collection)).to eq([feedback_review_2, feedback_review_3, feedback_review_1])
     end
   end
 end

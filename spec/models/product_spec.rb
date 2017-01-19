@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Spree::Product do
-  it { should respond_to(:avg_rating) }
-  it { should respond_to(:reviews) }
-  it { should respond_to(:stars) }
+  it { is_expected.to respond_to(:avg_rating) }
+  it { is_expected.to respond_to(:reviews) }
+  it { is_expected.to respond_to(:stars) }
 
   context '#stars' do
     let(:product) { build(:product) }
@@ -39,8 +39,8 @@ describe Spree::Product do
         product.save!
 
         product.recalculate_rating
-        product.avg_rating.should eq(4.5)
-        product.reviews_count.should eq(2)
+        expect(product.avg_rating).to eq(4.5)
+        expect(product.reviews_count).to eq(2)
       end
     end
 
@@ -53,8 +53,8 @@ describe Spree::Product do
         product.save!
 
         product.recalculate_rating
-        product.avg_rating.should eq(0)
-        product.reviews_count.should eq(0)
+        expect(product.avg_rating).to eq(0)
+        expect(product.reviews_count).to eq(0)
       end
     end
 
