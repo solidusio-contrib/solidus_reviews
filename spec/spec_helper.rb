@@ -24,6 +24,11 @@ require 'solidus_reviews/factories'
 
 FactoryGirl.find_definitions
 
+# Bugfix for Solidus < 1.3 using ffaker 1.x
+if defined?(Faker)
+  FFaker = Faker
+end
+
 RSpec.configure do |config|
   config.include Spree::TestingSupport::ControllerRequests, type: :controller
   config.include Spree::TestingSupport::Preferences
