@@ -76,7 +76,7 @@ describe Spree::ReviewsController, type: :controller do
     end
 
     it 'sets the ip-address of the remote' do
-      request.stub(remote_ip: '127.0.0.1')
+      @request.env['REMOTE_ADDR'] = '127.0.0.1'
       post :create, review_params
       expect(assigns[:review].ip_address).to eq '127.0.0.1'
     end
