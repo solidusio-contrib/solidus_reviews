@@ -6,9 +6,9 @@ describe Spree::ReviewsAbility do
   context '.allow_anonymous_reviews?' do
     it 'should depend on Spree::Reviews::Config[:require_login]' do
       Spree::Reviews::Config[:require_login] = false
-      Spree::ReviewsAbility.allow_anonymous_reviews?.should be true
+      expect(Spree::ReviewsAbility.allow_anonymous_reviews?).to be true
       Spree::Reviews::Config[:require_login] = true
-      Spree::ReviewsAbility.allow_anonymous_reviews?.should be false
+      expect(Spree::ReviewsAbility.allow_anonymous_reviews?).to be false
     end
   end
 
@@ -23,8 +23,8 @@ describe Spree::ReviewsAbility do
 
       it 'lets anyone create a review or feedback review' do
         [user_without_email, user_with_email].each do |u|
-          Spree::ReviewsAbility.new(u).should be_able_to(:create, Spree::Review.new)
-          Spree::ReviewsAbility.new(u).should be_able_to(:create, Spree::FeedbackReview.new)
+          expect(Spree::ReviewsAbility.new(u)).to be_able_to(:create, Spree::Review.new)
+          expect(Spree::ReviewsAbility.new(u)).to be_able_to(:create, Spree::FeedbackReview.new)
         end
       end
     end
@@ -35,11 +35,11 @@ describe Spree::ReviewsAbility do
       end
 
       it 'only allows users with an email to create a review or feedback review' do
-        Spree::ReviewsAbility.new(user_without_email).should_not be_able_to(:create, Spree::Review.new)
-        Spree::ReviewsAbility.new(user_without_email).should_not be_able_to(:create, Spree::FeedbackReview.new)
+        expect(Spree::ReviewsAbility.new(user_without_email)).to_not be_able_to(:create, Spree::Review.new)
+        expect(Spree::ReviewsAbility.new(user_without_email)).to_not be_able_to(:create, Spree::FeedbackReview.new)
 
-        Spree::ReviewsAbility.new(user_with_email).should be_able_to(:create, Spree::Review.new)
-        Spree::ReviewsAbility.new(user_with_email).should be_able_to(:create, Spree::FeedbackReview.new)
+        expect(Spree::ReviewsAbility.new(user_with_email)).to be_able_to(:create, Spree::Review.new)
+        expect(Spree::ReviewsAbility.new(user_with_email)).to be_able_to(:create, Spree::FeedbackReview.new)
       end
     end
   end

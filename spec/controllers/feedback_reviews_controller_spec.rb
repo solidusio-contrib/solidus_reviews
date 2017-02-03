@@ -24,48 +24,48 @@ describe Spree::FeedbackReviewsController do
       rating = 4
       comment = FFaker::Lorem.paragraphs(3).join("\n")
       expect {
-        spree_post :create, { review_id: review.id,
+        post :create, { review_id: review.id,
                               feedback_review: { comment: comment,
                                                  rating: rating },
                               format: :js }
-        response.status.should eq(200)
-        response.should render_template(:create)
+        expect(response.status).to eq(200)
+        expect(response).to render_template(:create)
       }.to change(Spree::Review, :count).by(1)
       feedback_review = Spree::FeedbackReview.last
-      feedback_review.comment.should eq(comment)
-      feedback_review.review.should eq(review)
-      feedback_review.rating.should eq(rating)
-      feedback_review.user.should eq(user)
+      expect(feedback_review.comment).to eq(comment)
+      expect(feedback_review.review).to eq(review)
+      expect(feedback_review.rating).to eq(rating)
+      expect(feedback_review.user).to eq(user)
 
     end
 
     it 'redirects back to the calling page' do
-      spree_post :create, valid_attributes
-      response.should redirect_to '/'
+      post :create, valid_attributes
+      expect(response).to redirect_to '/'
     end
 
     it 'sets locale on feedback-review if required by config' do
       Spree::Reviews::Config.preferred_track_locale = true
-      spree_post :create, valid_attributes
-      assigns[:review].locale.should eq I18n.locale.to_s
+      post :create, valid_attributes
+      expect(assigns[:review].locale).to eq I18n.locale.to_s
     end
 
     it 'fails when user is not authorized' do
       controller.stub(:authorize!) { raise }
       expect {
-        spree_post :create, valid_attributes
-      }.to raise_error
+        post :create, valid_attributes
+      }.to raise_error RuntimeError
     end
 
     it 'removes all non-numbers from ratings parameter' do
-      spree_post :create, valid_attributes
-      controller.params[:feedback_review][:rating].should eq '4'
+      post :create, valid_attributes
+      expect(controller.params[:feedback_review][:rating]).to eq '4'
     end
 
     it 'do not create feedback-review if review doesnt exist' do
       expect {
-        spree_post :create, valid_attributes.merge!({review_id: nil})
-      }.to raise_error
+        post :create, valid_attributes.merge!({review_id: nil})
+      }.to raise_error ActionController::UrlGenerationError
     end
   end
 end

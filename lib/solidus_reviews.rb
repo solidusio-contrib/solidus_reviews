@@ -1,5 +1,5 @@
-require 'sass/rails'
 require 'solidus'
+require 'sass/rails'
 require 'deface'
 require 'solidus_auth_devise'
 require 'spree_reviews/engine'
