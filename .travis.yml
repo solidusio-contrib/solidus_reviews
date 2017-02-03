@@ -6,14 +6,6 @@ cache: bundler
 only: master
 env:
   matrix:
-    - SOLIDUS_BRANCH=v1.0 DB=mysql
-    - SOLIDUS_BRANCH=v1.0 DB=postgresql
-    - SOLIDUS_BRANCH=v1.1 DB=mysql
-    - SOLIDUS_BRANCH=v1.1 DB=postgresql
-    - SOLIDUS_BRANCH=v1.2 DB=mysql
-    - SOLIDUS_BRANCH=v1.2 DB=postgresql
-    - SOLIDUS_BRANCH=v1.3 DB=mysql
-    - SOLIDUS_BRANCH=v1.3 DB=postgresql
     - SOLIDUS_BRANCH=v1.4 DB=mysql
     - SOLIDUS_BRANCH=v1.4 DB=postgresql
     - SOLIDUS_BRANCH=v2.0 DB=mysql
