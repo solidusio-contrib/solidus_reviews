@@ -117,6 +117,6 @@ feature 'Reviews', js: true do
   end
 
   def click_star(num)
-    page.all(:xpath, "//a[@title='#{num} stars']")[0].click
+    page.all(:xpath, "//a[@data-rating-value='#{num}']")[0].click
   end
 end

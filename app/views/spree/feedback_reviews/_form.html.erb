@@ -5,9 +5,11 @@
  <br />
 <% end %>
 <%= Spree.t(:was_this_review_helpful) %>
-<% for i in 1..NB_STARS %>
-  <%= radio_button_tag "feedback_review[rating]",
-                       Spree.t('star', :count => i), false, :class => "star" %>
-<% end %>
+<%=
+  select_tag "feedback_review[rating]",
+  options_for_select((1..NB_STARS).to_a),
+  data: { "barrating-options": { theme: THEME } },
+  class: "review-stars"
+%>
 <button class="feedback-review"><span><%= Spree.t(:say_yes) %></span></button>
 <% end %>
