@@ -8,7 +8,7 @@
 <%=
   select_tag "feedback_review[rating]",
   options_for_select((1..NB_STARS).to_a),
-  data: { "barrating-options": { theme: THEME } },
+  data: { "barrating-options": { theme: "fontawesome-stars" } },
   class: "review-stars"
 %>
 <button class="feedback-review"><span><%= Spree.t(:say_yes) %></span></button>
