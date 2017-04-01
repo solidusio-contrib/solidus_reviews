@@ -1,4 +1,4 @@
-//= require jquery-bar-rating
+//= require jquery.barrating
 //= require spree/backend
 
 $(document).on('ready', function () {
