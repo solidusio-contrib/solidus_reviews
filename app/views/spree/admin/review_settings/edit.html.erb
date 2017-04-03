@@ -1,40 +1,57 @@
-<%= render 'spree/admin/shared/configuration_menu' %>
-
 <% content_for :page_title do %>
-	<%= Spree.t("spree_reviews.review_settings") %>
+  <%= Spree.t("spree_reviews.review_settings") %>
+<% end %>
+
+<% admin_breadcrumb(Spree.t(:settings)) %>
+
+<% content_for :tabs do %>
+  <nav>
+    <ul class="tabs">
+      <%= settings_tab_item Spree.t("spree_reviews.review_settings"), spree.admin_review_settings_path %>
+    </ul>
+  </nav>
 <% end %>
 
 <%= form_tag(admin_review_settings_path, :method => :put) do %>
-	<fieldset class="no-border-top">
-		<div class="field">
-			<%= check_box_tag('preferences[include_unapproved_reviews]', "1", Spree::Reviews::Config[:include_unapproved_reviews]) %>
-			<label><%= Spree.t("spree_reviews.include_unapproved") %></label>
-		</div>
-		<div class="field">
-			<%= check_box_tag('preferences[feedback_rating]', "1", Spree::Reviews::Config[:feedback_rating]) %>
-			<label><%= Spree.t("spree_reviews.feedback_rating") %></label>
-		</div>
-		<div class="field">
-			<%= check_box_tag('preferences[show_email]', "1", Spree::Reviews::Config[:show_email]) %>
-			<label><%= Spree.t("spree_reviews.show_email") %></label>
-		</div>
-		<div class="field">
-			<%= check_box_tag('preferences[require_login]', "1", Spree::Reviews::Config[:require_login]) %>
-			<label><%= Spree.t("spree_reviews.require_login") %></label>
-		</div>
-		<div class="field">
-			<%= check_box_tag('preferences[track_locale]', "1", Spree::Reviews::Config[:track_locale]) %>
-			<label><%= Spree.t("spree_reviews.track_locale") %></label>
-		</div>
-		<div class="field">
-			<label><%= Spree.t('spree_reviews.preview_size') %></label><br>
-			<%= text_field_tag('preferences[preview_size]', Spree::Reviews::Config[:preview_size], :size => 3) %>
-		</div>
+  <fieldset class="no-border-top">
+    <div class="field">
+      <label>
+        <%= check_box_tag('preferences[include_unapproved_reviews]', "1", Spree::Reviews::Config[:include_unapproved_reviews]) %>
+        <%= Spree.t("spree_reviews.include_unapproved") %>
+      </label>
+    </div>
+    <div class="field">
+      <label>
+        <%= check_box_tag('preferences[feedback_rating]', "1", Spree::Reviews::Config[:feedback_rating]) %>
+        <%= Spree.t("spree_reviews.feedback_rating") %>
+      </label>
+    </div>
+    <div class="field">
+      <label>
+        <%= check_box_tag('preferences[show_email]', "1", Spree::Reviews::Config[:show_email]) %>
+        <%= Spree.t("spree_reviews.show_email") %>
+      </label>
+    </div>
+    <div class="field">
+      <label>
+        <%= check_box_tag('preferences[require_login]', "1", Spree::Reviews::Config[:require_login]) %>
+        <%= Spree.t("spree_reviews.require_login") %>
+      </label>
+    </div>
+    <div class="field">
+      <label>
+        <%= check_box_tag('preferences[track_locale]', "1", Spree::Reviews::Config[:track_locale]) %>
+        <%= Spree.t("spree_reviews.track_locale") %>
+      </label>
+    </div>
+    <div class="field">
+      <label><%= Spree.t('spree_reviews.preview_size') %></label><br>
+      <%= text_field_tag('preferences[preview_size]', Spree::Reviews::Config[:preview_size], :size => 3) %>
+    </div>
 
-		<div class="form-buttons filter-actions actions" data-hook="buttons">
-			<%= button Spree.t('actions.update') %>
-			<span class="or"><%= Spree.t(:or) %></span>
-			<%= link_to Spree.t('actions.cancel'), edit_admin_general_settings_url, :class => 'button' %>
-		</div>
-	</fieldset>
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+      <%= button Spree.t('actions.update') %>
+      <%= link_to Spree.t('actions.cancel'), edit_admin_general_settings_url, :class => 'button' %>
+    </div>
+  </fieldset>
 <% end %>

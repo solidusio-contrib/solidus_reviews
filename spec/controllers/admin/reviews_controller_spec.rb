@@ -27,7 +27,7 @@ describe Spree::Admin::ReviewsController do
       review.update_attribute(:approved, true)
       get :approve, id: review.id
       expect(response).to redirect_to spree.admin_reviews_path
-      expect(flash[:notice]).to eq Spree.t(:info_approve_review)
+      expect(flash[:success]).to eq Spree.t(:info_approve_review)
     end
 
     it 'show error message when not approved' do
