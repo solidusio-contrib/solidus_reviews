@@ -12,6 +12,15 @@ module SpreeReviews
       end
       Spree::Ability.register_ability(Spree::ReviewsAbility)
     end
+
+    initializer "spree.reviews.environment", before: :load_config_initializers do |app|
+      SpreeReviews::Config = Spree::ReviewsConfiguration.new
+    end
+
+    if SolidusSupport.api_available?
+      paths["app/controllers"] << "lib/controllers"
+    end
+
     config.to_prepare &method(:activate).to_proc
   end
 end

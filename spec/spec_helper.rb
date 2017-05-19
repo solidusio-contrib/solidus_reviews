@@ -20,4 +20,11 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   Capybara.javascript_driver = :poltergeist
+
+  if Gem.loaded_specs['solidus'].version < Gem::Version.new('2.4')
+    config.include VersionCake::TestHelpers, type: :controller
+    config.before(:each, type: :controller) do
+      set_request_version('', 1)
+    end
+  end
 end
