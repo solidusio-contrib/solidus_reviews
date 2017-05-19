@@ -11,6 +11,7 @@ require 'capybara'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+require 'support/controller_hacks'
 
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
 
@@ -52,4 +53,9 @@ RSpec.configure do |config|
   end
 
   Capybara.javascript_driver = :poltergeist
+
+  config.include VersionCake::TestHelpers, type: :controller
+  config.before(:each, type: :controller) do
+    set_request_version('', 1)
+  end
 end
