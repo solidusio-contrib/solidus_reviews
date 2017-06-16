@@ -17,7 +17,7 @@ describe Spree::Api::ReviewsController, type: :controller do
   describe '#index' do
     context 'when given a product_id' do
       subject do
-        api_get :index, product_id: product.id, token: user.spree_api_key
+        get :index, product_id: product.id, token: user.spree_api_key, format: 'json'
         JSON.parse(response.body)
       end
 
@@ -40,7 +40,7 @@ describe Spree::Api::ReviewsController, type: :controller do
 
     context 'when given a user_id' do
       subject do
-        api_get :index, user_id: user.id, token: user.spree_api_key
+        get :index, user_id: user.id, token: user.spree_api_key, format: 'json'
         JSON.parse(response.body)
       end
 
@@ -65,7 +65,7 @@ describe Spree::Api::ReviewsController, type: :controller do
 
   describe '#show' do
     subject do
-      api_get :show, id: review.id, token: user.spree_api_key
+      get :show, id: review.id, token: user.spree_api_key, format: 'json'
       JSON.parse(response.body)
     end
 
@@ -113,8 +113,8 @@ describe Spree::Api::ReviewsController, type: :controller do
     end
 
     subject do
-      params = { product_id: product.id, token: user.spree_api_key }.merge(review_params)
-      api_post :create, params
+      params = { product_id: product.id, token: user.spree_api_key, format: 'json' }.merge(review_params)
+      post :create, params
       JSON.parse(response.body)
     end
 
@@ -142,7 +142,7 @@ describe Spree::Api::ReviewsController, type: :controller do
 
   describe '#update' do
     before { review.update(approved: true, user_id: user.id) }
-    let(:params) { { product_id: product.id, id: review.id, token: user.spree_api_key }.merge(review_params) }
+    let(:params) { { product_id: product.id, id: review.id, token: user.spree_api_key, format: 'json' }.merge(review_params) }
 
     let(:review_params) do
       {
@@ -154,7 +154,7 @@ describe Spree::Api::ReviewsController, type: :controller do
     end
 
     subject do
-      api_put :update, params
+      put :update, params
       JSON.parse(response.body)
     end
 
@@ -186,10 +186,10 @@ describe Spree::Api::ReviewsController, type: :controller do
 
   describe '#destroy' do
     before { review.update(approved: true, user_id: user.id) }
-    let(:params) { { product_id: product.id, id: review.id, token: user.spree_api_key } }
+    let(:params) { { product_id: product.id, id: review.id, token: user.spree_api_key, format: 'json' } }
 
     subject do
-      api_delete :destroy, params
+      delete :destroy, params
       JSON.parse(response.body)
     end
 

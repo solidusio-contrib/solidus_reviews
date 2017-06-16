@@ -11,7 +11,6 @@ require 'capybara'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
-require 'support/controller_hacks'
 
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
 
