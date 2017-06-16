@@ -24,7 +24,7 @@ describe Spree::FeedbackReviewsController do
       rating = 4
       comment = FFaker::Lorem.paragraphs(3).join("\n")
       expect {
-        post :create, { review_id: review.id,
+        post :create, params: { review_id: review.id,
                               feedback_review: { comment: comment,
                                                  rating: rating },
                               format: :js }
@@ -40,31 +40,31 @@ describe Spree::FeedbackReviewsController do
     end
 
     it 'redirects back to the calling page' do
-      post :create, valid_attributes
+      post :create, params: valid_attributes
       expect(response).to redirect_to '/'
     end
 
     it 'sets locale on feedback-review if required by config' do
       Spree::Reviews::Config.preferred_track_locale = true
-      post :create, valid_attributes
+      post :create, params: valid_attributes
       expect(assigns[:review].locale).to eq I18n.locale.to_s
     end
 
     it 'fails when user is not authorized' do
       controller.stub(:authorize!) { raise }
       expect {
-        post :create, valid_attributes
+        post :create, params: valid_attributes
       }.to raise_error RuntimeError
     end
 
     it 'removes all non-numbers from ratings parameter' do
-      post :create, valid_attributes
+      post :create, params: valid_attributes
       expect(controller.params[:feedback_review][:rating]).to eq '4'
     end
 
     it 'do not create feedback-review if review doesnt exist' do
       expect {
-        post :create, valid_attributes.merge!({review_id: nil})
+        post :create, params: valid_attributes.merge!({review_id: nil})
       }.to raise_error ActionController::UrlGenerationError
     end
   end

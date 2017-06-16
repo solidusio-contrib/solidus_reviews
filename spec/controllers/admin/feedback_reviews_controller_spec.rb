@@ -20,7 +20,7 @@ describe Spree::Admin::FeedbackReviewsController do
     let!(:other_feedback_review_2) { create(:feedback_review, created_at: 2.days.ago, review: other_review) }
 
     it 'looks up feedback reviews for the specified review and renders the template' do
-      get :index, review_id: review.id
+      get :index, params: { review_id: review.id }
       expect(response.status).to eq(200)
       expect(response).to render_template(:index)
       expect(assigns(:collection)).to eq([feedback_review_2, feedback_review_3, feedback_review_1])

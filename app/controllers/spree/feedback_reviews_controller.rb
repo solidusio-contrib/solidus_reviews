@@ -1,8 +1,8 @@
 class Spree::FeedbackReviewsController < Spree::StoreController
   helper Spree::BaseHelper
 
-  before_filter :sanitize_rating, only: [:create]
-  before_filter :load_review, only: [:create]
+  before_action :sanitize_rating, only: [:create]
+  before_action :load_review, only: [:create]
 
   def create
 
@@ -15,7 +15,13 @@ class Spree::FeedbackReviewsController < Spree::StoreController
     end
 
     respond_to do |format|
-      format.html { redirect_to :back  }
+      format.html {
+        if SolidusSupport.solidus_gem_version < Gem::Version.new('2.0')
+          redirect_to(:back)
+        else
+          redirect_back(fallback_location: root_path)
+        end
+      }
       format.js   { render :action => :create }
     end
 
