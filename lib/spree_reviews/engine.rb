@@ -12,6 +12,17 @@ module SpreeReviews
       end
       Spree::Ability.register_ability(Spree::ReviewsAbility)
     end
+
+    initializer "spree.api.versioncake" do
+      VersionCake.setup do |config|
+        config.resources do |r|
+          r.resource %r{.*}, [], [], [1]
+        end
+        config.missing_version = 1
+        config.extraction_strategy = :http_header
+      end
+    end
+
     config.to_prepare &method(:activate).to_proc
   end
 end

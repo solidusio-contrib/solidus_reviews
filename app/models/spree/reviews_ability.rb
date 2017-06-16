@@ -3,11 +3,23 @@ class Spree::ReviewsAbility
 
   def initialize user
     review_ability_class = self.class
+
     can :create, Spree::Review do |review|
       review_ability_class.allow_anonymous_reviews? || !user.email.blank?
     end
+
     can :create, Spree::FeedbackReview do |review|
       review_ability_class.allow_anonymous_reviews? || !user.email.blank?
+    end
+
+    # You can read your own reviews, and everyone can read approved ones
+    can :read, Spree::Review do |review|
+      review.user == user || review.approved?
+    end
+
+    # You can only change your own review
+    can [:update, :destroy], Spree::Review do |review|
+      review.user == user
     end
   end
 
