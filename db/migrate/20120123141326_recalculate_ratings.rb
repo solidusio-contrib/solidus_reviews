@@ -1,4 +1,4 @@
-class RecalculateRatings < ActiveRecord::Migration
+class RecalculateRatings < SolidusSupport::Migration[4.2]
   def up
     Spree::Product.reset_column_information
 

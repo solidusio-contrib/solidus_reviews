@@ -1,4 +1,4 @@
-class CreateReviews < ActiveRecord::Migration
+class CreateReviews < SolidusSupport::Migration[4.2]
   def self.up
     create_table :reviews do |t|
       t.integer :product_id
