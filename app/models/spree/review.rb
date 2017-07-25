@@ -33,4 +33,8 @@ class Spree::Review < ActiveRecord::Base
   def recalculate_product_rating
     self.product.recalculate_rating if product.present?
   end
+
+  def email
+    user.try!(:email)
+  end
 end

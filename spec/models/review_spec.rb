@@ -165,4 +165,12 @@ describe Spree::Review do
       expect(review.feedback_stars).to eq 2
     end
   end
+
+  context "#email" do
+    it "returns email from user" do
+      user = build(:user, email: "john@smith.com")
+      review = build(:review, user: user)
+      expect(review.email).to eq("john@smith.com")
+    end
+  end
 end
