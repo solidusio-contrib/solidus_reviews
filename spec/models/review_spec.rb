@@ -75,6 +75,7 @@ describe Spree::Review do
 
       before do
         reset_spree_preferences
+        Spree::Reviews::Config.preference_store = Spree::Reviews::Config.default_preferences
       end
 
       it 'properly runs oldest_first queries' do
@@ -82,7 +83,7 @@ describe Spree::Review do
       end
 
       it 'uses oldest_first for preview' do
-        expect(Spree::Review.preview.to_a).to eq([review_1, review_3])
+        expect(Spree::Review.preview.to_a).to eq([review_1, review_3, review_2])
       end
     end
 
