@@ -1,6 +1,6 @@
 # Reviews
 
-[![Build Status](https://travis-ci.org/solidusio-contrib/solidus_reviews.svg)](https://travis-ci.org/solidusio-contrib/solidus_reviews)
+[![Build Status](https://travis-ci.org/solidusio-contrib/solidus_reviews.svg?branch=master)](https://travis-ci.org/solidusio-contrib/solidus_reviews)
 
 Straightforward review/rating functionality, updated for
 [Solidus](https://solidus.io). While the Gem name has changed, the module
