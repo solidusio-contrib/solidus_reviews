@@ -5,6 +5,7 @@ describe Spree::ReviewsConfiguration do
 
   before do
     reset_spree_preferences
+    subject.preference_store = subject.default_preferences
   end
 
   it 'should have the include_unapproved_reviews preference' do
@@ -16,7 +17,7 @@ describe Spree::ReviewsConfiguration do
   it 'should have the preview_size preference' do
     expect(subject).to respond_to(:preferred_preview_size)
     expect(subject).to respond_to(:preferred_preview_size=)
-    expect(subject.preferred_preview_size).to eq(2)
+    expect(subject.preferred_preview_size).to eq(3)
   end
 
   it 'should have the show_email preference' do
@@ -37,7 +38,7 @@ describe Spree::ReviewsConfiguration do
     expect(subject.preferred_require_login).to be true
   end
 
-  it 'should have the track_locale preference', pending: 'this leaks from elsewhere, causes it to be true' do
+  it 'should have the track_locale preference' do
     expect(subject).to respond_to(:preferred_track_locale)
     expect(subject).to respond_to(:preferred_track_locale=)
     expect(subject.preferred_track_locale).to be false
