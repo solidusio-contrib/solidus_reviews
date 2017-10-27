@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :review, :class => Spree::Review do |f|
     name   { generate(:random_email) }
     title  { generate(:random_string) }

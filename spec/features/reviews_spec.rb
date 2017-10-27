@@ -18,7 +18,7 @@ feature 'Reviews', js: true do
     # Regression test for #103
     context "shows correct number of previews" do
       background do
-        FactoryGirl.create_list :review, 3, product: product_no_reviews, approved: true
+        FactoryBot.create_list :review, 3, product: product_no_reviews, approved: true
         Spree::Reviews::Config[:preview_size] = 2
       end
 
@@ -83,7 +83,7 @@ feature 'Reviews', js: true do
           fill_in 'review_review', with: 'Some big review text..'
           click_on 'Submit your review'
         end
-        
+
         expect(page.find('.flash.notice', text: Spree.t(:review_successfully_submitted))).to be_truthy
         expect(page).not_to have_text 'Some big review text..'
       end
@@ -93,7 +93,7 @@ feature 'Reviews', js: true do
   context 'visit product with review where show_identifier is false' do
     given!(:user) { create(:user) }
     given!(:review) { create(:review, :approved, :hide_identifier, review: 'review text', user: user) }
-    
+
     background do
       visit spree.product_path(review.product)
     end
