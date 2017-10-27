@@ -1,0 +1,66 @@
+---
+it:
+  activerecord:
+    attributes:
+      spree/review:
+        name: Nome
+        title: Titolo
+        review: Contenuto
+        rating: Valutazione
+        created_at: Data
+        ip_address: IP
+        user: Utente
+    models:
+      spree/review:
+        one: una recensione
+        other: "%{count} recensioni"
+  spree:
+    approval_status: Stato
+    approve: Approva
+    approved_reviews: Approvate
+    average_customer_rating: Media recensioni
+    back_reviews: Torna alle recensioni
+    based_upon_review_count:
+      one: basato su una recensione
+      other: "basato su %{count} recensioni"
+    by: da
+    editing_review_for_html: 'Modifica la recensione per %{link}'
+    error_approve_review: Errore approvazione recensione
+    error_no_product: "Il prodotto recensito non esiste più"
+    feedback: Feedback
+    feedback_review_for: "Recensione: '%{review}'"
+    for: per
+    from: da
+    info_approve_review: Recensione approvata
+    leave_us_a_review_for: "Scrivi una recensione per '%{name}'"
+    no_reviews_available: "Non ci sono recensioni per questo prodotto."
+    out_of_5: "su 5"
+    rating: Valutazione
+    reviews: Recensioni
+    admin:
+      tab:
+        review_management: Recensioni
+    review_successfully_submitted: La recensione è stata inviata con successo
+    spree_reviews:
+      feedback_rating: Aggiungi la possibilità di votare una recensione
+      include_unapproved: Mostra le recensioni non approvate
+      manage_review_settings: Approva le recensioni prima della pubblicazione
+      preview_size: Dimensione degli snippet per la recensione
+      require_login: "L'utente deve essere loggato"
+      review_settings: Impostazioni recensioni
+      show_email: "Mostra l'indirizzo email"
+      track_locale: "Mostra solo le recensioni con lo stesso locale dell'utente"
+    star:
+      one: "1"
+      other: "%{count}"
+    stars: Stelle
+    submit_your_review: Salva la recensione
+    submitted_on: Salvata su
+    unapproved_reviews: Non approvate
+    voice:
+      one: "1 voto"
+      other: "%{count} voti"
+    was_this_review_helpful: "Questa recensione è stata utile per te?"
+    write_your_own_review: "Scrivi la tua recensione"
+    you_must_enter_value_for_rating: "Devi indicare una valutazione per questa recensione."
+    anonymous: Anonimo
