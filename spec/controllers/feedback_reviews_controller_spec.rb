@@ -22,7 +22,7 @@ describe Spree::FeedbackReviewsController do
   describe '#create' do
     it 'creates a new feedback review' do
       rating = 4
-      comment = FFaker::Lorem.paragraphs(3).join("\n")
+      comment = ['Thanks for your review!', 'Cheers'].join("\n")
       expect {
         post :create, params: { review_id: review.id,
                               feedback_review: { comment: comment,

@@ -13,11 +13,6 @@ Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
 
 require 'solidus_reviews/factories'
 
-# Bugfix for Solidus < 1.3 using ffaker 1.x
-if defined?(Faker)
-  FFaker = Faker
-end
-
 RSpec.configure do |config|
   config.include Spree::TestingSupport::ControllerRequests, type: :controller
 

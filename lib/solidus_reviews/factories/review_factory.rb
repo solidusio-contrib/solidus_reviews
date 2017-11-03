@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :review, :class => Spree::Review do |f|
-    name   { generate(:random_email) }
-    title  { generate(:random_string) }
-    review { generate(:random_description) }
+    sequence(:name) { |i| "User #{i}" }
+    review { 'This product is ok!' }
     rating { rand(1..5) }
     approved false
     show_identifier true

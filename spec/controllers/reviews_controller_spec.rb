@@ -19,8 +19,9 @@ describe Spree::ReviewsController, type: :controller do
   context '#index' do
     context 'for a product that does not exist' do
       it 'responds with a 404' do
-        get :index, params: { product_id: 'not_real'}
-        expect(response.status).to eq(404)
+        expect {
+          get :index, params: { product_id: 'not_real'}
+        }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
@@ -39,8 +40,9 @@ describe Spree::ReviewsController, type: :controller do
   context '#new' do
     context 'for a product that does not exist' do
       it 'responds with a 404' do
-        get :new, params: { product_id: 'not_real' }
-        expect(response.status).to eq(404)
+        expect {
+          get :new, params: { product_id: 'not_real' }
+        }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
@@ -64,8 +66,9 @@ describe Spree::ReviewsController, type: :controller do
 
     context 'for a product that does not exist' do
       it 'responds with a 404' do
-        post :create, params: { product_id: 'not_real' }
-        expect(response.status).to eq(404)
+        expect {
+          post :create, params: { product_id: 'not_real' }
+        }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
 
