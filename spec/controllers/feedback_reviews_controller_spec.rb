@@ -25,9 +25,10 @@ describe Spree::FeedbackReviewsController do
       comment = ['Thanks for your review!', 'Cheers'].join("\n")
       expect {
         post :create, params: { review_id: review.id,
-                              feedback_review: { comment: comment,
-                                                 rating: rating },
-                              format: :js }
+                        feedback_review: {
+                          comment: comment,
+                          rating: rating },
+                        format: :js }
         expect(response.status).to eq(200)
         expect(response).to render_template(:create)
       }.to change(Spree::Review, :count).by(1)

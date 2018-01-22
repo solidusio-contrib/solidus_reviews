@@ -12,6 +12,11 @@ module SpreeReviews
       end
       Spree::Ability.register_ability(Spree::ReviewsAbility)
     end
+
+    if SolidusSupport.api_available?
+      paths["app/controllers"] << "lib/controllers"
+    end
+
     config.to_prepare &method(:activate).to_proc
   end
 end
