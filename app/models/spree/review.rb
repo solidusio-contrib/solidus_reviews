@@ -10,13 +10,13 @@ class Spree::Review < ActiveRecord::Base
   validates :review, presence: true
 
   validates :rating, numericality: { only_integer: true,
-                                     greater_than_or_equal_to: 1, 
+                                     greater_than_or_equal_to: 1,
                                      less_than_or_equal_to: 5,
                                      message: Spree.t('you_must_enter_value_for_rating') }
 
 
   default_scope { order("spree_reviews.created_at DESC") }
-  
+
   scope :localized, ->(lc) { where('spree_reviews.locale = ?', lc) }
   scope :most_recent_first, -> { order('spree_reviews.created_at DESC') }
   scope :oldest_first, -> { reorder('spree_reviews.created_at ASC') }
@@ -35,6 +35,6 @@ class Spree::Review < ActiveRecord::Base
   end
 
   def email
-    user.try!(:email)
+    user.try!(:email) || super
   end
 end

@@ -168,9 +168,14 @@ describe Spree::Review do
   end
 
   context "#email" do
-    it "returns email from user" do
+    it "returns email from user when there is a user" do
       user = build(:user, email: "john@smith.com")
       review = build(:review, user: user)
+      expect(review.email).to eq("john@smith.com")
+    end
+
+    it "returns email from review when there is no user" do
+      review = build(:review, email: "john@smith.com")
       expect(review.email).to eq("john@smith.com")
     end
   end
