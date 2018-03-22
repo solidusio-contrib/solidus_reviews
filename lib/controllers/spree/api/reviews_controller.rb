@@ -3,7 +3,6 @@ module Spree
     class ReviewsController < Spree::Api::BaseController
       respond_to :json
 
-      rescue_from ActiveRecord::RecordNotFound, with: :render_404
       before_action :load_review, only: [:show, :update, :destroy]
       before_action :load_product, :find_review_user
       before_action :sanitize_rating, only: [:create, :update]
