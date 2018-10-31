@@ -52,7 +52,19 @@
 
 			// Load control parameters / find context / etc
 			var control, input = $(this);
-			var eid = (this.name || 'unnamed-rating').replace(/\[|\]/g, '_').replace(/^\_+|\_+$/g,'');
+
+			var getUniqueId = function(input) {
+				var parent = input.parent();
+				var uniqueId = parent.data('review-uniqueid');
+				if (!uniqueId && uniqueId !== 0) {
+					uniqueId = $.fn.rating.uniqueId;
+					parent.data('review-uniqueid', uniqueId);
+					$.fn.rating.uniqueId++;
+				}
+				return uniqueId;
+			};
+
+			var eid = (this.name || 'unnamed-rating').replace(/\[|\]/g, '_').replace(/^\_+|\_+$/g,'') + '-' + getUniqueId(input);
 			var context = $(this.form || document.body);
 
 			// FIX: http://code.google.com/p/jquery-star-rating-plugin/issues/detail?id=23
@@ -211,6 +223,7 @@
 		// Used to append a unique serial number to internal control ID
 		// each time the plugin is invoked so same name controls can co-exist
 		calls: 0,
+		uniqueId: 0,
 
 		focus: function(){
 			var control = this.data('rating'); if(!control) return this;
