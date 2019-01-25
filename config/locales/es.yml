@@ -14,6 +14,16 @@ es:
       spree/review:
         one: una valoración
         other: "%{count} valoraciones"
+    errors:
+      models:
+        spree/review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Debes incluir una puntuación."
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Debes incluir una puntuación."
   spree:
     approval_status: Estado de aprobación
     approve: Aprobar
@@ -63,6 +73,4 @@ es:
       other: "%{count} voces"
     was_this_review_helpful: "¿Te ha sido útil esta valoración?"
     write_your_own_review: "Escribe tu propia valoración"
-    you_must_enter_value_for_rating: "Debes incluir una puntuación."
     anonymous: Anónimo
-

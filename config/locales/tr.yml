@@ -14,6 +14,16 @@ tr:
       spree/review:
         one: bir yorum
         other: "%{count} yorumlar"
+    errors:
+      models:
+        spree/review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Yorum yazmak için giriş yapmalısınız."
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Yorum yazmak için giriş yapmalısınız."
   spree:
     approval_status: Onay Durumu
     approve: Onayla
@@ -63,6 +73,4 @@ tr:
       other: "%{count} değerlendirme"
     was_this_review_helpful: "Bu yorum size yardımcı oldu mu?"
     write_your_own_review: Yorum Yap
-    you_must_enter_value_for_rating: "Yorum yazmak için giriş yapmalısınız."
     anonymous: anonim
-

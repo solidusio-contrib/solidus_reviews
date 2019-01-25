@@ -17,6 +17,16 @@ uk:
         few: '%{count} відгуки'
         many: '%{count} відгуків'
         other: '%{count} відгуків'
+    errors:
+      models:
+        spree/review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: 'Потрібно вибрати оцінку.'
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: 'Потрібно вибрати оцінку.'
   spree:
     approval_status: Підтвердження
     approve: Схвалити
@@ -71,5 +81,4 @@ uk:
       other: '%{count} голосів'
     was_this_review_helpful: 'Цей відгук корисний для вас?'
     write_your_own_review: Напишіть свій відгук
-    you_must_enter_value_for_rating: 'Потрібно вибрати оцінку.'
     anonymous: Анонім

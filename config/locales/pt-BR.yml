@@ -14,6 +14,16 @@ pt-BR:
       spree/review:
         one: 'uma avaliação'
         other: "%{count} avaliações"
+    errors:
+      models:
+        spree/review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Você tem que preencher um valor para avaliar."
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Você tem que preencher um valor para avaliar."
   spree:
     approval_status: 'Estado de aprovação'
     approve: 'Aprovar'
@@ -63,6 +73,4 @@ pt-BR:
       other: "%{count} vozes"
     was_this_review_helpful: 'Essa avaliação foi útil?'
     write_your_own_review: 'Escreva sua avaliação'
-    you_must_enter_value_for_rating: "Você tem que preencher um valor para avaliar."
     anonymous: Anônimo
-

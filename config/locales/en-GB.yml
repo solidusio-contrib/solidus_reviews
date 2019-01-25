@@ -14,6 +14,16 @@ en-GB:
       spree/review:
         one: one review
         other: "%{count} reviews"
+    errors:
+      models:
+        spree/review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "You must enter a value for rating."
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "You must enter a value for rating."
   spree:
     approval_status: Approval status
     approve: Approve
@@ -63,6 +73,4 @@ en-GB:
       other: "%{count} voices"
     was_this_review_helpful: "Was this review helpful to you?"
     write_your_own_review: Write your own review
-    you_must_enter_value_for_rating: "You must enter a value for rating."
     anonymous: Anonymous
-
