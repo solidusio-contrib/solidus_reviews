@@ -1,21 +1,21 @@
 source 'https://rubygems.org'
 
 branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
-gem "solidus", github: "solidusio/solidus", branch: branch
-gem "solidus_auth_devise", github: "solidusio/solidus_auth_devise"
+gem 'solidus', git: 'https://github.com/solidusio/solidus.git', branch: branch
+gem 'solidus_auth_devise'
 gem 'puma'
+gem 'rails-controller-testing', group: :test
 
-if branch == 'master' || branch >= "v2.0"
-  gem "rails-controller-testing", group: :test
+if branch < 'v2.5'
+  gem 'factory_bot', '4.10.0'
 else
-  gem "rails_test_params_backport", group: :test
+  gem 'factory_bot', '> 4.10.0'
 end
 
-case ENV['DB']
-when 'mysql'
-  gem 'mysql2'
-when 'postgresql'
-  gem 'pg', '< 1.0'
+if ENV['DB'] == 'mysql'
+  gem 'mysql2', '~> 0.4.10'
+else
+  gem 'pg', '~> 0.21'
 end
 
 gemspec
