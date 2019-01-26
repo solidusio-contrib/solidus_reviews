@@ -14,6 +14,16 @@ zh-CN:
       spree/review:
         one: 一个评论
         other: "%{count}个评论"
+    errors:
+      models:
+        spree/review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "您必需输入评级"
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "您必需输入评级"
   spree:
     approve: 核准
     approved_reviews: 核准
@@ -61,5 +71,4 @@ zh-CN:
       other: "%{count} 聲音"
     was_this_review_helpful: "此评论对你是否有帮助？"
     write_your_own_review: 写下您的评论
-    you_must_enter_value_for_rating: "您必需输入评级"
     anonymous: 匿名者

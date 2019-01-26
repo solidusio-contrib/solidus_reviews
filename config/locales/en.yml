@@ -21,6 +21,10 @@ en:
           attributes:
             rating:
               you_must_enter_value_for_rating: "You must enter a value for rating."
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "You must enter a value for rating."
   spree:
     approval_status: Approval status
     approve: Approve

@@ -15,6 +15,16 @@ pl:
         one: jedna opinia
         few: "%{count} opinii"
         other: "%{count} opinii"
+    errors:
+      models:
+        spree/review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Musisz wystawić jakąś ocenę."
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Musisz wystawić jakąś ocenę."
   spree:
     approval_status: Status zatwierdzenia
     approve: Zatwierdź
@@ -67,6 +77,4 @@ pl:
       other: "%{count} głosów"
     was_this_review_helpful: "Czy ta opinia była pomocna dla Ciebie?"
     write_your_own_review: Napisz swoją opinię
-    you_must_enter_value_for_rating: "Musisz wystawić jakąś ocenę."
     anonymous: Anonimowy
-

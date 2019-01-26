@@ -14,6 +14,16 @@ pt:
       spree/review:
         one: uma avaliação
         other: "%{count} avaliações"
+    errors:
+      models:
+        spree/review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Tem de incluir uma pontuação."
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Tem de incluir uma pontuação."
   spree:
     approval_status: Estado de aprovação
     approve: Aprovar
@@ -64,6 +74,4 @@ pt:
       other: "%{count} opiniões"
     was_this_review_helpful: "Esta avaliação foi util?"
     write_your_own_review: Escreve a tua própria avaliação
-    you_must_enter_value_for_rating: "Tem de incluir uma pontuação."
     anonymous: Anônimo
-

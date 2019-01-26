@@ -16,6 +16,16 @@ ro:
         few: "%{count} recenzii"
         other: "%{count} recenzii"
         many: "%{count} de recenzii"
+    errors:
+      models:
+        spree/review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Trebuie să introduci o valoare pentru evaluare."
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Trebuie să introduci o valoare pentru evaluare."
   spree:
     approval_status: Starea de aprobare
     approve: Aprobă
@@ -71,6 +81,4 @@ ro:
       many: "%{count} de opinii"
     was_this_review_helpful: "A fost de ajutor această recenzie?"
     write_your_own_review: Scrie propria ta recenzie
-    you_must_enter_value_for_rating: "Trebuie să introduci o valoare pentru evaluare."
     anonymous: anonim
-

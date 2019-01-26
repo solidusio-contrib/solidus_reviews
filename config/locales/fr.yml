@@ -14,6 +14,16 @@ fr:
       spree/review:
         one: un commentaire
         other: "%{count} commentaires"
+    errors:
+      models:
+        spree/review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Vous devez entrer une valeur pour noter."
+        spree/feedback_review:
+          attributes:
+            rating:
+              you_must_enter_value_for_rating: "Vous devez entrer une valeur pour noter."
   spree:
     approval_status: Statut de l'approbation
     approve: Approuver
@@ -63,6 +73,4 @@ fr:
       other: "%{count} voix"
     was_this_review_helpful: "Est-ce que ce commentaire vous a été utile ?"
     write_your_own_review: Écrire un commentaire
-    you_must_enter_value_for_rating: "Vous devez entrer une valeur pour noter."
     anonymous: Anonyme
-
