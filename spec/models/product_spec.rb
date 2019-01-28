@@ -9,19 +9,20 @@ describe Spree::Product do
     let(:product) { build(:product) }
 
     it 'rounds' do
-      product.stub(:avg_rating).and_return(3.7)
+      allow(product).to receive(:avg_rating).and_return(3.7)
       expect(product.stars).to eq(4)
 
-      product.stub(:avg_rating).and_return(2.3)
+      allow(product).to receive(:avg_rating).and_return(2.3)
       expect(product.stars).to eq(2)
     end
 
 
     it 'handles a nil value' do
-      product.stub(:avg_rating).and_return(nil)
+      allow(product).to receive(:avg_rating).and_return(nil)
+
       expect {
         expect(product.stars).to eq(0)
-      }.not_to raise_error RuntimeError
+      }.not_to raise_error
     end
   end
 

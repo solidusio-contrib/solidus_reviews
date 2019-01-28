@@ -8,7 +8,7 @@ describe Spree::Admin::ReviewsController do
 
   before do
     user = create(:admin_user)
-    controller.stub(try_spree_current_user: user)
+    allow(controller).to receive(:spree_current_user).and_return(user)
   end
 
   context '#index' do
@@ -27,13 +27,13 @@ describe Spree::Admin::ReviewsController do
       review.update_attribute(:approved, true)
       get :approve, params: { id: review.id }
       expect(response).to redirect_to spree.admin_reviews_path
-      expect(flash[:success]).to eq Spree.t(:info_approve_review)
+      expect(flash[:success]).to eq I18n.t('spree.info_approve_review')
     end
 
     it 'show error message when not approved' do
-      Spree::Review.any_instance.stub(:update_attribute).and_return(false)
+      expect_any_instance_of(Spree::Review).to receive(:save).and_return(false)
       get :approve, params: { id: review.id }
-      expect(flash[:error]).to eq Spree.t(:error_approve_review)
+      expect(flash[:error]).to eq I18n.t('spree.error_approve_review')
     end
   end
 
@@ -51,7 +51,7 @@ describe Spree::Admin::ReviewsController do
 
       it 'flash error' do
         get :edit, params: { id: review.id }
-        expect(flash[:error]).to eq Spree.t(:error_no_product)
+        expect(flash[:error]).to eq I18n.t('spree.error_no_product')
       end
 
       it 'redirect to admin-reviews page' do

@@ -5,7 +5,7 @@ describe Spree::Admin::FeedbackReviewsController do
 
   before do
     user = create(:admin_user)
-    controller.stub(:try_spree_current_user => user)
+    allow(controller).to receive(:spree_current_user).and_return(user)
   end
 
   context '#index' do

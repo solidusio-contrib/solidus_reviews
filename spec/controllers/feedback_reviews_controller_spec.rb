@@ -14,8 +14,8 @@ describe Spree::FeedbackReviewsController do
   end
 
   before do
-    controller.stub spree_current_user: user
-    controller.stub spree_user_signed_in?: true
+    allow(controller).to receive(:spree_current_user).and_return(user)
+    allow(controller).to receive(:spree_user_signed_in?).and_return(true)
     request.env['HTTP_REFERER'] = '/'
   end
 
@@ -52,10 +52,11 @@ describe Spree::FeedbackReviewsController do
     end
 
     it 'fails when user is not authorized' do
-      controller.stub(:authorize!) { raise }
+      allow(controller).to receive(:authorize!).and_raise(RuntimeError)
+
       expect {
         post :create, params: valid_attributes
-      }.to raise_error RuntimeError
+      }.to raise_error
     end
 
     it 'removes all non-numbers from ratings parameter' do
