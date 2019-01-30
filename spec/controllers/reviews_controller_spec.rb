@@ -12,8 +12,8 @@ describe Spree::ReviewsController, type: :controller do
   end
 
   before do
-    controller.stub :spree_current_user => user
-    controller.stub :spree_user_signed_in? => true
+    allow(controller).to receive(:spree_current_user).and_return(user)
+    allow(controller).to receive(:spree_user_signed_in?).and_return(true)
   end
 
   context '#index' do
@@ -47,7 +47,8 @@ describe Spree::ReviewsController, type: :controller do
     end
 
     it 'fail if the user is not authorized to create a review' do
-      controller.stub(:authorize!) { raise }
+      allow(controller).to receive(:authorize!).and_raise(RuntimeError)
+
       expect {
         post :new, params: { product_id: product.slug }
         assert_match 'ryanbig', response.body
@@ -62,7 +63,7 @@ describe Spree::ReviewsController, type: :controller do
   end
 
   context '#create' do
-    before { controller.stub spree_current_user: user }
+    before { allow(controller).to receive(:spree_current_user).and_return(user) }
 
     context 'for a product that does not exist' do
       it 'responds with a 404' do
@@ -85,7 +86,8 @@ describe Spree::ReviewsController, type: :controller do
     end
 
     it 'fails if the user is not authorized to create a review' do
-      controller.stub(:authorize!) { raise }
+      allow(controller).to receive(:authorize!).and_raise(RuntimeError)
+
       expect{
         post :create, params: review_params
       }.to raise_error RuntimeError
@@ -93,7 +95,7 @@ describe Spree::ReviewsController, type: :controller do
 
     it 'flashes the notice' do
       post :create, params: review_params
-      expect(flash[:notice]).to eq Spree.t(:review_successfully_submitted)
+      expect(flash[:notice]).to eq I18n.t('spree.review_successfully_submitted')
     end
 
     it 'redirects to product page' do
@@ -115,7 +117,7 @@ describe Spree::ReviewsController, type: :controller do
 
     context 'with invalid params' do
       it 'renders new when review.save fails' do
-        Spree::Review.any_instance.stub(:save).and_return(false)
+        expect_any_instance_of(Spree::Review).to receive(:save).and_return(false)
         post :create, params: review_params
         expect(response).to render_template :new
       end

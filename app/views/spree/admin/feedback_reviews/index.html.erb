@@ -1,9 +1,9 @@
 <% content_for :page_title do %>
-	<%= Spree.t('feedback_review_for', :review => @review.title) %>
+	<%= I18n.t("spree.feedback_review_for", :review => @review.title) %>
 <% end %>
 
 <% content_for :page_actions do %>
-	<li><%= button_link_to Spree.t(:back_to_reviews), admin_reviews_path %></li>
+	<li><%= link_to I18n.t("spree.back_to_reviews"), admin_reviews_path %></li>
 <% end %>
 
 <% render 'spree/admin/shared/product_sub_menu' %>
@@ -18,9 +18,9 @@
 		</colgroup>
 		<thead>
 			<tr>
-				<th><%= Spree.t('user') %></th>
-				<th><%= Spree.t('stars') %></th>
-				<th><%= Spree.t('date') %></th>
+				<th><%= I18n.t("spree.user") %></th>
+				<th><%= I18n.t("spree.stars") %></th>
+				<th><%= I18n.t("spree.date") %></th>
 				<th class="actions"></th>
 			</tr>
 		</thead>
@@ -28,7 +28,7 @@
 		<%- @collection.each do |feedback| -%>
 			<tr id="<%= dom_id(feedback) %>">
 			  <td><%= l feedback.created_at %></td>
-			  <td><%= feedback.user.try(:login) || Spree.t(:anonymous) %></td>
+			  <td><%= feedback.user.try(:login) || I18n.t("spree.anonymous") %></td>
 			  <td><%= feedback.rating %></td>
 			  <td class="actions">
 				  <%= link_to_delete feedback, :no_text => true  %>
@@ -39,6 +39,6 @@
 	</table>
 <% else %>
 	<div class="no-objects-found">
-		<%= Spree.t(:no_results) %>
+		<%= I18n.t("spree.no_results") %>
 	</div>
 <% end %>

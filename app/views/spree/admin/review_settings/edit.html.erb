@@ -1,13 +1,13 @@
 <% content_for :page_title do %>
-  <%= Spree.t("spree_reviews.review_settings") %>
+  <%= I18n.t("spree.spree_reviews.review_settings") %>
 <% end %>
 
-<% admin_breadcrumb(Spree.t(:settings)) %>
+<% admin_breadcrumb(I18n.t("spree.settings")) %>
 
 <% content_for :tabs do %>
   <nav>
     <ul class="tabs">
-      <%= settings_tab_item Spree.t("spree_reviews.review_settings"), spree.admin_review_settings_path %>
+      <%= settings_tab_item I18n.t("spree.spree_reviews.review_settings"), spree.admin_review_settings_path %>
     </ul>
   </nav>
 <% end %>
@@ -17,41 +17,41 @@
     <div class="field">
       <label>
         <%= check_box_tag('preferences[include_unapproved_reviews]', "1", Spree::Reviews::Config[:include_unapproved_reviews]) %>
-        <%= Spree.t("spree_reviews.include_unapproved") %>
+        <%= I18n.t("spree.spree_reviews.include_unapproved") %>
       </label>
     </div>
     <div class="field">
       <label>
         <%= check_box_tag('preferences[feedback_rating]', "1", Spree::Reviews::Config[:feedback_rating]) %>
-        <%= Spree.t("spree_reviews.feedback_rating") %>
+        <%= I18n.t("spree.spree_reviews.feedback_rating") %>
       </label>
     </div>
     <div class="field">
       <label>
         <%= check_box_tag('preferences[show_email]', "1", Spree::Reviews::Config[:show_email]) %>
-        <%= Spree.t("spree_reviews.show_email") %>
+        <%= I18n.t("spree.spree_reviews.show_email") %>
       </label>
     </div>
     <div class="field">
       <label>
         <%= check_box_tag('preferences[require_login]', "1", Spree::Reviews::Config[:require_login]) %>
-        <%= Spree.t("spree_reviews.require_login") %>
+        <%= I18n.t("spree.spree_reviews.pero bunrequire_login") %>
       </label>
     </div>
     <div class="field">
       <label>
         <%= check_box_tag('preferences[track_locale]', "1", Spree::Reviews::Config[:track_locale]) %>
-        <%= Spree.t("spree_reviews.track_locale") %>
+        <%= I18n.t("spree.spree_reviews.track_locale") %>
       </label>
     </div>
     <div class="field">
-      <label><%= Spree.t('spree_reviews.preview_size') %></label><br>
+      <label><%= I18n.t("spree.spree_reviews.preview_size") %></label><br>
       <%= text_field_tag('preferences[preview_size]', Spree::Reviews::Config[:preview_size], :size => 3) %>
     </div>
 
     <div class="form-buttons filter-actions actions" data-hook="buttons">
-      <%= button Spree.t('actions.update') %>
-      <%= link_to Spree.t('actions.cancel'), edit_admin_general_settings_url, :class => 'button' %>
+      <%= button_tag I18n.t("spree.actions.update") %>
+      <%= link_to I18n.t("spree.actions.cancel"), edit_admin_general_settings_url, :class => 'button' %>
     </div>
   </fieldset>
 <% end %>

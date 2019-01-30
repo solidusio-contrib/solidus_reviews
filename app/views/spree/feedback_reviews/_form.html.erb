@@ -4,10 +4,10 @@
  <span class="error"><%= @feedback_review.errors[:rating] %></span>
  <br />
 <% end %>
-<%= Spree.t(:was_this_review_helpful) %>
+<%= I18n.t("spree.was_this_review_helpful") %>
 <% for i in 1..NB_STARS %>
   <%= radio_button_tag "feedback_review[rating]",
-                       Spree.t('star', :count => i), false, :class => "star" %>
+                       I18n.t("spree.star", :count => i), false, :class => "star" %>
 <% end %>
-<button class="feedback-review"><span><%= Spree.t(:say_yes) %></span></button>
+<button class="feedback-review"><span><%= I18n.t("spree.say_yes") %></span></button>
 <% end %>

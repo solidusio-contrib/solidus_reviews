@@ -1,11 +1,11 @@
 <% admin_breadcrumb(link_to plural_resource_name(Spree::Product), spree.admin_products_path) %>
 
 <% content_for :page_title do %>
-  <%= Spree.t('reviews') %>
+  <%= I18n.t("spree.reviews") %>
 <% end %>
 
 <% content_for :table_filter_title do %>
-  <%= Spree.t('search') %>
+  <%= I18n.t("spree.search") %>
 <% end %>
 
 <% content_for :table_filter do %>
@@ -13,32 +13,32 @@
     <%= search_form_for [:admin, @search] do |f| %>
       <div class="alpha three columns">
         <div class="field">
-          <%= f.label :name_cont, Spree.t(:user) %><br />
+          <%= f.label :name_cont, I18n.t("spree.user") %><br />
           <%= f.text_field :name_cont, class: 'fullwidth' %>
         </div>
       </div>
 
       <div class="seven columns">
         <div class="field">
-          <%= f.label :title_cont, Spree.t(:title) -%><br/>
+          <%= f.label :title_cont, I18n.t("spree.title") -%><br/>
           <%= f.text_field :title_cont, class: 'fullwidth'  -%>
         </div>
       </div>
 
       <div class="four columns">
         <div class="field">
-          <%= f.label :review_cont, Spree.t(:review) -%><br/>
+          <%= f.label :review_cont, I18n.t("spree.review") -%><br/>
           <%= f.text_field :review_cont, class: 'fullwidth'  -%>
         </div>
       </div>
 
       <div class="two columns omega">
         <div class="field">
-          <%= f.label :approved_eq, Spree.t(:approval_status)-%><br/>
+          <%= f.label :approved_eq, I18n.t("spree.approval_status")-%><br/>
           <%= f.select :approved_eq, [
-              [Spree.t(:all), nil],
-              [Spree.t(:approved_reviews), true],
-              [Spree.t(:unapproved_reviews), false]
+              [I18n.t("spree.all"), nil],
+              [I18n.t("spree.approved_reviews"), true],
+              [I18n.t("spree.unapproved_reviews"), false]
             ], {}, class: 'select2 fullwidth'  -%>
         </div>
       </div>
@@ -46,7 +46,7 @@
       <div class="clear"></div>
 
       <div class="form-buttons actions filter-actions" data-hook="admin_reviews_index_search_buttons">
-        <%= button Spree.t(:search) %>
+        <%= button_tag I18n.t("spree.search") %>
       </div>
     <%- end -%>
   </div>
@@ -66,9 +66,9 @@
     </colgroup>
     <thead>
       <tr>
-        <th><%= Spree.t('product') %></th>
+        <th><%= I18n.t("spree.product") %></th>
         <th><%= Spree::Review.human_attribute_name(:rating) %></th>
-        <th><%= Spree.t('feedback') %></th>
+        <th><%= I18n.t("spree.feedback") %></th>
         <th><%= Spree::Review.human_attribute_name(:user) %></th>
         <th><%= Spree::Review.human_attribute_name(:created_at) %></th>
         <th class="actions"></th>
@@ -89,14 +89,14 @@
             <%= link_to "(#{review.feedback_stars}/#{review.feedback_reviews.size})", admin_review_feedback_reviews_path(review) %>
           </td>
           <td class="align-center">
-            <%= review.user_id ? link_to(review.user.try(:email), [:admin, review.user]) : Spree.t(:anonymous) %></p>
+            <%= review.user_id ? link_to(review.user.try(:email), [:admin, review.user]) : I18n.t("spree.anonymous") %></p>
             <p><%= Spree::Review.human_attribute_name(:ip_address) %>: <%= review.ip_address ? link_to(review.ip_address, "http://whois.domaintools.com/#{review.ip_address}") : '-' %></p>
           </td>
           <td class="align-center">
             <%= l review.created_at, format: :short %>
           </td>
           <td class="actions">
-            <%= link_to_with_icon 'ok', Spree.t(:approve), approve_admin_review_url(review), no_text: true, class: 'approve' unless review.approved %>
+            <%= link_to_with_icon 'ok', I18n.t("spree.approve"), approve_admin_review_url(review), no_text: true, class: 'approve' unless review.approved %>
             <%= link_to_edit review, no_text: true, class: 'edit' %>
             <%= link_to_delete review, no_text: true %>
           </td>
@@ -106,7 +106,7 @@
   </table>
 <% else %>
   <div class="no-objects-found">
-    <%= Spree.t(:no_results) %>
+    <%= I18n.t("spree.no_results") %>
   </div>
 <% end %>
 
