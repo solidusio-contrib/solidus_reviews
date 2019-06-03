@@ -40,6 +40,7 @@ fr:
     reviews: Commentaires
     admin:
       tab:
+        reviews: Commentaires
         review_management: Commentaires
     review_successfully_submitted: Votre commentaire a été envoyé avec succès
     spree_reviews:

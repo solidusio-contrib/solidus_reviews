@@ -39,6 +39,7 @@ sv:
     rating: betyg
     admin:
       tab:
+        reviews: "Recensioner"
         review_management: "Hantera recensioner"
     review_successfully_submitted: "Recension har skapats"
     reviews: Recensioner

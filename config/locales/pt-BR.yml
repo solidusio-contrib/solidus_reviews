@@ -40,6 +40,7 @@ pt-BR:
     reviews: 'Avaliações'
     admin:
       tab:
+        reviews: 'Avaliações'
         review_management: 'Avaliações'
     review_successfully_submitted: 'Avaliação enviada com sucesso'
     spree_reviews:

@@ -44,6 +44,7 @@ ro:
     reviews: Recenzii
     admin:
       tab:
+        reviews: Recenzii
         review_management: Recenzii
     review_successfully_submitted: Recenzia a fost trimisă cu succes
     spree_reviews:

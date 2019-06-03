@@ -38,6 +38,7 @@ zh-CN:
     reviews: 评论
     admin:
       tab:
+        reviews: 评论
         review_management: 评论
     review_successfully_submitted: 已成功递交评论。
     spree_reviews:

@@ -39,6 +39,7 @@ it:
     reviews: Recensioni
     admin:
       tab:
+        reviews: Recensioni
         review_management: Recensioni
     review_successfully_submitted: La recensione è stata inviata con successo
     spree_reviews:

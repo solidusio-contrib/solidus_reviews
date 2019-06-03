@@ -40,6 +40,7 @@ pt:
     reviews: Avaliações
     admin:
       tab:
+        reviews: Gestão Avaliações
         review_management: Gestão Avaliações
     review_successfully_submitted: A avaliação foi enviada com sucesso
     submission_guidelines: Diretrizes para enviar boas avaliações

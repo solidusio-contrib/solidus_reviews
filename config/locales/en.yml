@@ -46,6 +46,7 @@ en:
     reviews: Reviews
     admin:
       tab:
+        reviews: Reviews
         review_management: Reviews
     review_successfully_submitted: Review was successfully submitted
     spree_reviews:

@@ -42,6 +42,7 @@ pl:
     reviews: Opinie
     admin:
       tab:
+        reviews: Opinie
         review_management: Opinie
     review_successfully_submitted: Opinia została dodana
     spree_reviews:
