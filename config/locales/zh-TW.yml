@@ -48,6 +48,7 @@ zh-TW:
     reviews: 評論
     admin:
       tab:
+        reviews: 評論
         review_management: 評論
     review_successfully_submitted: 已成功遞交評論。
     spree_reviews:

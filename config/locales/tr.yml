@@ -50,6 +50,7 @@ tr:
     reviews: Yorumlar
     admin:
       tab:
+        reviews: Yorumlar
         review_management: Yorumlar
     review_successfully_submitted: Yorumunuz başarıyla iletildi
     spree_reviews:

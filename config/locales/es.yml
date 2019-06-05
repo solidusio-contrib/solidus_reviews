@@ -50,6 +50,7 @@ es:
     reviews: Valoraciones
     admin:
       tab:
+        reviews: Valoraciones
         review_management: "Valoraciones"
     review_successfully_submitted: "La valoración se ha enviado correctamente"
     spree_reviews:

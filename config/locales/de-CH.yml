@@ -51,6 +51,7 @@ de-CH:
     reviews: Rezensionen
     admin:
       tab:
+        reviews: Rezensionen
         review_management: Rezensionen
     review_successfully_submitted: "Ihre Rezension wurde erfolgreich übertragen. Vielen Dank!"
     spree_reviews:

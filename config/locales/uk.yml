@@ -54,6 +54,7 @@ uk:
     reviews: Відгуки
     admin:
       tab:
+        reviews: Відгуки
         review_management: Відгуки
     review_successfully_submitted: Відгук надіслано
     spree_reviews:
