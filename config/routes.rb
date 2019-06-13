@@ -5,6 +5,7 @@ Spree::Core::Engine.routes.draw do
         get :approve
       end
       resources :feedback_reviews, only: [:index, :destroy]
+      resources :images, only: [:destroy]
     end
     resource :review_settings, only: [:edit, :update]
   end

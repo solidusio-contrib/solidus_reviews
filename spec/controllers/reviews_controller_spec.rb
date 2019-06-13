@@ -8,7 +8,11 @@ describe Spree::ReviewsController, type: :controller do
       review: { rating: 3,
                 name: 'Ryan Bigg',
                 title: 'Great Product',
-                review: 'Some big review text..' } }
+                review: 'Some big review text..',
+                images: [
+                  fixture_file_upload(File.new(Spree::Core::Engine.root + 'spec/fixtures/thinking-cat.jpg'))
+                ] }
+    }
   end
 
   before do
@@ -83,6 +87,11 @@ describe Spree::ReviewsController, type: :controller do
       @request.env['REMOTE_ADDR'] = '127.0.0.1'
       post :create, params: review_params
       expect(assigns[:review].ip_address).to eq '127.0.0.1'
+    end
+
+    it 'attaches the image' do
+      post :create, params: review_params
+      expect(assigns[:review].images).to be_present
     end
 
     it 'fails if the user is not authorized to create a review' do

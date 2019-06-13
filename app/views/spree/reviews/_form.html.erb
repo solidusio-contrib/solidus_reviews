@@ -1,4 +1,4 @@
-<%= form_for review, :url => product_reviews_path(product), :html => {:method => :post} do |f| %>
+<%= form_for review, :url => product_reviews_path(product), :html => {:method => :post, :multipart => true} do |f| %>
   <%= render "spree/shared/error_messages", :target => review %>
 
   <p class="review_rating_field">
@@ -19,6 +19,11 @@
   <p class="review_review_field">
     <%= f.label :review %> <span class="required">*</span><br />
     <%= f.text_area :review, :wrap => "virtual", :rows => "10", :cols => "50" %>
+  </p>
+
+  <p class="review_images_field">
+    <%= f.label :images %><br>
+    <%= f.file_field :images, :accept => "image/*", multiple: true %>
   </p>
 
   <% if Spree::Reviews::Config[:render_show_identifier_checkbox] %>

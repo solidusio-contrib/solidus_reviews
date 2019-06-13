@@ -57,10 +57,11 @@
 <% if @reviews.any? %>
   <table class="index">
     <colgroup>
-      <col style="width: 25%;">
-      <col style="width: 10%;">
-      <col style="width: 10%;">
       <col style="width: 20%;">
+      <col style="width: 10%;">
+      <col style="width: 10%;">
+      <col style="width: 15%;">
+      <col style="width: 15%;">
       <col style="width: 15%;">
       <col style="width: 17%;">
     </colgroup>
@@ -71,6 +72,7 @@
         <th><%= I18n.t("spree.feedback") %></th>
         <th><%= Spree::Review.human_attribute_name(:user) %></th>
         <th><%= Spree::Review.human_attribute_name(:created_at) %></th>
+        <th><%= Spree::Review.human_attribute_name(:images) %></th>
         <th class="actions"></th>
       </tr>
     </thead>
@@ -94,6 +96,11 @@
           </td>
           <td class="align-center">
             <%= l review.created_at, format: :short %>
+          </td>
+          <td class="align-center">
+            <% review.images.each do |image| %>
+              <%= link_to image_tag(image.url(:product)), image.url(:original) %>
+            <% end %>
           </td>
           <td class="actions">
             <%= link_to_with_icon 'ok', I18n.t("spree.approve"), approve_admin_review_url(review), no_text: true, class: 'approve' unless review.approved %>

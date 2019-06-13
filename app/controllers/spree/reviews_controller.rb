@@ -20,6 +20,10 @@ class Spree::ReviewsController < Spree::StoreController
     @review.user = spree_current_user if spree_user_signed_in?
     @review.ip_address = request.remote_ip
     @review.locale = I18n.locale.to_s if Spree::Reviews::Config[:track_locale]
+    # Handle images
+    params[:review][:images]&.each do |image|
+      @review.images.new(attachment: image)
+    end
 
     authorize! :create, @review
     if @review.save
@@ -37,7 +41,7 @@ class Spree::ReviewsController < Spree::StoreController
   end
 
   def permitted_review_attributes
-    [:rating, :title, :review, :name, :show_identifier]
+    [:rating, :title, :review, :name, :show_identifier, :images]
   end
 
   def review_params
