@@ -190,4 +190,37 @@ describe Spree::Review do
       expect(review.images.first).to eq(image_2)
     end
   end
+
+  context "#verify_purchaser" do
+    let(:order) { create(:completed_order_with_totals) }
+    let(:product) { order.products.first }
+    let(:user) { order.user }
+    let(:review) { build(:review, user: user, product: product) }
+
+    it "returns true if the user has purchased the product" do
+      expect(review.verified_purchaser).to eq(false)
+      review.verify_purchaser
+      expect(review.verified_purchaser).to eq(true)
+    end
+
+    it "returns false if the user has not purchased the product" do
+      review.user = create(:user)
+      expect(review.verified_purchaser).to eq(false)
+      review.verify_purchaser
+      expect(review.verified_purchaser).to eq(false)
+    end
+
+    it "returns nothing if there is no user_id or product_id" do
+      review.product_id = nil
+      expect(review.verified_purchaser).to eq(false)
+      review.verify_purchaser
+      expect(review.verified_purchaser).to eq(false)
+
+      review.product_id = product.id
+      review.user_id = nil
+      expect(review.verified_purchaser).to eq(false)
+      review.verify_purchaser
+      expect(review.verified_purchaser).to eq(false)
+    end
+  end
 end

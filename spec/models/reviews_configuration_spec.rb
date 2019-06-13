@@ -28,6 +28,12 @@ describe Spree::ReviewsConfiguration do
     expect(subject.preferred_show_email).to be false
   end
 
+  it 'should have the show_verified_purchaser preference' do
+    expect(subject).to respond_to(:preferred_show_verified_purchaser)
+    expect(subject).to respond_to(:preferred_show_verified_purchaser=)
+    expect(subject.preferred_show_verified_purchaser).to be false
+  end
+
   it 'should have the feedback_rating preference' do
     expect(subject).to respond_to(:preferred_feedback_rating)
     expect(subject).to respond_to(:preferred_feedback_rating=)

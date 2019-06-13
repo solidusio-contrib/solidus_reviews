@@ -62,6 +62,7 @@ pt:
       require_login: Requerer que utilizador esteja registado
       review_settings: Configurações de Avaliação
       show_email: Mostrar email
+      show_verified_purchaser: Mostrar comprador confirmado
       track_locale: Seguir locale do utilizador
     star:
       one: "1"
@@ -70,6 +71,7 @@ pt:
     submit_your_review: Envia tua avaliação
     submitted_on: Enviada em
     unapproved_reviews: Não aprovadas
+    verified_purchaser: Comprador verificado
     voice:
       one: "uma opinião"
       other: "%{count} opiniões"

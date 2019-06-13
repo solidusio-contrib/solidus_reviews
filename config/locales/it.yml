@@ -60,6 +60,7 @@ it:
       require_login: "L'utente deve essere loggato"
       review_settings: Impostazioni recensioni
       show_email: "Mostra l'indirizzo email"
+      show_verified_purchaser: Mostra acquirente verificato
       track_locale: "Mostra solo le recensioni con lo stesso locale dell'utente"
     star:
       one: "1"
@@ -68,6 +69,7 @@ it:
     submit_your_review: Salva la recensione
     submitted_on: Salvata su
     unapproved_reviews: Non approvate
+    verified_purchaser: Acquirente verificato
     voice:
       one: "1 voto"
       other: "%{count} voti"

@@ -14,6 +14,9 @@ class Spree::ReviewsConfiguration < Spree::Preferences::Configuration
   # show a reviewer's email address
   preference :show_email, :boolean, default: false
 
+  # show if a reviewer actually purchased the product
+  preference :show_verified_purchaser, :boolean, :default => false
+
   # show helpfullness rating form elements
   preference :feedback_rating, :boolean, default: false
 

@@ -68,8 +68,8 @@
     <thead>
       <tr>
         <th><%= I18n.t("spree.product") %></th>
-        <th><%= Spree::Review.human_attribute_name(:rating) %></th>
-        <th><%= I18n.t("spree.feedback") %></th>
+        <th><%= "#{Spree::Review.human_attribute_name(:rating)}/#{I18n.t("spree.feedback")}" %></th>
+        <th><%= I18n.t("spree.verified_purchaser") %></th>
         <th><%= Spree::Review.human_attribute_name(:user) %></th>
         <th><%= Spree::Review.human_attribute_name(:created_at) %></th>
         <th><%= Spree::Review.human_attribute_name(:images) %></th>
@@ -85,10 +85,13 @@
             <% end %>
             </td>
           <td class="align-center">
-            <%= txt_stars(review.rating) %>
+            <%= txt_stars(review.rating) %><br />
+            <%= link_to "(#{review.feedback_stars}/#{review.feedback_reviews.size})", admin_review_feedback_reviews_path(review) %>
           </td>
           <td class="align-center">
-            <%= link_to "(#{review.feedback_stars}/#{review.feedback_reviews.size})", admin_review_feedback_reviews_path(review) %>
+            <% if review.verified_purchaser? %>
+              <%= solidus_icon('fa fa-check') %>
+            <% end %>
           </td>
           <td class="align-center">
             <%= review.user_id ? link_to(review.user.try(:email), [:admin, review.user]) : I18n.t("spree.anonymous") %></p>

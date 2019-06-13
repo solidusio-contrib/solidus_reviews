@@ -61,6 +61,7 @@ sv:
       require_login: "Kräv att användaren är inloggad"
       review_settings: "Recensions inställningar"
       show_email: "Visa epost adresser"
+      show_verified_purchaser: Visa verifierad köpare
       track_locale: "Spåra användarens språk"
     star:
       one: "1"
@@ -69,6 +70,7 @@ sv:
     submit_your_review: "Skicka in din recension"
     submitted_on: "Skapad den"
     unapproved_reviews: "Icke godkänd"
+    verified_purchaser: Verifierad köpare
     voice:
       one: "1 röst"
       other: "%{count} röster"

@@ -61,6 +61,7 @@ es:
       require_login: "Requerir que el usuario esté logado"
       review_settings: "Configuración de las Valoraciones"
       show_email: "Mostrar las direcciones de correo"
+      show_verified_purchaser: Mostrar comprador verificado
       track_locale: "Rastrear el locale del usuario"
     star:
       one: "1"
@@ -69,6 +70,7 @@ es:
     submit_your_review: "Envía tu valoración"
     submitted_on: "Enviada el"
     unapproved_reviews: "Sin aprobar"
+    verified_purchaser: Comprador verificado
     voice:
       one: "1 voz"
       other: "%{count} voces"

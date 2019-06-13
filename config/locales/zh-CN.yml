@@ -59,6 +59,7 @@ zh-CN:
       require_login: 用者必需登入
       review_settings: 评论设定
       show_email: 显示电邮地址
+      show_verified_purchaser: 显示经过验证的购买者
       track_locale: 追踪用户地域
     star:
       one: "1"
@@ -67,6 +68,7 @@ zh-CN:
     submit_your_review: 递交你的评论
     submitted_on: 递交日期
     unapproved_reviews: 沒核准
+    verified_purchaser: 验证购买者
     voice:
       one: "1 聲音"
       other: "%{count} 聲音"

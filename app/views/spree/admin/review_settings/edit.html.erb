@@ -34,6 +34,12 @@
     </div>
     <div class="field">
       <label>
+        <%= check_box_tag('preferences[show_verified_purchaser]', "1", Spree::Reviews::Config[:show_verified_purchaser]) %>
+        <%= I18n.t("spree.spree_reviews.show_verified_purchaser") %>
+      </label>
+    </div>
+    <div class="field">
+      <label>
         <%= check_box_tag('preferences[require_login]', "1", Spree::Reviews::Config[:require_login]) %>
         <%= I18n.t("spree.spree_reviews.require_login") %>
       </label>

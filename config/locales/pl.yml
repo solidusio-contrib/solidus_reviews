@@ -63,6 +63,7 @@ pl:
       require_login: "Wymagaj, aby użytkownik był zalogowany"
       review_settings: Ustawienia opinii
       show_email: Pokaż adresy email
+      show_verified_purchaser: Pokaż zweryfikowanego nabywcę
       track_locale: Śledź język użytkownika
     star:
       one: "1"
@@ -72,6 +73,7 @@ pl:
     submit_your_review: Dodaj opinię
     submitted_on: Dodano
     unapproved_reviews: Niezaakceptowane
+    verified_purchaser: Zweryfikowany nabywca
     voice:
       one: "1 głos"
       few: "%{count} głosów"

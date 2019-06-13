@@ -17,6 +17,9 @@
   <% else %>
       <span itemprop="author"><%= I18n.t("spree.anonymous") %></span>
   <% end %>
+  <% if Spree::Reviews::Config[:show_verified_purchaser] && review.verified_purchaser? %>
+    <div><%= I18n.t("spree.verified_purchaser") %></div>
+  <% end %>
   <div itemprop="reviewBody">
     <%= simple_format(review.review) %>
   </div>
