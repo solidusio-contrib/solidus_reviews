@@ -2,13 +2,11 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'solidus_reviews'
   s.version     = '1.0.0'
-  s.summary     = 'Basic review and ratings facility for Spree'
-  s.authors 	  = ['Paul Callaghan']
+  s.summary     = 'Basic review and ratings facility for Solidus'
+  s.authors 	  = ['Solidus Contrib']
   s.description = s.summary
   s.required_ruby_version = '>= 1.9.3'
 
-  s.authors 	   = ['Paul Callaghan', 'Alex Blackie']
-  s.email        = 'paulcc.two@gmail.com'
   s.homepage     = 'https://github.com/solidusio-contrib/solidus-reviews/'
   s.license      = 'BSD-3'
 
