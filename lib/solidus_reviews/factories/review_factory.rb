@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :review, :class => Spree::Review do |f|
+  factory :review, class: Spree::Review do |f|
     sequence(:name) { |i| "User #{i}" }
     review { 'This product is ok!' }
     rating { rand(1..5) }

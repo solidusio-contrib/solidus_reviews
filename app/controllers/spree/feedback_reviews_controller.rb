@@ -22,7 +22,7 @@ class Spree::FeedbackReviewsController < Spree::StoreController
           redirect_back(fallback_location: root_path)
         end
       }
-      format.js   { render :action => :create }
+      format.js { render action: :create }
     end
 
   end
@@ -44,4 +44,3 @@ class Spree::FeedbackReviewsController < Spree::StoreController
       params[:feedback_review][:rating].to_s.sub!(/\s*[^0-9]*\z/,'') unless (params[:feedback_review] && params[:feedback_review][:rating].blank?)
     end
 end
-
