@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Spree::ReviewsController < Spree::StoreController
   helper Spree::BaseHelper
   before_action :load_product, only: [:index, :new, :create]
@@ -13,7 +15,7 @@ class Spree::ReviewsController < Spree::StoreController
 
   # save if all ok
   def create
-    params[:review][:rating].sub!(/\s*[^0-9]*\z/,'') unless params[:review][:rating].blank?
+    params[:review][:rating].sub!(/\s*[^0-9]*\z/, '') unless params[:review][:rating].blank?
 
     @review = Spree::Review.new(review_params)
     @review.product = @product
@@ -43,5 +45,4 @@ class Spree::ReviewsController < Spree::StoreController
   def review_params
     params.require(:review).permit(permitted_review_attributes)
   end
-
 end

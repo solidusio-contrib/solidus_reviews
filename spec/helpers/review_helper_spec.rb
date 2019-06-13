@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Spree::ReviewsHelper do
@@ -11,7 +13,6 @@ describe Spree::ReviewsHelper do
     specify do
       matches = mk_stars(2).scan(/unlit/)
       expect(matches.length).to eq 3
-
     end
   end
 

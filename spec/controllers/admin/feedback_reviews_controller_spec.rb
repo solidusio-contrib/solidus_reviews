@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Spree::Admin::FeedbackReviewsController do
@@ -9,7 +11,7 @@ describe Spree::Admin::FeedbackReviewsController do
   end
 
   context '#index' do
-    let!(:review) { create(:review)}
+    let!(:review) { create(:review) }
     let!(:other_review) { create(:review) }
 
     let!(:feedback_review_1) { create(:feedback_review, created_at: 10.days.ago, review: review) }

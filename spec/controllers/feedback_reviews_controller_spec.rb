@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Spree::FeedbackReviewsController do
@@ -10,7 +12,7 @@ describe Spree::FeedbackReviewsController do
       feedback_review: {
         rating: '4 stars',
         comment: 'some comment'
-      }}
+      } }
   end
 
   before do
@@ -27,7 +29,8 @@ describe Spree::FeedbackReviewsController do
         post :create, params: { review_id: review.id,
                         feedback_review: {
                           comment: comment,
-                          rating: rating },
+                          rating: rating
+},
                         format: :js }
         expect(response.status).to eq(200)
         expect(response).to render_template(:create)
@@ -37,7 +40,6 @@ describe Spree::FeedbackReviewsController do
       expect(feedback_review.review).to eq(review)
       expect(feedback_review.rating).to eq(rating)
       expect(feedback_review.user).to eq(user)
-
     end
 
     it 'redirects back to the calling page' do
@@ -66,7 +68,7 @@ describe Spree::FeedbackReviewsController do
 
     it 'do not create feedback-review if review doesnt exist' do
       expect {
-        post :create, params: valid_attributes.merge!({review_id: nil})
+        post :create, params: valid_attributes.merge!({ review_id: nil })
       }.to raise_error ActionController::UrlGenerationError
     end
   end

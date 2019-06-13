@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
-  factory :review, class: Spree::Review do |f|
+  factory :review, class: Spree::Review do |_f|
     sequence(:name) { |i| "User #{i}" }
     review { 'This product is ok!' }
     rating { rand(1..5) }

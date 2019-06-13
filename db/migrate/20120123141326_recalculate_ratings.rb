@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecalculateRatings < SolidusSupport::Migration[4.2]
   def up
     Spree::Product.reset_column_information
@@ -11,7 +13,6 @@ class RecalculateRatings < SolidusSupport::Migration[4.2]
       if p.reviews.approved.count > 0
         p.reviews.approved.first.recalculate_product_rating
       end
-
     end
   end
 

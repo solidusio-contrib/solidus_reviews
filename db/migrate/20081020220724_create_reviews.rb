@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateReviews < SolidusSupport::Migration[4.2]
   def self.up
     create_table :reviews do |t|

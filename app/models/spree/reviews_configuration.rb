@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Spree::ReviewsConfiguration < Spree::Preferences::Configuration
   def self.boolean_preferences
     %w(include_unapproved_reviews feedback_rating show_email require_login track_locale)
