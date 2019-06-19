@@ -12,7 +12,7 @@
   </nav>
 <% end %>
 
-<%= form_tag(admin_review_settings_path, :method => :put) do %>
+<%= form_tag(admin_review_settings_path, method: :put) do %>
   <fieldset class="no-border-top">
     <div class="field">
       <label>
@@ -46,12 +46,12 @@
     </div>
     <div class="field">
       <label><%= I18n.t("spree.spree_reviews.preview_size") %></label><br>
-      <%= text_field_tag('preferences[preview_size]', Spree::Reviews::Config[:preview_size], :size => 3) %>
+      <%= text_field_tag('preferences[preview_size]', Spree::Reviews::Config[:preview_size], size: 3) %>
     </div>
 
     <div class="form-buttons filter-actions actions" data-hook="buttons">
       <%= button_tag I18n.t("spree.actions.update") %>
-      <%= link_to I18n.t("spree.actions.cancel"), edit_admin_general_settings_url, :class => 'button' %>
+      <%= link_to I18n.t("spree.actions.cancel"), edit_admin_general_settings_url, class: 'button' %>
     </div>
   </fieldset>
 <% end %>

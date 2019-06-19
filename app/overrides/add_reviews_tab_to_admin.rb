@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Spree::Backend::Config.configure do |config|
   config.menu_items.detect { |menu_item|
     menu_item.label == :products

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddIpAddressToReviews < SolidusSupport::Migration[4.2]
   def self.up
     add_column :reviews, :ip_address, :string

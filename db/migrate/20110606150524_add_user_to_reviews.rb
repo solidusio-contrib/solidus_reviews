@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AddUserToReviews < SolidusSupport::Migration[4.2]
   def self.up
-    add_column :reviews, :user_id, :integer, :null => true
+    add_column :reviews, :user_id, :integer, null: true
   end
 
   def self.down

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'solidus'
 require 'sass/rails'
 require 'deface'

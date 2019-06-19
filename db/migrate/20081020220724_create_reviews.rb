@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateReviews < SolidusSupport::Migration[4.2]
   def self.up
     create_table :reviews do |t|
@@ -7,7 +9,7 @@ class CreateReviews < SolidusSupport::Migration[4.2]
       t.integer :rating
       t.text    :title
       t.text    :review
-      t.boolean :approved, :default => false
+      t.boolean :approved, default: false
       t.timestamps
     end
   end

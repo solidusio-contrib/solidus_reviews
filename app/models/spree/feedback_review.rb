@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Spree::FeedbackReview < ActiveRecord::Base
-  belongs_to :user, :class_name => Spree.user_class.to_s
+  belongs_to :user, class_name: Spree.user_class.to_s
 
   belongs_to :review, dependent: :destroy
   validates :review, presence: true
@@ -13,5 +15,4 @@ class Spree::FeedbackReview < ActiveRecord::Base
   default_scope { most_recent_first }
 
   scope :localized, lambda { |lc| where('spree_feedback_reviews.locale = ?', lc) }
-
 end

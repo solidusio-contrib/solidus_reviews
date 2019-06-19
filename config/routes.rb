@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Spree::Core::Engine.routes.draw do
   namespace :admin do
     resources :reviews, only: [:index, :destroy, :edit, :update] do
@@ -17,7 +19,7 @@ Spree::Core::Engine.routes.draw do
   post '/reviews/:review_id/feedback(.:format)' => 'feedback_reviews#create', as: :feedback_reviews
 
   if SolidusSupport.api_available?
-    namespace :api, defaults: { format: 'json'} do
+    namespace :api, defaults: { format: 'json' } do
       resources :reviews, only: [:show, :create, :update, :destroy]
 
       resources :products do
