@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'simplecov'
 SimpleCov.start 'rails'
 
 ENV["RAILS_ENV"] = "test"
 
-require File.expand_path("../dummy/config/environment.rb",  __FILE__)
+require File.expand_path('dummy/config/environment.rb', __dir__)
 
 # Requires factories and other useful helpers defined in spree_core.
 require "solidus_support/extension/feature_helper"
 require 'spree/testing_support/controller_requests'
 
-Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each {|f| require f }
+Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each { |f| require f }
 
 require 'solidus_reviews/factories'
 

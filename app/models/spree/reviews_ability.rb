@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class Spree::ReviewsAbility
   include CanCan::Ability
 
-  def initialize user
+  def initialize(user)
     review_ability_class = self.class
 
-    can :create, Spree::Review do |review|
+    can :create, Spree::Review do |_review|
       review_ability_class.allow_anonymous_reviews? || !user.email.blank?
     end
 
-    can :create, Spree::FeedbackReview do |review|
+    can :create, Spree::FeedbackReview do |_review|
       review_ability_class.allow_anonymous_reviews? || !user.email.blank?
     end
 

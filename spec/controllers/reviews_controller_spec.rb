@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Spree::ReviewsController, type: :controller do
@@ -20,7 +22,7 @@ describe Spree::ReviewsController, type: :controller do
     context 'for a product that does not exist' do
       it 'responds with a 404' do
         expect {
-          get :index, params: { product_id: 'not_real'}
+          get :index, params: { product_id: 'not_real' }
         }.to raise_error(ActiveRecord::RecordNotFound)
       end
     end
@@ -110,7 +112,7 @@ describe Spree::ReviewsController, type: :controller do
 
     it 'sets the current spree user as reviews user' do
       post :create, params: review_params
-      review_params[:review].merge!(user_id: user.id)
+      review_params[:review][:user_id] = user.id
       assigns[:review][:user_id] = user.id
       expect(assigns[:review][:user_id]).to eq user.id
     end
@@ -124,7 +126,7 @@ describe Spree::ReviewsController, type: :controller do
 
       it 'does not create a review' do
         expect(Spree::Review.count).to eq 0
-        post :create, params: review_params.merge({review: {rating: 'not_a_number'}})
+        post :create, params: review_params.merge({ review: { rating: 'not_a_number' } })
         expect(Spree::Review.count).to eq 0
       end
     end

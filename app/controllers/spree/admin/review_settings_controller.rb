@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Spree::Admin::ReviewSettingsController < Spree::Admin::BaseController
   before_action :process_unset_checkboxes, only: [:update]
 

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Spree::Review do
-
   context 'validations' do
     it 'validates by default' do
       expect(build(:review)).to be_valid
@@ -116,10 +117,10 @@ describe Spree::Review do
 
         Spree::Reviews::Config[:include_unapproved_reviews] = true
         expect(Spree::Review.default_approval_filter.to_a).to eq([unapproved_review_2,
-                                                              approved_review_2,
-                                                              approved_review_3,
-                                                              unapproved_review_1,
-                                                              approved_review_1])
+                                                                  approved_review_2,
+                                                                  approved_review_3,
+                                                                  unapproved_review_1,
+                                                                  approved_review_1])
 
         Spree::Reviews::Config[:include_unapproved_reviews] = false
         expect(Spree::Review.default_approval_filter.to_a).to eq([approved_review_2, approved_review_3, approved_review_1])
@@ -157,7 +158,7 @@ describe Spree::Review do
       3.times do |i|
         f = Spree::FeedbackReview.new
         f.review = review
-        f.rating = (i+1)
+        f.rating = (i + 1)
         f.save
       end
     end

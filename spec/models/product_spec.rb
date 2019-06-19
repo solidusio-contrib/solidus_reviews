@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Spree::Product do
@@ -15,7 +17,6 @@ describe Spree::Product do
       allow(product).to receive(:avg_rating).and_return(2.3)
       expect(product.stars).to eq(2)
     end
-
 
     it 'handles a nil value' do
       allow(product).to receive(:avg_rating).and_return(nil)
@@ -58,6 +59,5 @@ describe Spree::Product do
         expect(product.reviews_count).to eq(0)
       end
     end
-
   end
 end

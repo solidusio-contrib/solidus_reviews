@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class CreateFeedbackReviews < SolidusSupport::Migration[4.2]
   def self.up
     create_table :feedback_reviews do |t|
       t.integer :user_id
-      t.integer :review_id, :null => false
-      t.integer :rating,    :default => 0
+      t.integer :review_id, null: false
+      t.integer :rating,    default: 0
       t.text    :comment
       t.timestamps
     end

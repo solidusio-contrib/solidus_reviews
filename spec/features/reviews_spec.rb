@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 feature 'Reviews', js: true do
@@ -102,7 +104,6 @@ feature 'Reviews', js: true do
       expect(page).to have_text I18n.t('spree.anonymous')
       expect(page).to have_text 'review text'
     end
-
   end
 
   private

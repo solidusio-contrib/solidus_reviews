@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class AddRatingToProducts < SolidusSupport::Migration[4.2]
   def self.up
     if table_exists?('products')
-      add_column :products, :avg_rating, :decimal, :default => 0.0, :null => false, :precision => 7, :scale => 5
-      add_column :products, :reviews_count, :integer, :default => 0, :null => false
+      add_column :products, :avg_rating, :decimal, default: 0.0, null: false, precision: 7, scale: 5
+      add_column :products, :reviews_count, :integer, default: 0, null: false
     elsif table_exists?('spree_products')
-      add_column :spree_products, :avg_rating, :decimal, :default => 0.0, :null => false, :precision => 7, :scale => 5
-      add_column :spree_products, :reviews_count, :integer, :default => 0, :null => false
+      add_column :spree_products, :avg_rating, :decimal, default: 0.0, null: false, precision: 7, scale: 5
+      add_column :spree_products, :reviews_count, :integer, default: 0, null: false
     end
   end
 

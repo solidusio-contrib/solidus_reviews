@@ -66,16 +66,14 @@ Ratings table holds current fractional value - avoids frequent recalc...
 
 ---
 
-## Discussion
+## Testing
 
-Some points which might need modification in future:
+Just run the following to automatically build a dummy app if necessary and
+run the tests:
 
- - I don't track the actual user on a review (just their "screen name" at the
-   time), but we may want to use this information to avoid duplicate reviews
-   etc. See https://github.com/spree/spree_reviews/issues/18
- - Rating votes are tied to a review, to avoid spam. However: ratings are
-   accepted whether or not the review is accepted. Perhaps they should only
-   be counted when the review is approved.
+```shell
+bundle exec rake
+```
 
 ---
 
@@ -85,9 +83,9 @@ See corresponding [contributing guidelines][1].
 
 ---
 
-Copyright (c) 2009-2014 [Spree Commerce][2] and [contributors][3], released under the [New BSD License][4]
+Copyright (c) 2009-2014 [Solidus][2] and [contributors][3], released under the [New BSD License][4]
 
 [1]: ./CONTRIBUTING.md
-[2]: https://github.com/spree
+[2]: https://github.com/solidusio
 [3]: https://github.com/solidusio-contrib/solidus_reviews/graphs/contributors
 [4]: ./LICENSE.md
