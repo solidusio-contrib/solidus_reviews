@@ -51,6 +51,7 @@ ru:
       your_location: Город
       feedback_rating: Рейтинг отзыва
       show_email: Показывать электронную почту
+      show_verified_purchaser: Показать подтвержденного покупателя
       require_login: Требовать вход
       track_locale: Отслеживать язык
     average_customer_rating: Средняя оценка
@@ -63,6 +64,7 @@ ru:
     by: ""
     submitted_on: Добавлено
     based_upon: "на основе"
+    verified_purchaser: Проверенный покупатель
     voice:
       zero: "0 голосов"
       one: "%{count} голос"

@@ -61,6 +61,7 @@ en:
       require_login: Require user to be logged in
       review_settings: Review Settings
       show_email: Show email addresses
+      show_verified_purchaser: Show verified purchaser
       track_locale: Track user's locale
     star:
       one: "1"
@@ -69,6 +70,7 @@ en:
     submit_your_review: Submit your review
     submitted_on: Submitted on
     unapproved_reviews: Unapproved
+    verified_purchaser: Verified purchaser
     voice:
       one: "1 voice"
       other: "%{count} voices"

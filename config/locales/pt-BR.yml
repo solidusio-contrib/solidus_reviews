@@ -61,6 +61,7 @@ pt-BR:
       require_login: 'É necessário estar logado'
       review_settings: 'Configurações de avaliação'
       show_email: 'Mostrar endereço de email'
+      show_verified_purchaser: Mostrar comprador confirmado
       track_locale: 'Rastrear localização do usuário'
     star:
       one: "1"
@@ -69,6 +70,7 @@ pt-BR:
     submit_your_review: 'Enviar sua avaliação'
     submitted_on: 'Enviado em'
     unapproved_reviews: 'Desaprovado'
+    verified_purchaser: Comprador verificado
     voice:
       one: "1 voz"
       other: "%{count} vozes"

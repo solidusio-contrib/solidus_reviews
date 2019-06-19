@@ -61,6 +61,7 @@ fr:
       require_login: Demander à l'utilisateur d'être connecté
       review_settings: Paramètres des commentaires
       show_email: Montrer l'adresse de courriel
+      show_verified_purchaser: Montrer l'acheteur vérifié
       track_locale: Détécter la langue de l'utilisateur
     star:
       one: "1"
@@ -69,6 +70,7 @@ fr:
     submit_your_review: Envoyer votre commentaire
     submitted_on: Envoyé le
     unapproved_reviews: Non approuvé
+    verified_purchaser: Acheteur vérifié
     voice:
       one: "1 voix"
       other: "%{count} voix"

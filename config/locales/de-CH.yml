@@ -62,6 +62,7 @@ de-CH:
       require_login: Login erforderlich
       review_settings: Rezensionseinstellungen
       show_email: E-Mail Adressen anzeigen
+      show_verified_purchaser: Verifizierten Käufer anzeigen
       track_locale: Sprache des Benutzers tracken
     star:
       one: "ein Sternchen"
@@ -70,6 +71,7 @@ de-CH:
     submit_your_review: Rezension abschicken
     submitted_on: Eingeschickt am
     unapproved_reviews: Nicht freigeschaltete Rezensionen
+    verified_purchaser: Verifizierter Käufer
     voice:
       one: "Eine Stimme"
       other: "%{count} Stimmen"

@@ -65,6 +65,7 @@ uk:
       require_login: Тільки для зареєстрованих користувачів
       review_settings: Налаштування відгуків
       show_email: Показувати email
+      show_verified_purchaser: Показати підтвердженого покупця
       track_locale: Зберігати мову користувача
     star:
       one: '1'
@@ -75,6 +76,7 @@ uk:
     submit_your_review: Надіслати відгук
     submitted_on: Написано
     unapproved_reviews: Непідтверджений
+    verified_purchaser: Перевірений покупець
     voice:
       one: '1 голос'
       few: '%{count} голоси'

@@ -7,6 +7,7 @@ class Spree::Review < ActiveRecord::Base
   has_many   :images, -> { order(:position) }, as: :viewable,
     dependent: :destroy, class_name: "Spree::Image"
 
+  before_create :verify_purchaser
   after_save :recalculate_product_rating, if: :approved?
   after_destroy :recalculate_product_rating
 
@@ -39,5 +40,18 @@ class Spree::Review < ActiveRecord::Base
 
   def email
     user.try!(:email)
+  end
+
+  def verify_purchaser
+    return unless user_id && product_id
+
+    verified_purchase = Spree::LineItem.joins(:order, :variant)
+      .where.not(spree_orders: { completed_at: nil })
+      .find_by(
+        spree_variants: { product_id: product_id },
+        spree_orders: { user_id: user_id }
+      ).present?
+
+    self.verified_purchaser = verified_purchase
   end
 end

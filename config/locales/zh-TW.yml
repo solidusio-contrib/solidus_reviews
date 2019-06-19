@@ -59,6 +59,7 @@ zh-TW:
       require_login: 用者必需登入
       review_settings: 評論設定
       show_email: 顯示電郵地址
+      show_verified_purchaser: 顯示經過驗證的購買者
       track_locale: 追蹤用戶地域
     star:
       one: "1"
@@ -67,6 +68,7 @@ zh-TW:
     submit_your_review: 遞交你的評論
     submitted_on: 遞交日期
     unapproved_reviews: 沒核準
+    verified_purchaser: 驗證購買者
     voice:
       one: "1 聲音"
       other: "%{count} 聲音"

@@ -65,6 +65,7 @@ ro:
       require_login: Solicită ca utilizatorul să fie autentificat
       review_settings: Setări recenzii
       show_email: Afișează adresa de email
+      show_verified_purchaser: Afișați cumpărătorul verificat
       track_locale: Urmărește setarea de limbă a utilizatorului
     star:
       one: "o stea"
@@ -75,6 +76,7 @@ ro:
     submit_your_review: Trimite recenzia
     submitted_on: Trimisă la
     unapproved_reviews: Neaprobat
+    verified_purchaser: Achizitor verificat
     voice:
       one: "o opinie"
       few: "%{count} opinii"
