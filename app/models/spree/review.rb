@@ -4,6 +4,8 @@ class Spree::Review < ActiveRecord::Base
   belongs_to :product, touch: true
   belongs_to :user, class_name: Spree.user_class.to_s
   has_many   :feedback_reviews
+  has_many   :images, -> { order(:position) }, as: :viewable,
+    dependent: :destroy, class_name: "Spree::Image"
 
   after_save :recalculate_product_rating, if: :approved?
   after_destroy :recalculate_product_rating

@@ -40,7 +40,7 @@ describe Spree::Review do
       end
 
       (1..5).each do |i|
-        it "validates when the rating is #{i}" do
+        it 'validates when the rating is #{i}' do
           expect(build(:review, rating: i)).to be_valid
         end
       end
@@ -128,31 +128,31 @@ describe Spree::Review do
     end
   end
 
-  context "#recalculate_product_rating" do
+  context '#recalculate_product_rating' do
     let(:product) { create(:product) }
     let!(:review) { create(:review, product: product) }
 
     before { product.reviews << review }
 
-    it "if approved" do
+    it 'if approved' do
       expect(review).to receive(:recalculate_product_rating)
       review.approved = true
       review.save!
     end
 
-    it "if not approved" do
+    it 'if not approved' do
       expect(review).to_not receive(:recalculate_product_rating)
       review.save!
     end
 
-    it "updates the product average rating" do
+    it 'updates the product average rating' do
       expect(review.product).to receive(:recalculate_rating)
       review.approved = true
       review.save!
     end
   end
 
-  context "#feedback_stars" do
+  context '#feedback_stars' do
     let!(:review) { create(:review) }
     before do
       3.times do |i|
@@ -163,16 +163,31 @@ describe Spree::Review do
       end
     end
 
-    it "should return the average rating from feedback reviews" do
+    it 'should return the average rating from feedback reviews' do
       expect(review.feedback_stars).to eq 2
     end
   end
 
-  context "#email" do
-    it "returns email from user" do
-      user = build(:user, email: "john@smith.com")
+  context '#email' do
+    it 'returns email from user' do
+      user = build(:user, email: 'john@smith.com')
       review = build(:review, user: user)
-      expect(review.email).to eq("john@smith.com")
+      expect(review.email).to eq('john@smith.com')
+    end
+  end
+
+  context 'images' do
+    it 'supports images' do
+      review = build(:review, images: [build(:image)])
+      expect(review.images).not_to eq(nil)
+    end
+
+    it 'respects order' do
+      image_1 = build(:image, position: 2)
+      image_2 = build(:image, position: 1)
+      review = create(:review, images: [image_1, image_2])
+      review.reload
+      expect(review.images.first).to eq(image_2)
     end
   end
 end
