@@ -3,6 +3,7 @@
 FactoryBot.define do
   factory :review, class: Spree::Review do |_f|
     sequence(:name) { |i| "User #{i}" }
+    title { FFaker::Book.title }
     review { 'This product is ok!' }
     rating { rand(1..5) }
     approved { false }
