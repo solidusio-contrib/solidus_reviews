@@ -57,6 +57,7 @@ pl:
     review_successfully_submitted: Opinia została dodana
     spree_reviews:
       feedback_rating: Oceń komentarz
+      display_unapproved: Wyświetlaj niezatwierdzone recenzje we wpisach
       include_unapproved: Załącz niezaakceptowane do listy
       manage_review_settings: Zarządzaj wyśiwetlaniem opinii
       preview_size: Liczba opinii na stronie produktu

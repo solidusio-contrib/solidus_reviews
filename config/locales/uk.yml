@@ -59,6 +59,7 @@ uk:
     review_successfully_submitted: Відгук надіслано
     spree_reviews:
       feedback_rating: Оцінювати корисність
+      display_unapproved: Показувати в списках не схвалені відгуки
       include_unapproved: Показувати незатверджені відгуки
       manage_review_settings: Керувати відображенням відгуків
       preview_size: Розмір скороченої версії

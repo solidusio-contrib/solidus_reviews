@@ -55,6 +55,7 @@ pt-BR:
     review_successfully_submitted: 'Avaliação enviada com sucesso'
     spree_reviews:
       feedback_rating: 'Classifique um parecer'
+      display_unapproved: 'Exibir avaliações não aprovadas nas listagens'
       include_unapproved: 'Incluir avaliações não aprovadas na listagem'
       manage_review_settings: 'Controlar aparições das avaliações'
       preview_size: 'Tamanho da avaliação'

@@ -55,6 +55,7 @@ es:
     review_successfully_submitted: "La valoración se ha enviado correctamente"
     spree_reviews:
       feedback_rating: "Puntuación en el feedback"
+      display_unapproved: "Mostrar comentarios no aprobados en los listados"
       include_unapproved: "Incluir en los listados las valoraciones sin aprobar"
       manage_review_settings: "Gestionar la publicación de valoraciones"
       preview_size: "Tamaño de la versión resumida de la valoración"

@@ -55,6 +55,7 @@ fr:
     review_successfully_submitted: Votre commentaire a été envoyé avec succès
     spree_reviews:
       feedback_rating: Note de réaction
+      display_unapproved: Afficher les commentaires non approuvés dans les listes
       include_unapproved: Afficher les commentaires non modérés
       manage_review_settings: Contrôler l'affichage des commentaires
       preview_size: Taille des extraits de commentaires

@@ -59,7 +59,8 @@ ro:
     review_successfully_submitted: Recenzia a fost trimisă cu succes
     spree_reviews:
       feedback_rating: Evaluează feedback
-      include_unapproved: Include recenzii neaprobate în listări
+      display_unapproved: Afișați recenzii neaprobate în înregistrări
+      include_unapproved: Includeți recenzii neaprobate în listări
       manage_review_settings: Controlează afișarea recenziilor
       preview_size: Mărimea fragmentului recenziei
       require_login: Solicită ca utilizatorul să fie autentificat
