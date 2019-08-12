@@ -85,6 +85,17 @@ describe Spree::ReviewsController, type: :controller do
       }.to change(Spree::Review, :count).by(1)
     end
 
+    it 'creates a rating only review' do
+      review_params = {
+        product_id: product.slug,
+        review: { rating: 3 }
+      }
+
+      expect {
+        post :create, params: review_params
+      }.to change(Spree::Review, :count).by(1)
+    end
+
     it 'sets the ip-address of the remote' do
       @request.env['REMOTE_ADDR'] = '127.0.0.1'
       post :create, params: review_params

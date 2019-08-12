@@ -35,18 +35,39 @@ describe Spree::Product do
       let!(:approved_review_2) { create(:review, product: product, approved: true, rating: 5) }
       let!(:unapproved_review_1) { create(:review, product: product, approved: false, rating: 4) }
 
-      it "updates the product average rating and ignores unapproved reviews" do
-        product.avg_rating = 0
-        product.reviews_count = 0
-        product.save!
+      context "including unapproved reviews" do
+        before(:all) do
+          Spree::Reviews::Config[:include_unapproved_reviews] = true
+        end
+        after(:all) do
+          Spree::Reviews::Config[:include_unapproved_reviews] = false
+        end
 
-        product.recalculate_rating
-        expect(product.avg_rating).to eq(4.5)
-        expect(product.reviews_count).to eq(2)
+        it "updates the product average rating and ignores unapproved reviews" do
+          product.avg_rating = 0
+          product.reviews_count = 0
+          product.save!
+
+          product.recalculate_rating
+          expect(product.avg_rating).to eq(4.3)
+          expect(product.reviews_count).to eq(3)
+        end
+      end
+
+      context "only approved reviews" do
+        it "updates the product average rating and ignores unapproved reviews" do
+          product.avg_rating = 0
+          product.reviews_count = 0
+          product.save!
+
+          product.recalculate_rating
+          expect(product.avg_rating).to eq(4.5)
+          expect(product.reviews_count).to eq(2)
+        end
       end
     end
 
-    context 'when no approved reviews' do
+    context "without unapproved reviews" do
       let!(:unapproved_review_1) { create(:review, product: product, approved: false, rating: 4) }
 
       it "updates the product average rating and ignores unapproved reviews" do
