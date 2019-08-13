@@ -54,6 +54,7 @@ it:
     review_successfully_submitted: La recensione è stata inviata con successo
     spree_reviews:
       feedback_rating: Aggiungi la possibilità di votare una recensione
+      display_unapproved: Visualizza recensioni non approvate negli elenchi
       include_unapproved: Mostra le recensioni non approvate
       manage_review_settings: Approva le recensioni prima della pubblicazione
       preview_size: Dimensione degli snippet per la recensione

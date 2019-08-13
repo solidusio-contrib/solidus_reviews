@@ -55,6 +55,7 @@ sv:
     reviews: Recensioner
     spree_reviews:
       feedback_rating: Betygsåterkoppling
+      display_unapproved: "Visa ej godkända recensioner i listor"
       include_unapproved: "Inkludera inte godkända recensioner i listan"
       manage_review_settings: "Kontrollera visningen av recensionerna"
       preview_size: "Storlek på recensions snippets"

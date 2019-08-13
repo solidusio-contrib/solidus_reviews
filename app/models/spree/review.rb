@@ -11,9 +11,6 @@ class Spree::Review < ActiveRecord::Base
   after_save :recalculate_product_rating, if: :approved?
   after_destroy :recalculate_product_rating
 
-  validates :name, presence: true
-  validates :review, presence: true
-
   validates :rating, numericality: { only_integer: true,
                                      greater_than_or_equal_to: 1,
                                      less_than_or_equal_to: 5,

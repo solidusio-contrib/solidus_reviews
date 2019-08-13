@@ -55,6 +55,7 @@ tr:
     review_successfully_submitted: Yorumunuz başarıyla iletildi
     spree_reviews:
       feedback_rating: Geribildirimi değerlendir
+      display_unapproved: Listelerde onaylanmayan yorumları göster
       include_unapproved: Listede ki onaylanmamış değerlendirmeleri dahil et
       manage_review_settings: Yorum ekranını kontrol edin
       preview_size: Yorum büyüklüğü

@@ -2,35 +2,37 @@
   <span class="reviews-rating" title="<%= txt_stars(review.rating) %>">
     <%= render "spree/reviews/stars", stars: review.rating %>
   </span>
-  <span itemprop="name"><%= review.title %></span>
-  <br/>
-  <span class="attribution"><%= I18n.t("spree.submitted_on") %> <strong><%= l review.created_at.to_date %></strong></span>
-  <meta itemprop="datePublished" content="<%= review.created_at.to_date.to_s %>" />
+  <% if review.approved? || Spree::Reviews::Config[:display_unapproved_reviews] %>
+    <span itemprop="name"><%= review.title %></span>
+    <br/>
+    <span class="attribution"><%= I18n.t("spree.submitted_on") %> <strong><%= l review.created_at.to_date %></strong></span>
+    <meta itemprop="datePublished" content="<%= review.created_at.to_date.to_s %>" />
 
-  <meta itemprop="reviewRating" content="<%= review.rating %>" />
-  <% if review.show_identifier %>
-    <% if Spree::Reviews::Config[:show_email] && review.user %>
-      <span itemprop="author"><%= review.user.email %></span>
+    <meta itemprop="reviewRating" content="<%= review.rating %>" />
+    <% if review.show_identifier %>
+      <% if Spree::Reviews::Config[:show_email] && review.user %>
+        <span itemprop="author"><%= review.user.email %></span>
+      <% else %>
+        <span itemprop="author"><%= review.name %></span>
+      <% end %>
     <% else %>
-      <span itemprop="author"><%= review.name %></span>
+        <span itemprop="author"><%= I18n.t("spree.anonymous") %></span>
     <% end %>
-  <% else %>
-      <span itemprop="author"><%= I18n.t("spree.anonymous") %></span>
-  <% end %>
-  <% if Spree::Reviews::Config[:show_verified_purchaser] && review.verified_purchaser? %>
-    <div><%= I18n.t("spree.verified_purchaser") %></div>
-  <% end %>
-  <div itemprop="reviewBody">
-    <%= simple_format(review.review) %>
-  </div>
-  <% review.images.each do |image| %>
-    <div itemprop="image">
-      <%= link_to image_tag(image.url(:product)), image.url(:original) %>
+    <% if Spree::Reviews::Config[:show_verified_purchaser] && review.verified_purchaser? %>
+      <div><%= I18n.t("spree.verified_purchaser") %></div>
+    <% end %>
+    <div itemprop="reviewBody">
+      <%= simple_format(review.review) %>
     </div>
-  <% end %>
-  <% if Spree::Reviews::Config[:feedback_rating] && (!Spree::Reviews::Config[:require_login] || spree_current_user) %>
-    <div class="feedback_review" id="feedback_review_<%= review.id %>">
-      <%= render "spree/feedback_reviews/form", review: review %>
-    </div>
+    <% review.images.each do |image| %>
+      <div itemprop="image">
+        <%= link_to image_tag(image.url(:product)), image.url(:original) %>
+      </div>
+    <% end %>
+    <% if Spree::Reviews::Config[:feedback_rating] && (!Spree::Reviews::Config[:require_login] || spree_current_user) %>
+      <div class="feedback_review" id="feedback_review_<%= review.id %>">
+        <%= render "spree/feedback_reviews/form", review: review %>
+      </div>
+    <% end %>
   <% end %>
 </div>

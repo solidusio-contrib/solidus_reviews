@@ -46,6 +46,7 @@ ru:
       review_settings: Настройки отзывов покупателей
       manage_review_settings: Управление отображением отзывов
       preview_size: Количество отзывов на странице товара
+      display_unapproved: Показать неутвержденные отзывы в списках
       include_unapproved: Показывать неодобренные отзывы на странице товара
       your_name: Ваше имя
       your_location: Город

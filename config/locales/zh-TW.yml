@@ -53,6 +53,7 @@ zh-TW:
     review_successfully_submitted: 已成功遞交評論。
     spree_reviews:
       feedback_rating: 評級回饋
+      display_unapproved: 在列表中顯示未經批准的評論
       include_unapproved: 包括未核準評論在列表中
       manage_review_settings: 控制評論的顯示
       preview_size: 評論片段的大小

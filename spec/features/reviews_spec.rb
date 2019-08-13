@@ -5,6 +5,7 @@ require 'spec_helper'
 feature 'Reviews', js: true do
   given!(:someone) { create(:user, email: 'ryan@spree.com') }
   given!(:review) { create(:review, :approved, user: someone) }
+  given!(:unapproved_review) { create(:review, product: review.product) }
 
   background do
     Spree::Reviews::Config.include_unapproved_reviews = false
@@ -65,6 +66,19 @@ feature 'Reviews', js: true do
 
       scenario 'can see review title' do
         expect(page).to have_text review.title
+      end
+
+      context 'with unapproved content allowed' do
+        background do
+          Spree::Reviews::Config[:include_unapproved_reviews] = true
+          Spree::Reviews::Config[:display_unapproved_reviews] = true
+          visit spree.product_path(review.product)
+        end
+
+        scenario 'can see unapproved content when allowed' do
+          expect(unapproved_review.approved?).to eq(false)
+          expect(page).to have_text unapproved_review.title
+        end
       end
 
       scenario 'can see create new review button' do

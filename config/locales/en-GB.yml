@@ -55,6 +55,7 @@ en-GB:
     review_successfully_submitted: Review was successfully submitted
     spree_reviews:
       feedback_rating: Rate feedback
+      display_unapproved: Display unapproved reviews in listings
       include_unapproved: Include unapproved reviews in listings
       manage_review_settings: Control the display of reviews
       preview_size: Size of the review snippets

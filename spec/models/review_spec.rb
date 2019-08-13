@@ -12,8 +12,8 @@ describe Spree::Review do
       expect(build(:review, user: nil)).to be_valid
     end
 
-    it 'does not validate with a nil review' do
-      expect(build(:review, review: nil)).to_not be_valid
+    it 'validates with a nil review' do
+      expect(build(:review, review: nil)).to be_valid
     end
 
     context 'rating' do
@@ -47,8 +47,8 @@ describe Spree::Review do
     end
 
     context 'review body' do
-      it 'should not be valid without a body' do
-        expect(build(:review, review: nil)).to_not be_valid
+      it 'should be valid without a body' do
+        expect(build(:review, review: nil)).to be_valid
       end
     end
   end
