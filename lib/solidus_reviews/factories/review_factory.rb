@@ -18,5 +18,13 @@ FactoryBot.define do
     trait :hide_identifier do
       show_identifier { false }
     end
+
+    trait :with_image do
+      images {
+        [
+          FactoryBot.create(:image)
+        ]
+      }
+    end
   end
 end

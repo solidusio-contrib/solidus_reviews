@@ -10,17 +10,17 @@ module Spree
 
       def index
         if @product
-          @reviews = Spree::Review.approved.where(product: @product)
+          @reviews = Spree::Review.default_approval_filter.where(product: @product)
         else
           @reviews = Spree::Review.where(user: @current_api_user)
         end
 
-        respond_with(reviews: @reviews)
+        respond_with(@reviews)
       end
 
       def show
         authorize! :read, @review
-        render json: @review
+        render json: @review, include: [:images, :feedback_reviews]
       end
 
       def create
@@ -34,7 +34,7 @@ module Spree
 
         authorize! :create, @review
         if @review.save
-          render json: @review, status: 201
+          render json: @review, include: [:images, :feedback_reviews], status: 201
         else
           invalid_resource!(@review)
         end
@@ -46,7 +46,7 @@ module Spree
         attributes = review_params.merge(ip_address: request.remote_ip, approved: false)
 
         if @review.update(attributes)
-          render json: @review, status: 200
+          render json: @review, include: [:images, :feedback_reviews], status: 200
         else
           invalid_resource!(@review)
         end
