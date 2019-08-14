@@ -6,7 +6,7 @@ describe Spree::Api::ReviewsController, type: :controller do
   render_views
 
   let!(:user) { create(:user) }
-  let!(:review) { create(:review) }
+  let!(:review) { create(:review, rating: 5) }
   let!(:product) { review.product }
 
   before do
@@ -33,9 +33,12 @@ describe Spree::Api::ReviewsController, type: :controller do
       context 'there are reviews for the product and other products' do
         it 'returns all approved reviews for the product' do
           review.update(approved: true)
+          review.images << create(:image)
           expect(Spree::Review.count).to be >= 2
-          expect(subject.size).to eq(1)
+          expect(subject.size).to eq(2)
           expect(subject["reviews"][0]["id"]).to eq(review.id)
+          expect(subject["reviews"][0]["images"].count).to eq(1)
+          expect(subject["avg_rating"]).to eq("5.0")
         end
       end
     end
@@ -58,8 +61,9 @@ describe Spree::Api::ReviewsController, type: :controller do
 
         it 'returns all reviews for the user' do
           expect(Spree::Review.count).to be >= 2
-          expect(subject.size).to eq(1)
+          expect(subject.size).to eq(2)
           expect(subject["reviews"][0]["id"]).to eq(review.id)
+          expect(subject["avg_rating"]).to eq(nil)
         end
       end
     end
@@ -80,6 +84,9 @@ describe Spree::Api::ReviewsController, type: :controller do
         expect(subject["name"]).to eq(review[:name])
         expect(subject["review"]).to eq(review[:review])
         expect(subject["title"]).to eq(review[:title])
+        expect(subject["verified_purchaser"]).to eq(false)
+        expect(subject["images"]).to eq([])
+        expect(subject["feedback_reviews"]).to eq([])
       end
     end
 
@@ -98,6 +105,8 @@ describe Spree::Api::ReviewsController, type: :controller do
           expect(subject["name"]).to eq(review[:name])
           expect(subject["review"]).to eq(review[:review])
           expect(subject["title"]).to eq(review[:title])
+          expect(subject["images"]).to eq([])
+          expect(subject["feedback_reviews"]).to eq([])
         end
       end
     end
@@ -138,6 +147,8 @@ describe Spree::Api::ReviewsController, type: :controller do
         expect(subject["name"]).to eq(review_params[:name])
         expect(subject["review"]).to eq(review_params[:review])
         expect(subject["title"]).to eq(review_params[:title])
+        expect(subject["images"]).to eq([])
+        expect(subject["feedback_reviews"]).to eq([])
       end
     end
   end
@@ -168,6 +179,8 @@ describe Spree::Api::ReviewsController, type: :controller do
         expect(subject["user_id"]).to eq(original.user_id)
         expect(subject["product_id"]).to eq(original.product_id)
         expect(subject["approved"]).to be false
+        expect(subject["images"]).to eq([])
+        expect(subject["feedback_reviews"]).to eq([])
       end
     end
 
