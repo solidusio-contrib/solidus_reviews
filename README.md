@@ -83,7 +83,7 @@ See corresponding [contributing guidelines][1].
 
 ---
 
-Copyright (c) 2009-2014 [Solidus][2] and [contributors][3], released under the [New BSD License][4]
+Copyright (c) 2009-2019 [Solidus][2] and [contributors][3], released under the [New BSD License][4]
 
 [1]: ./CONTRIBUTING.md
 [2]: https://github.com/solidusio
