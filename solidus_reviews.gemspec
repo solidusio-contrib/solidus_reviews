@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.description = s.summary
   s.required_ruby_version = '>= 1.9.3'
 
-  s.homepage     = 'https://github.com/solidusio-contrib/solidus-reviews/'
+  s.homepage     = 'https://github.com/solidusio-contrib/solidus_reviews/'
   s.license      = 'BSD-3'
 
   s.files        = `git ls-files`.split("\n")
