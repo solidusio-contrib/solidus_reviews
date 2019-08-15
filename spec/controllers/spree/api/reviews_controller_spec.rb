@@ -34,10 +34,13 @@ describe Spree::Api::ReviewsController, type: :controller do
         it 'returns all approved reviews for the product' do
           review.update(approved: true)
           review.images << create(:image)
+          review.feedback_reviews << create(:feedback_review, review: review)
           expect(Spree::Review.count).to be >= 2
           expect(subject.size).to eq(2)
           expect(subject["reviews"][0]["id"]).to eq(review.id)
           expect(subject["reviews"][0]["images"].count).to eq(1)
+          expect(subject["reviews"][0]["feedback_reviews"].count).to eq(1)
+          expect(subject["reviews"][0]["verified_purchaser"]).to eq(false)
           expect(subject["avg_rating"]).to eq("5.0")
         end
       end
