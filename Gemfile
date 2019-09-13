@@ -26,7 +26,6 @@ end
 
 group :development, :test do
   gem 'factory_bot', '> 4.10.0'
-  gem 'selenium-webdriver'
 end
 
 gemspec
