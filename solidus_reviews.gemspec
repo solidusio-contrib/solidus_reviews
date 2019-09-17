@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'solidus_reviews'
-  s.version     = '1.1.1'
+  s.version     = '1.2.0'
   s.summary     = 'Basic review and ratings facility for Solidus'
   s.authors = ['Solidus Contrib']
   s.description = s.summary
