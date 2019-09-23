@@ -8,8 +8,8 @@ feature 'Reviews', js: true do
   given!(:unapproved_review) { create(:review, product: review.product) }
 
   background do
-    Spree::Reviews::Config.include_unapproved_reviews = false
-  end
+    stub_spree_preferences(Spree::Reviews::Config, include_unapproved_reviews: false)
+end
 
   context 'product with no review' do
     given!(:product_no_reviews) { create(:product) }
@@ -22,7 +22,7 @@ feature 'Reviews', js: true do
     context "shows correct number of previews" do
       background do
         FactoryBot.create_list :review, 3, product: product_no_reviews, approved: true
-        Spree::Reviews::Config[:preview_size] = 2
+        stub_spree_preferences(Spree::Reviews::Config, preview_size: 2)
       end
 
       scenario "displayed reviews are limited by the set preview size" do
@@ -34,8 +34,8 @@ feature 'Reviews', js: true do
 
   context 'when anonymous user' do
     background do
-      Spree::Reviews::Config.require_login = true
-    end
+      stub_spree_preferences(Spree::Reviews::Config, require_login: true)
+end
 
     context 'visit product with review' do
       background do
@@ -70,8 +70,8 @@ feature 'Reviews', js: true do
 
       context 'with unapproved content allowed' do
         background do
-          Spree::Reviews::Config[:include_unapproved_reviews] = true
-          Spree::Reviews::Config[:display_unapproved_reviews] = true
+          stub_spree_preferences(Spree::Reviews::Config, include_unapproved_reviews: true)
+          stub_spree_preferences(Spree::Reviews::Config, display_unapproved_reviews: true)
           visit spree.product_path(review.product)
         end
 

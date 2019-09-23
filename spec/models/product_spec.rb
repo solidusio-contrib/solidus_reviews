@@ -36,11 +36,8 @@ describe Spree::Product do
       let!(:unapproved_review_1) { create(:review, product: product, approved: false, rating: 4) }
 
       context "including unapproved reviews" do
-        before(:all) do
-          Spree::Reviews::Config[:include_unapproved_reviews] = true
-        end
-        after(:all) do
-          Spree::Reviews::Config[:include_unapproved_reviews] = false
+        before do
+          stub_spree_preferences(Spree::Reviews::Config, include_unapproved_reviews: true)
         end
 
         it "updates the product average rating and ignores unapproved reviews" do
@@ -55,6 +52,10 @@ describe Spree::Product do
       end
 
       context "only approved reviews" do
+        before do
+          stub_spree_preferences(Spree::Reviews::Config, include_unapproved_reviews: false)
+        end
+
         it "updates the product average rating and ignores unapproved reviews" do
           product.avg_rating = 0
           product.reviews_count = 0
@@ -70,10 +71,12 @@ describe Spree::Product do
     context "without unapproved reviews" do
       let!(:unapproved_review_1) { create(:review, product: product, approved: false, rating: 4) }
 
+      before do
+        stub_spree_preferences(Spree::Reviews::Config, include_unapproved_reviews: false)
+      end
+
       it "updates the product average rating and ignores unapproved reviews" do
-        product.avg_rating = 3
-        product.reviews_count = 20
-        product.save!
+        product.update_columns(avg_rating: 3, reviews_count: 20)
 
         product.recalculate_rating
         expect(product.avg_rating).to eq(0)

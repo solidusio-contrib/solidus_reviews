@@ -48,7 +48,7 @@ describe Spree::FeedbackReviewsController do
     end
 
     it 'sets locale on feedback-review if required by config' do
-      Spree::Reviews::Config.preferred_track_locale = true
+      stub_spree_preferences(Spree::Reviews::Config, track_locale: true)
       post :create, params: valid_attributes
       expect(assigns[:review].locale).to eq I18n.locale.to_s
     end

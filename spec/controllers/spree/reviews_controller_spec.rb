@@ -154,7 +154,7 @@ describe Spree::ReviewsController, type: :controller do
     # It always sets the locale so preference pointless
     context 'when config requires locale tracking:' do
       it 'sets the locale' do
-        Spree::Reviews::Config.preferred_track_locale = true
+        stub_spree_preferences(Spree::Reviews::Config, track_locale: true)
         post :create, params: review_params
         expect(assigns[:review].locale).to eq I18n.locale.to_s
       end
