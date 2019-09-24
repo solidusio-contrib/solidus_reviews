@@ -6,8 +6,7 @@ describe Spree::ReviewsConfiguration do
   subject { Spree::ReviewsConfiguration.new }
 
   before do
-    reset_spree_preferences
-    subject.preference_store = subject.default_preferences
+    subject.reset
   end
 
   it 'should have the include_unapproved_reviews preference' do
