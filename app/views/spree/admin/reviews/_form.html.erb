@@ -25,7 +25,7 @@
     <% @review.images.each do |image| %>
       <tr>
         <td>
-          <%= image_tag image.url(:original) %>
+          <%= image_tag image.attachment(:original) %>
         </td>
         <td>
           <%= link_to_delete image, url: admin_review_image_url(@review, image, product_id: @review.product), no_text: true  %>

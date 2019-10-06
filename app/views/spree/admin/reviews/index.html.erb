@@ -102,7 +102,7 @@
           </td>
           <td class="align-center">
             <% review.images.each do |image| %>
-              <%= link_to image_tag(image.url(:product)), image.url(:original) %>
+              <%= link_to image_tag(image.attachment(:product)), image.attachment(:original) %>
             <% end %>
           </td>
           <td class="actions">
