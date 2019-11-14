@@ -2,21 +2,21 @@
 
 require 'spec_helper'
 
-RSpec.feature 'Review Admin' do
+RSpec.describe 'Review Admin' do
   stub_authorization!
 
-  given!(:review) { create(:review) }
+  let!(:review) { create(:review) }
 
   context 'index' do
-    background do
+    before do
       visit spree.admin_reviews_path
     end
 
-    scenario 'list reviews' do
+    it 'list reviews' do
       expect(page).to have_text review.product.name
     end
 
-    scenario 'approve reviews' do
+    it 'approve reviews' do
       expect(review.approved).to be false
       within("tr#review_#{review.id}") do
         find('.approve').click
@@ -24,7 +24,7 @@ RSpec.feature 'Review Admin' do
       expect(review.reload.approved).to be true
     end
 
-    scenario 'edit reviews' do
+    it 'edit reviews' do
       expect(page).to have_text review.product.name
       within("tr#review_#{review.id}") do
         find('.edit').click

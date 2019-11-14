@@ -10,7 +10,7 @@ describe Spree::Admin::ReviewSettingsController do
     allow(controller).to receive(:spree_current_user).and_return(user)
   end
 
-  context '#update' do
+  describe '#update' do
     it 'redirects to edit-review-settings page' do
       put :update, params: { preferences: { preview_size: 4 } }
       expect(response).to redirect_to spree.edit_admin_review_settings_path
@@ -22,7 +22,6 @@ describe Spree::Admin::ReviewSettingsController do
             feedback_rating: false,
             require_login: true,
             track_locale: true' do
-
       it 'sets preferred_preview_size to 4' do
         put :update, params: { preferences: { preview_size: 4 } }
         expect(Spree::Reviews::Config.preferred_preview_size).to eq 4
@@ -50,8 +49,8 @@ describe Spree::Admin::ReviewSettingsController do
     end
   end
 
-  context '#edit' do
-    it 'should render the edit template' do
+  describe '#edit' do
+    it 'renders the edit template' do
       get :edit
       expect(response).to render_template(:edit)
     end

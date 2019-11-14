@@ -27,11 +27,11 @@ describe Spree::FeedbackReviewsController do
       comment = ['Thanks for your review!', 'Cheers'].join("\n")
       expect {
         post :create, params: { review_id: review.id,
-                        feedback_review: {
-                          comment: comment,
-                          rating: rating
-},
-                        format: :js }
+                                feedback_review: {
+                                  comment: comment,
+                                  rating: rating
+                                },
+                                format: :js }
         expect(response.status).to eq(200)
         expect(response).to render_template(:create)
       }.to change(Spree::Review, :count).by(1)
@@ -68,7 +68,7 @@ describe Spree::FeedbackReviewsController do
 
     it 'do not create feedback-review if review doesnt exist' do
       expect {
-        post :create, params: valid_attributes.merge!({ review_id: nil })
+        post :create, params: valid_attributes.merge!(review_id: nil)
       }.to raise_error ActionController::UrlGenerationError
     end
   end

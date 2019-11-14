@@ -10,7 +10,7 @@ describe Spree::Admin::FeedbackReviewsController do
     allow(controller).to receive(:spree_current_user).and_return(user)
   end
 
-  context '#index' do
+  describe '#index' do
     let!(:review) { create(:review) }
     let!(:other_review) { create(:review) }
 

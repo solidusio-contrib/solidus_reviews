@@ -2,90 +2,91 @@
 
 require 'spec_helper'
 
-feature 'Reviews', js: true do
-  given!(:someone) { create(:user, email: 'ryan@spree.com') }
-  given!(:review) { create(:review, :approved, user: someone) }
-  given!(:unapproved_review) { create(:review, product: review.product) }
+describe 'Reviews', js: true do
+  let!(:someone) { create(:user, email: 'ryan@spree.com') }
+  let!(:review) { create(:review, :approved, user: someone) }
+  let!(:unapproved_review) { create(:review, product: review.product) }
 
-  background do
+  before do
     stub_spree_preferences(Spree::Reviews::Config, include_unapproved_reviews: false)
-end
+  end
 
   context 'product with no review' do
-    given!(:product_no_reviews) { create(:product) }
-    scenario 'informs that no reviews has been written yet' do
+    let!(:product_no_reviews) { create(:product) }
+
+    it 'informs that no reviews has been written yet' do
       visit spree.product_path(product_no_reviews)
       expect(page).to have_text I18n.t('spree.no_reviews_available')
     end
 
     # Regression test for #103
     context "shows correct number of previews" do
-      background do
+      before do
         FactoryBot.create_list :review, 3, product: product_no_reviews, approved: true
         stub_spree_preferences(Spree::Reviews::Config, preview_size: 2)
       end
 
-      scenario "displayed reviews are limited by the set preview size" do
+      it "displayed reviews are limited by the set preview size" do
         visit spree.product_path(product_no_reviews)
-        expect(page.all(".review").count).to eql(2)
+        expect(page.all(".review").count).to be(2)
       end
     end
   end
 
   context 'when anonymous user' do
-    background do
+    before do
       stub_spree_preferences(Spree::Reviews::Config, require_login: true)
-end
+    end
 
     context 'visit product with review' do
-      background do
+      before do
         visit spree.product_path(review.product)
       end
 
-      scenario 'should see review title' do
+      it 'sees review title' do
         expect(page).to have_text review.title
       end
 
-      scenario 'can not create review' do
+      it 'can not create review' do
         expect(page).not_to have_text I18n.t('spree.write_your_own_review')
       end
     end
   end
 
   context 'when logged in user' do
-    given!(:user) { create(:user) }
+    let!(:user) { create(:user) }
 
-    background do
+    before do
       sign_in_as! user
     end
 
     context 'visit product with review' do
-      background do
+      before do
         visit spree.product_path(review.product)
       end
 
-      scenario 'can see review title' do
+      it 'can see review title' do
         expect(page).to have_text review.title
       end
 
       context 'with unapproved content allowed' do
-        background do
+        before do
           stub_spree_preferences(Spree::Reviews::Config, include_unapproved_reviews: true)
           stub_spree_preferences(Spree::Reviews::Config, display_unapproved_reviews: true)
           visit spree.product_path(review.product)
         end
 
-        scenario 'can see unapproved content when allowed' do
+        it 'can see unapproved content when allowed' do
           expect(unapproved_review.approved?).to eq(false)
           expect(page).to have_text unapproved_review.title
         end
       end
 
-      scenario 'can see create new review button' do
+      it 'can see create new review button' do
         expect(page).to have_text I18n.t('spree.write_your_own_review')
       end
 
-      scenario 'can create new review' do
+      it 'can create new review' do
         click_on I18n.t('spree.write_your_own_review')
 
         expect(page).to have_text I18n.t('spree.leave_us_a_review_for', name: review.product.name)
@@ -108,14 +109,14 @@ end
   end
 
   context 'visit product with review where show_identifier is false' do
-    given!(:user) { create(:user) }
-    given!(:review) { create(:review, :approved, :hide_identifier, review: 'review text', user: user) }
+    let!(:user) { create(:user) }
+    let!(:review) { create(:review, :approved, :hide_identifier, review: 'review text', user: user) }
 
-    background do
+    before do
       visit spree.product_path(review.product)
     end
 
-    scenario 'show anonymous review' do
+    it 'show anonymous review' do
       expect(page).to have_text I18n.t('spree.anonymous')
       expect(page).to have_text 'review text'
     end

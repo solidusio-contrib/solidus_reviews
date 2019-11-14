@@ -13,30 +13,30 @@ describe Spree::FeedbackReview do
     end
 
     it 'does not validate with a nil review' do
-      expect(build(:feedback_review, review: nil)).to_not be_valid
+      expect(build(:feedback_review, review: nil)).not_to be_valid
     end
 
     context 'rating' do
       it 'does not validate when no rating is specified' do
-        expect(build(:feedback_review, rating: nil)).to_not be_valid
+        expect(build(:feedback_review, rating: nil)).not_to be_valid
       end
 
       it 'does not validate when the rating is not a number' do
-        expect(build(:feedback_review, rating: 'not_a_number')).to_not be_valid
+        expect(build(:feedback_review, rating: 'not_a_number')).not_to be_valid
       end
 
       it 'does not validate when the rating is a float' do
-        expect(build(:feedback_review, rating: 2.718)).to_not be_valid
+        expect(build(:feedback_review, rating: 2.718)).not_to be_valid
       end
 
       it 'does not validate when the rating is less than 1' do
-        expect(build(:feedback_review, rating: 0)).to_not be_valid
-        expect(build(:feedback_review, rating: -5)).to_not be_valid
+        expect(build(:feedback_review, rating: 0)).not_to be_valid
+        expect(build(:feedback_review, rating: -5)).not_to be_valid
       end
 
       it 'does not validate when the rating is greater than 5' do
-        expect(build(:feedback_review, rating: 6)).to_not be_valid
-        expect(build(:feedback_review, rating: 8)).to_not be_valid
+        expect(build(:feedback_review, rating: 6)).not_to be_valid
+        expect(build(:feedback_review, rating: 8)).not_to be_valid
       end
 
       (1..5).each do |i|
@@ -54,11 +54,11 @@ describe Spree::FeedbackReview do
       let!(:feedback_review_3) { create(:feedback_review, created_at: 5.days.ago) }
 
       it 'properly runs most_recent_first queries' do
-        expect(Spree::FeedbackReview.most_recent_first.to_a).to eq([feedback_review_2, feedback_review_3, feedback_review_1])
+        expect(described_class.most_recent_first.to_a).to eq([feedback_review_2, feedback_review_3, feedback_review_1])
       end
 
       it 'defaults to most_recent_first queries' do
-        expect(Spree::FeedbackReview.all.to_a).to eq([feedback_review_2, feedback_review_3, feedback_review_1])
+        expect(described_class.all.to_a).to eq([feedback_review_2, feedback_review_3, feedback_review_1])
       end
     end
 
@@ -71,9 +71,9 @@ describe Spree::FeedbackReview do
       let!(:fr_feedback_review_1) { create(:feedback_review, locale: 'fr', created_at: 10.days.ago) }
 
       it 'properly runs localized queries' do
-        expect(Spree::FeedbackReview.localized('en').to_a).to eq([en_feedback_review_2, en_feedback_review_3, en_feedback_review_1])
-        expect(Spree::FeedbackReview.localized('es').to_a).to eq([es_feedback_review_1])
-        expect(Spree::FeedbackReview.localized('fr').to_a).to eq([fr_feedback_review_1])
+        expect(described_class.localized('en').to_a).to eq([en_feedback_review_2, en_feedback_review_3, en_feedback_review_1])
+        expect(described_class.localized('es').to_a).to eq([es_feedback_review_1])
+        expect(described_class.localized('fr').to_a).to eq([fr_feedback_review_1])
       end
     end
   end

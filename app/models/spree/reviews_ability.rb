@@ -7,11 +7,11 @@ class Spree::ReviewsAbility
     review_ability_class = self.class
 
     can :create, Spree::Review do |_review|
-      review_ability_class.allow_anonymous_reviews? || !user.email.blank?
+      review_ability_class.allow_anonymous_reviews? || user.email.present?
     end
 
     can :create, Spree::FeedbackReview do |_review|
-      review_ability_class.allow_anonymous_reviews? || !user.email.blank?
+      review_ability_class.allow_anonymous_reviews? || user.email.present?
     end
 
     # You can read your own reviews, and everyone can read approved ones

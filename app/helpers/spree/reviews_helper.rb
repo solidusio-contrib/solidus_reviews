@@ -18,10 +18,10 @@ module Spree::ReviewsHelper
   def display_verified_purchaser?(review)
     Spree::Reviews::Config[:show_verified_purchaser] && review.user &&
     Spree::LineItem.joins(:order, :variant)
-      .where.not(spree_orders: { completed_at: nil })
-      .find_by(
-        spree_variants: { product_id: review.product_id },
-        spree_orders: { user_id: review.user_id }
-      ).present?
+                   .where.not(spree_orders: { completed_at: nil })
+                   .find_by(
+                     spree_variants: { product_id: review.product_id },
+                     spree_orders: { user_id: review.user_id }
+                   ).present?
   end
 end

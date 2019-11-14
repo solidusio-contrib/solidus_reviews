@@ -13,8 +13,7 @@ describe Spree::ReviewsController, type: :controller do
                 review: 'Some big review text..',
                 images: [
                   fixture_file_upload(File.new(Spree::Core::Engine.root + 'spec/fixtures/thinking-cat.jpg'))
-                ] }
-    }
+                ] } }
   end
 
   before do
@@ -22,7 +21,7 @@ describe Spree::ReviewsController, type: :controller do
     allow(controller).to receive(:spree_user_signed_in?).and_return(true)
   end
 
-  context '#index' do
+  describe '#index' do
     context 'for a product that does not exist' do
       it 'responds with a 404' do
         expect {
@@ -43,7 +42,7 @@ describe Spree::ReviewsController, type: :controller do
     end
   end
 
-  context '#new' do
+  describe '#new' do
     context 'for a product that does not exist' do
       it 'responds with a 404' do
         expect {
@@ -68,7 +67,7 @@ describe Spree::ReviewsController, type: :controller do
     end
   end
 
-  context '#create' do
+  describe '#create' do
     before { allow(controller).to receive(:spree_current_user).and_return(user) }
 
     context 'for a product that does not exist' do
@@ -146,7 +145,7 @@ describe Spree::ReviewsController, type: :controller do
 
       it 'does not create a review' do
         expect(Spree::Review.count).to eq 0
-        post :create, params: review_params.merge({ review: { rating: 'not_a_number' } })
+        post :create, params: review_params.merge(review: { rating: 'not_a_number' })
         expect(Spree::Review.count).to eq 0
       end
     end

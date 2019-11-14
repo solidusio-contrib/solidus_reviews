@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   module Api
     class ReviewsController < Spree::Api::BaseController
@@ -9,11 +11,11 @@ module Spree
       before_action :prevent_multiple_reviews, only: [:create]
 
       def index
-        if @product
-          @reviews = Spree::Review.default_approval_filter.where(product: @product)
-        else
-          @reviews = Spree::Review.where(user: @current_api_user)
-        end
+        @reviews = if @product
+                     Spree::Review.default_approval_filter.where(product: @product)
+                   else
+                     Spree::Review.where(user: @current_api_user)
+                   end
 
         respond_with(@reviews)
       end
@@ -34,7 +36,7 @@ module Spree
 
         authorize! :create, @review
         if @review.save
-          render json: @review, include: [:images, :feedback_reviews], status: 201
+          render json: @review, include: [:images, :feedback_reviews], status: :created
         else
           invalid_resource!(@review)
         end
@@ -46,7 +48,7 @@ module Spree
         attributes = review_params.merge(ip_address: request.remote_ip, approved: false)
 
         if @review.update(attributes)
-          render json: @review, include: [:images, :feedback_reviews], status: 200
+          render json: @review, include: [:images, :feedback_reviews], status: :ok
         else
           invalid_resource!(@review)
         end
@@ -56,7 +58,7 @@ module Spree
         authorize! :destroy, @review
 
         if @review.destroy
-          render json: @review, status: 200
+          render json: @review, status: :ok
         else
           invalid_resource!(@review)
         end
@@ -74,11 +76,11 @@ module Spree
 
       # Loads product from product id.
       def load_product
-        if params[:product_id]
-          @product = Spree::Product.friendly.find(params[:product_id])
-        else
-          @product = @review&.product
-        end
+        @product = if params[:product_id]
+                     Spree::Product.friendly.find(params[:product_id])
+                   else
+                     @review&.product
+                   end
       end
 
       # Finds user based on api_key or by user_id if api_key belongs to an admin.
@@ -104,7 +106,7 @@ module Spree
       # Converts rating strings like "5 units" to "5"
       # Operates on params
       def sanitize_rating
-        params[:rating].sub!(/\s*[^0-9]*\z/, '') unless params[:rating].blank?
+        params[:rating].sub!(/\s*[^0-9]*\z/, '') if params[:rating].present?
       end
     end
   end
