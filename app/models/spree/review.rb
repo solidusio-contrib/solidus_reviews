@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class Spree::Review < ActiveRecord::Base
+class Spree::Review < ApplicationRecord
   belongs_to :product, touch: true, optional: true
   belongs_to :user, class_name: Spree.user_class.to_s, optional: true
   has_many   :feedback_reviews
   has_many   :images, -> { order(:position) }, as: :viewable,
-    dependent: :destroy, class_name: "Spree::Image"
+                                               dependent: :destroy, class_name: "Spree::Image"
 
   before_create :verify_purchaser
   after_save :recalculate_product_rating, if: :approved?
@@ -28,6 +28,7 @@ class Spree::Review < ActiveRecord::Base
 
   def feedback_stars
     return 0 if feedback_reviews.size <= 0
+
     ((feedback_reviews.sum(:rating) / feedback_reviews.size) + 0.5).floor
   end
 
@@ -36,18 +37,18 @@ class Spree::Review < ActiveRecord::Base
   end
 
   def email
-    user.try!(:email)
+    user&.email
   end
 
   def verify_purchaser
     return unless user_id && product_id
 
     verified_purchase = Spree::LineItem.joins(:order, :variant)
-      .where.not(spree_orders: { completed_at: nil })
-      .find_by(
-        spree_variants: { product_id: product_id },
-        spree_orders: { user_id: user_id }
-      ).present?
+                                       .where.not(spree_orders: { completed_at: nil })
+                                       .find_by(
+                                         spree_variants: { product_id: product_id },
+                                         spree_orders: { user_id: user_id }
+                                       ).present?
 
     self.verified_purchaser = verified_purchase
   end

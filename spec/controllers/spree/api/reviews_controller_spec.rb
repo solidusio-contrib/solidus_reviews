@@ -24,7 +24,7 @@ describe Spree::Api::ReviewsController, type: :controller do
       end
 
       context 'there are no reviews for a product' do
-        it 'should return an empty array' do
+        it 'returns an empty array' do
           expect(Spree::Review.count).to be >= 0
           expect(subject["reviews"]).to be_empty
         end
@@ -53,7 +53,7 @@ describe Spree::Api::ReviewsController, type: :controller do
       end
 
       context 'there are no reviews for the user' do
-        it 'should return an empty array' do
+        it 'returns an empty array' do
           expect(Spree::Review.count).to be >= 0
           expect(subject["reviews"]).to be_empty
         end
@@ -81,7 +81,7 @@ describe Spree::Api::ReviewsController, type: :controller do
     context 'when it is the users review' do
       before { review.update(user_id: user.id) }
 
-      it 'should return the review' do
+      it 'returns the review' do
         expect(subject).not_to be_empty
         expect(subject["product_id"]).to eq(product.id)
         expect(subject["name"]).to eq(review[:name])
@@ -94,7 +94,7 @@ describe Spree::Api::ReviewsController, type: :controller do
     end
 
     context 'when it is not the users review' do
-      it 'should return with not authorized' do
+      it 'returns with not authorized' do
         expect(subject["error"]).not_to be_empty
         expect(subject["error"]).to match(/not authorized/i)
       end
@@ -102,7 +102,7 @@ describe Spree::Api::ReviewsController, type: :controller do
       context 'and it the review is approved' do
         before { review.update(approved: true) }
 
-        it 'should return the review' do
+        it 'returns the review' do
           expect(subject).not_to be_empty
           expect(subject["product_id"]).to eq(product.id)
           expect(subject["name"]).to eq(review[:name])
@@ -116,6 +116,12 @@ describe Spree::Api::ReviewsController, type: :controller do
   end
 
   describe '#create' do
+    subject do
+      params = { product_id: product.id, token: user.spree_api_key, format: 'json' }.merge(review_params)
+      post :create, params: params
+      JSON.parse(response.body)
+    end
+
     let(:review_params) do
       {
         "user_id": user.id,
@@ -126,25 +132,19 @@ describe Spree::Api::ReviewsController, type: :controller do
       }
     end
 
-    subject do
-      params = { product_id: product.id, token: user.spree_api_key, format: 'json' }.merge(review_params)
-      post :create, params: params
-      JSON.parse(response.body)
-    end
-
     context 'when user has already reviewed this product' do
       before do
         review.update(user_id: user.id)
       end
 
-      it 'should return with a fail' do
+      it 'returns with a fail' do
         expect(subject["error"]).not_to be_empty
         expect(subject["error"]).to match(/invalid resource/i)
       end
     end
 
     context 'when it is a users first review for the product' do
-      it 'should return success with review' do
+      it 'returns success with review' do
         expect(subject).not_to be_empty
         expect(subject["product_id"]).to eq(product.id)
         expect(subject["name"]).to eq(review_params[:name])
@@ -157,7 +157,13 @@ describe Spree::Api::ReviewsController, type: :controller do
   end
 
   describe '#update' do
+    subject do
+      put :update, params: params
+      JSON.parse(response.body)
+    end
+
     before { review.update(approved: true, user_id: user.id) }
+
     let(:params) { { product_id: product.id, id: review.id, token: user.spree_api_key, format: 'json' }.merge(review_params) }
 
     let(:review_params) do
@@ -169,13 +175,8 @@ describe Spree::Api::ReviewsController, type: :controller do
       }
     end
 
-    subject do
-      put :update, params: params
-      JSON.parse(response.body)
-    end
-
     context 'when a user updates their own review' do
-      it 'should successfully update the review and set approved back to false' do
+      it 'successfullies update the review and set approved back to false' do
         original = review
         expect(original.approved?).to be true
         expect(subject["id"]).to eq(original.id)
@@ -195,7 +196,7 @@ describe Spree::Api::ReviewsController, type: :controller do
         other_user.generate_spree_api_key!
       end
 
-      it 'should return an error' do
+      it 'returns an error' do
         expect(subject["error"]).not_to be_empty
         expect(subject["error"]).to match(/not authorized/i)
       end
@@ -203,16 +204,17 @@ describe Spree::Api::ReviewsController, type: :controller do
   end
 
   describe '#destroy' do
-    before { review.update(approved: true, user_id: user.id) }
-    let(:params) { { product_id: product.id, id: review.id, token: user.spree_api_key, format: 'json' } }
-
     subject do
       delete :destroy, params: params
       JSON.parse(response.body)
     end
 
+    before { review.update(approved: true, user_id: user.id) }
+
+    let(:params) { { product_id: product.id, id: review.id, token: user.spree_api_key, format: 'json' } }
+
     context "when a user destroys their own review" do
-      it 'should return the deleted review' do
+      it 'returns the deleted review' do
         expect(subject["id"]).to eq(review.id)
         expect(subject["product_id"]).to eq(product.id)
         expect(Spree::Review.find_by(id: review.id)).to be_falsey
@@ -227,7 +229,7 @@ describe Spree::Api::ReviewsController, type: :controller do
         other_user.generate_spree_api_key!
       end
 
-      it 'should return an error' do
+      it 'returns an error' do
         expect(subject["error"]).not_to be_empty
         expect(subject["error"]).to match(/not authorized/i)
       end

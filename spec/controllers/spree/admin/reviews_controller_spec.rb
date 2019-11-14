@@ -13,7 +13,7 @@ describe Spree::Admin::ReviewsController do
     allow(controller).to receive(:spree_current_user).and_return(user)
   end
 
-  context '#index' do
+  describe '#index' do
     it 'list reviews' do
       reviews = [
         create(:review, product: product),
@@ -24,7 +24,7 @@ describe Spree::Admin::ReviewsController do
     end
   end
 
-  context '#approve' do
+  describe '#approve' do
     it 'show notice message when approved' do
       review.update_attribute(:approved, true)
       get :approve, params: { id: review.id }
@@ -39,7 +39,7 @@ describe Spree::Admin::ReviewsController do
     end
   end
 
-  context '#edit' do
+  describe '#edit' do
     specify do
       get :edit, params: { id: review.id }
       expect(response.status).to eq(200)

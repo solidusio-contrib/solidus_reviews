@@ -30,7 +30,7 @@ class Spree::FeedbackReviewsController < Spree::StoreController
   protected
 
   def load_review
-    @review ||= Spree::Review.find_by_id!(params[:review_id])
+    @review ||= Spree::Review.find_by!(id: params[:review_id])
   end
 
   def permitted_feedback_review_attributes
