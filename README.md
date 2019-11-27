@@ -68,7 +68,7 @@ $ bundle exec rake
 
 ## Contributing
 
-If you want to contribute, have a look at out [contributing guidelines](https://github.com/solidusio-contrib/solidus_reviews/blob/master/CONTRIBUTING.md).
+Bug reports and pull requests are welcome on GitHub at <https://github.com/solidusio-contrib/solidus_reviews>.
 
 ## License
 
