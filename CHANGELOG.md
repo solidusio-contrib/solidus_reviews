@@ -1,15 +1,17 @@
 # Changelog
 
-## [Unreleased](https://github.com/solidusio-contrib/solidus_reviews/tree/HEAD)
+## [v1.3.0](https://github.com/solidusio-contrib/solidus_reviews/tree/v1.3.0) (2019-11-27)
 
-[Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.2.0...HEAD)
+[Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.2.0...v1.3.0)
 
 **Closed issues:**
 
 - sass/rails is deprecated. Please update to `require 'sassc/rails'` [\#48](https://github.com/solidusio-contrib/solidus_reviews/issues/48)
+- Class variable access from toplevel [\#47](https://github.com/solidusio-contrib/solidus_reviews/issues/47)
 
 **Merged pull requests:**
 
+- Prepare v1.3.0 [\#68](https://github.com/solidusio-contrib/solidus_reviews/pull/68) ([aldesantis](https://github.com/aldesantis))
 - Adopt solidus\_extension\_dev\_tools [\#66](https://github.com/solidusio-contrib/solidus_reviews/pull/66) ([aldesantis](https://github.com/aldesantis))
 - Switch to sassc/rails [\#65](https://github.com/solidusio-contrib/solidus_reviews/pull/65) ([pelargir](https://github.com/pelargir))
 - Fix flaky specs caused by bad preference stubbing [\#54](https://github.com/solidusio-contrib/solidus_reviews/pull/54) ([aldesantis](https://github.com/aldesantis))
