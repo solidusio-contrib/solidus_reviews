@@ -1,19 +1,22 @@
 # frozen_string_literal: true
 
+$:.push File.expand_path('lib', __dir__)
+require 'solidus_reviews/version'
+
 Gem::Specification.new do |s|
-  s.platform    = Gem::Platform::RUBY
-  s.name        = 'solidus_reviews'
-  s.version     = '1.2.0'
-  s.summary     = 'Basic review and ratings facility for Solidus'
+  s.platform = Gem::Platform::RUBY
+  s.name = 'solidus_reviews'
+  s.version = SolidusReviews::VERSION
+  s.summary = 'Review and rating functionality for your Solidus store.'
   s.authors = ['Solidus Contrib']
   s.description = s.summary
   s.required_ruby_version = '>= 1.9.3'
 
-  s.homepage     = 'https://github.com/solidusio-contrib/solidus_reviews/'
-  s.license      = 'BSD-3'
+  s.homepage = 'https://github.com/solidusio-contrib/solidus_reviews'
+  s.license = 'BSD-3'
 
-  s.files        = `git ls-files`.split("\n")
-  s.test_files   = `git ls-files -- spec/*`.split("\n")
+  s.files = `git ls-files`.split("\n")
+  s.test_files = `git ls-files -- spec/*`.split("\n")
   s.require_path = 'lib'
   s.requirements << 'none'
 
