@@ -1,4 +1,4 @@
-# Reviews
+# Solidus Reviews
 
 [![CircleCI](https://circleci.com/gh/solidusio-contrib/solidus_reviews.svg?style=svg)](https://circleci.com/gh/solidusio-contrib/solidus_reviews)
 
