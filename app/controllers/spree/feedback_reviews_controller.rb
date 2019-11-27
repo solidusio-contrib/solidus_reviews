@@ -16,13 +16,7 @@ class Spree::FeedbackReviewsController < Spree::StoreController
     end
 
     respond_to do |format|
-      format.html {
-        if SolidusSupport.solidus_gem_version < Gem::Version.new('2.0')
-          redirect_to(:back)
-        else
-          redirect_back(fallback_location: root_path)
-        end
-      }
+      format.html { redirect_back(fallback_location: root_path) }
       format.js { render action: :create }
     end
   end
