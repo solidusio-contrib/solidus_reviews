@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
+$:.push File.expand_path('lib', __dir__)
+require 'solidus_reviews/version'
+
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'solidus_reviews'
-  s.version     = '1.2.0'
+  s.version     = SolidusReviews::VERSION
   s.summary     = 'Basic review and ratings facility for Solidus'
   s.authors = ['Solidus Contrib']
   s.description = s.summary
