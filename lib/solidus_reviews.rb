@@ -8,4 +8,3 @@ require 'coffee_script'
 
 require 'solidus_reviews/engine'
 require 'solidus_reviews/version'
-
