@@ -24,5 +24,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'solidus', ['>= 1.4', '< 3']
   s.add_dependency 'solidus_support'
 
-  s.add_development_dependency 'solidus_extension_dev_tools'
+  s.add_development_dependency 'solidus_dev_support'
 end
