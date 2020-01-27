@@ -2,7 +2,7 @@
 
 class Spree::ReviewsController < Spree::StoreController
   helper Spree::BaseHelper
-  before_action :load_product, only: [:index, :new, :create]
+  before_action :load_product, only: [:index, :new, :create, :edit, :update]
 
   def index
     @approved_reviews = Spree::Review.approved.where(product: @product)
@@ -11,6 +11,14 @@ class Spree::ReviewsController < Spree::StoreController
   def new
     @review = Spree::Review.new(product: @product)
     authorize! :create, @review
+  end
+
+  def edit
+    @review = Spree::Review.find(params[:id])
+    if @review.product.nil?
+      flash[:error] = I18n.t('spree.error_no_product')
+    end
+    authorize! :update, @review
   end
 
   # save if all ok
@@ -33,6 +41,15 @@ class Spree::ReviewsController < Spree::StoreController
       redirect_to spree.product_path(@product)
     else
       render :new
+    end
+  end
+
+  def update
+    if @review.update(review_params)
+      flash[:notice] = I18n.t('spree.review_successfully_submitted')
+      redirect_to spree.product_path(@product)
+    else
+      render :edit
     end
   end
 
