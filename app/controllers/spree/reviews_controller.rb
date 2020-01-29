@@ -47,18 +47,15 @@ class Spree::ReviewsController < Spree::StoreController
   def update
     params[:review][:rating].sub!(/\s*[^0-9]*\z/, '') if params[:review][:rating].present?
 
-    @review = Spree::Review.update(review_params)
-    @review.product = @product
-    @review.user = spree_current_user if spree_user_signed_in?
-    @review.ip_address = request.remote_ip
-    @review.locale = I18n.locale.to_s if Spree::Reviews::Config[:track_locale]
+    @review = Spree::Review.find(params[:id])
+
     # Handle images
     params[:review][:images]&.each do |image|
       @review.images.new(attachment: image)
     end
 
     authorize! :update, @review
-    if @review.save
+    if @review.update(review_params)
       flash[:notice] = I18n.t('spree.review_successfully_submitted')
       redirect_to spree.product_path(@product)
     else
