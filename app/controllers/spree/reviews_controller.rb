@@ -23,7 +23,7 @@ class Spree::ReviewsController < Spree::StoreController
 
   # save if all ok
   def create
-    params[:review][:rating].sub!(/\s*[^0-9]*\z/, '') if params[:review][:rating].present?
+    review_params[:rating].sub!(/\s*[^0-9]*\z/, '') if review_params[:rating].present?
 
     @review = Spree::Review.new(review_params)
     @review.product = @product
@@ -45,7 +45,7 @@ class Spree::ReviewsController < Spree::StoreController
   end
 
   def update
-    params[:review][:rating].sub!(/\s*[^0-9]*\z/, '') if params[:review][:rating].present?
+    review_params[:rating].sub!(/\s*[^0-9]*\z/, '') if params[:review][:rating].present?
 
     @review = Spree::Review.find(params[:id])
 
