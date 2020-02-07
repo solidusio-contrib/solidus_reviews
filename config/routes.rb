@@ -22,6 +22,8 @@ Spree::Core::Engine.routes.draw do
     namespace :api, defaults: { format: 'json' } do
       resources :reviews, only: [:show, :create, :update, :destroy]
 
+      resources :feedback_reviews, only: [:create, :update, :destroy]
+
       resources :products do
         resources :reviews, only: [:index]
       end
