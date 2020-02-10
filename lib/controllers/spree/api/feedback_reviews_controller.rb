@@ -5,7 +5,7 @@ module Spree
     class FeedbackReviewsController < Spree::Api::BaseController
       respond_to :json
 
-      before_action :load_review, only: [:create, :update, :destroy]
+      before_action :load_review, :load_feedback_review, only: [:create, :update, :destroy]
       before_action :load_product, :find_review_user
       before_action :sanitize_rating, only: [:create, :update]
       before_action :prevent_multiple_reviews, only: [:create]
@@ -28,24 +28,22 @@ module Spree
       end
 
       def update
-        authorize! :update, @review
+        authorize! :update, @feedback_review
 
-        attributes = review_params.merge(ip_address: request.remote_ip, approved: false)
-
-        if @review.update(attributes)
-          render json: @review, include: [:images, :feedback_reviews], status: :ok
+        if @feedback_review.update(feedback_review_params)
+          render json: @feedback_review, status: :ok
         else
-          invalid_resource!(@review)
+          invalid_resource!(@feedback_review)
         end
       end
 
       def destroy
-        authorize! :destroy, @review
+        authorize! :destroy, @feedback_review
 
-        if @review.destroy
-          render json: @review, status: :ok
+        if @feedback_review.destroy
+          render json: @feedback_review, status: :ok
         else
-          invalid_resource!(@review)
+          invalid_resource!(@feedback_review)
         end
       end
 
@@ -79,7 +77,7 @@ module Spree
       end
 
       def load_feedback_review
-        
+        @feedback_review = Spree::FeedbackReview.find(params[:id])
       end
 
       # Ensures that a user can't leave multiple feedbacks on a single review
