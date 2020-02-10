@@ -86,9 +86,9 @@ module Spree
 
       # Ensures that a user can't create more than 1 review per product
       def prevent_multiple_reviews
-        @review = @current_api_user.reviews.find_by(product: @product)
-        if @review.present?
-          invalid_resource!(@review)
+        @feedbackReview = @current_api_user.reviews.find_by(product: @product).feedback_reviews
+        if @feedbackReview.present?
+          invalid_resource!(@feedbackReview)
         end
       end
 
