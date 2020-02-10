@@ -5,7 +5,7 @@ module Spree
     class FeedbackReviewsController < Spree::Api::BaseController
       respond_to :json
 
-      before_action :load_review, only: [:show, :update, :destroy]
+      before_action :load_review, only: [:create, :update, :destroy]
       before_action :load_product, :find_review_user
       before_action :sanitize_rating, only: [:create, :update]
       before_action :prevent_multiple_reviews, only: [:create]
