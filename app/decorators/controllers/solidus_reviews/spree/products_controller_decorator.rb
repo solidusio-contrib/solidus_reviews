@@ -7,10 +7,6 @@ module SolidusReviews
         base.class_eval do
           helper ::Spree::ReviewsHelper
         end
-
-        [:avg_rating, :reviews_count].each do |attribute|
-          ::Spree::PermittedAttributes.product_attributes << attribute
-        end
       end
 
       ::Spree::ProductsController.prepend self
