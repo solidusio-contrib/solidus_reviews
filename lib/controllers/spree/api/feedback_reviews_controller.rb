@@ -75,7 +75,7 @@ module Spree
 
       # Loads any review that is shared between the user and product
       def load_review
-        @review = Spree::Review.find(params[:id_review])
+        @review = Spree::Review.find(params[:review_id])
       end
 
       def load_feedback_review
@@ -84,7 +84,7 @@ module Spree
 
       # Ensures that a user can't leave multiple feedbacks on a single review
       def prevent_multiple_reviews
-        @feedbackReview = Spree::Review.find_by(params[:review_id]).feedback_reviews.find_by(user_id: @current_api_user)
+        @feedbackReview = @review.feedback_reviews.find_by(user_id: @current_api_user)
         if @feedbackReview.present?
           invalid_resource!(@feedbackReview)
         end
@@ -93,7 +93,7 @@ module Spree
       # Converts rating strings like "5 units" to "5"
       # Operates on params
       def sanitize_rating
-        params[:rating].sub!(/\s*[^0-9]*\z/, '') if params[:rating].present?
+        params[:feedback_review][:rating].to_s.sub!(/\s*[^0-9]*\z/, '') unless params[:feedback_review] && params[:feedback_review][:rating].blank?
       end
     end
   end
