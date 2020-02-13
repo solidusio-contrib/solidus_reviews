@@ -7,13 +7,11 @@ module Spree
 
       before_action :load_review, only: [:create, :update, :destroy]
       before_action :load_feedback_review, only: [:update, :destroy]
-      before_action :load_product, :find_review_user
+      before_action :find_review_user
       before_action :sanitize_rating, only: [:create, :update]
       before_action :prevent_multiple_feedback_reviews, only: [:create]
 
       def create
-        return not_found if @product.nil?
-
         if @review.present?
           @feedback_review = @review.feedback_reviews.new(feedback_review_params)
           @feedback_review.user = @current_api_user
@@ -56,15 +54,6 @@ module Spree
 
       def feedback_review_params
         params.require(:feedback_review).permit(permitted_feedback_review_attributes)
-      end
-
-      # Loads product from product id.
-      def load_product
-        @product = if params[:product_id]
-                     Spree::Product.friendly.find(params[:product_id])
-                   else
-                     @review&.product
-                   end
       end
 
       # Finds user based on api_key or by user_id if api_key belongs to an admin.
