@@ -3,7 +3,7 @@
 class Spree::Review < ApplicationRecord
   belongs_to :product, touch: true, optional: true
   belongs_to :user, class_name: Spree.user_class.to_s, optional: true
-  has_many   :feedback_reviews
+  has_many   :feedback_reviews, dependent: :destroy
   has_many   :images, -> { order(:position) }, as: :viewable,
                                                dependent: :destroy, class_name: "Spree::Image"
 
