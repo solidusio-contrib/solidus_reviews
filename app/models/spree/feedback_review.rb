@@ -3,7 +3,7 @@
 class Spree::FeedbackReview < ApplicationRecord
   belongs_to :user, class_name: Spree.user_class.to_s, optional: true
 
-  belongs_to :review
+  belongs_to :review, touch: true
   validates :review, presence: true
 
   validates :rating, numericality: { only_integer: true,
