@@ -31,4 +31,10 @@ class Spree::ReviewsConfiguration < Spree::Preferences::Configuration
 
   # render checkbox for a user to approve to show their identifier (name or email) on their review
   preference :render_show_identifier_checkbox, :boolean, default: false
+
+  # Approves star only reviews automatically (Reviews without a Title/Review)
+  preference :approve_star_only, :boolean, default: false
+
+  # Approves star only reviews for verified purchasers only.
+  preference :approve_star_only_for_verified_purchaser, :boolean, default: false
 end

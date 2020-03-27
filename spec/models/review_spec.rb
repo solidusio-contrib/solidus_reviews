@@ -219,4 +219,31 @@ describe Spree::Review do
       expect(review.verified_purchaser).to eq(false)
     end
   end
+
+  describe "#approve_review" do
+    let(:order) { create(:completed_order_with_totals) }
+    let(:product) { order.products.first }
+    let(:user) { order.user }
+    let(:review) { build(:review, title: '', review: '', user: user, product: product) }
+
+    it "auto approves star only review" do
+      stub_spree_preferences(Spree::Reviews::Config, approve_star_only: true)
+
+      expect(review.approved).to eq(false)
+      review.approve_review
+      expect(review.approved).to eq(true)
+    end
+
+    it "auto approves star only review for verified purchaser" do
+      stub_spree_preferences(Spree::Reviews::Config, approve_star_only_for_verified_purchaser: true)
+
+      expect(review.verified_purchaser).to eq(false)
+      expect(review.approved).to eq(false)
+      review.verify_purchaser
+      expect(review.verified_purchaser).to eq(true)
+      expect(review.approved).to eq(false)
+      review.approve_review
+      expect(review.approved).to eq(true)
+    end
+  end
 end
