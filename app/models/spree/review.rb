@@ -7,8 +7,8 @@ class Spree::Review < ApplicationRecord
   has_many   :images, -> { order(:position) }, as: :viewable,
                                                dependent: :destroy, class_name: "Spree::Image"
 
-  before_create :verify_purchaser
-  after_save :approve_review
+  before_save :verify_purchaser
+  before_save :approve_review, unless: :approved?
   after_save :recalculate_product_rating, if: :approved?
   after_destroy :recalculate_product_rating
 
@@ -59,7 +59,7 @@ class Spree::Review < ApplicationRecord
   end
 
   def approve_review
-    # Should auto approve review?
+    # Checks if we should auto approve the review.
     if Spree::Reviews::Config[:approve_star_only]
       self.approved = true if star_only?
     elsif Spree::Reviews::Config[:approve_star_only_for_verified_purchaser]
