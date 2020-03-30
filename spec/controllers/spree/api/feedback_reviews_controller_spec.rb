@@ -47,6 +47,12 @@ describe Spree::Api::FeedbackReviewsController, type: :controller do
         expect(subject["rating"]).to eq(5)
         expect(subject["comment"]).to eq("I agree with what you said")
       end
+
+      it 'updates the review' do
+        expect(review).to receive(:touch)
+        feedback = create(:feedback_review, review: review)
+        feedback.save!
+      end
     end
   end
 
