@@ -50,4 +50,16 @@ describe Spree::ReviewsConfiguration do
     expect(subject).to respond_to(:preferred_track_locale=)
     expect(subject.preferred_track_locale).to be false
   end
+
+  it 'has the approve_star_only preference' do
+    expect(subject).to respond_to(:preferred_approve_star_only)
+    expect(subject).to respond_to(:preferred_approve_star_only=)
+    expect(subject.preferred_approve_star_only).to be false
+  end
+
+  it 'has the approve_star_only_for_verified_purchaser preference' do
+    expect(subject).to respond_to(:preferred_approve_star_only_for_verified_purchaser)
+    expect(subject).to respond_to(:preferred_approve_star_only_for_verified_purchaser=)
+    expect(subject.preferred_approve_star_only_for_verified_purchaser).to be false
+  end
 end
