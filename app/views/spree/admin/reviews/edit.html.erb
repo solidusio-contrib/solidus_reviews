@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-	<%= I18n.t("spree.editing_review_for_html", link: link_to(@review.product.name, product_path(@review.product))) %>
+	<%= I18n.t("spree.editing_review_for_html", link: @review.product.name) %>
 <% end %>
 
 <% render 'spree/admin/shared/product_sub_menu' %>
