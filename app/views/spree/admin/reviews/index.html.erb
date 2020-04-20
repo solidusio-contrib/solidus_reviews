@@ -5,7 +5,9 @@
 <% end %>
 
 <% content_for :table_filter_title do %>
-  <%= I18n.t("spree.search") %>
+  <% if can? :display, Spree::Review %>
+    <%= I18n.t("spree.search") %>
+  <% end %>
 <% end %>
 
 <% content_for :table_filter do %>
@@ -106,9 +108,11 @@
             <% end %>
           </td>
           <td class="actions">
-            <%= link_to_with_icon 'ok', I18n.t("spree.approve"), approve_admin_review_url(review), no_text: true, class: 'approve' unless review.approved %>
-            <%= link_to_edit review, no_text: true, class: 'edit' %>
-            <%= link_to_delete review, no_text: true %>
+            <% if can? :manage, Spree::Review %>
+              <%= link_to_with_icon 'ok', I18n.t("spree.approve"), approve_admin_review_url(review), no_text: true, class: 'approve' unless review.approved %>
+              <%= link_to_edit review, no_text: true, class: 'edit' %>
+              <%= link_to_delete review, no_text: true %>
+            <% end %>
           </td>
         </tr>
       <% end %>
