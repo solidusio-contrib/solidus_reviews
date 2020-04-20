@@ -24,4 +24,18 @@ module Spree::ReviewsHelper
                      spree_orders: { user_id: review.user_id }
                    ).present?
   end
+
+  def product_already_reviewed?(product, user)
+    return false if user.nil? || product.nil?
+
+    purchased_product_count_by_user = Spree::LineItem.joins(:order, :variant)
+      .where.not(spree_orders: { completed_at: nil })
+      .where(spree_variants: { product_id: product.id }, spree_orders: { user_id: user.id })
+      .count
+
+    review_counter_by_user = product.reviews.where({ user_id: user.id }).count
+
+    purchased_product_count_by_user > review_counter_by_user
+  end
+
 end
