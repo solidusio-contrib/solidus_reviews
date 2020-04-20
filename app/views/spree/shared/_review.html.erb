@@ -24,10 +24,12 @@
     <div itemprop="reviewBody">
       <%= simple_format(review.review) %>
     </div>
-    <% review.images.each do |image| %>
-      <div itemprop="image">
-        <%= link_to image_tag(image.url(:product)), image.url(:original) %>
-      </div>
+    <% if Spree::Reviews::Config[:allow_image_upload] %>
+      <% review.images.each do |image| %>
+        <div itemprop="image">
+          <%= link_to image_tag(image.url(:product)), image.url(:original) %>
+        </div>
+      <% end %>
     <% end %>
     <% if Spree::Reviews::Config[:feedback_rating] && (!Spree::Reviews::Config[:require_login] || spree_current_user) %>
       <div class="feedback_review" id="feedback_review_<%= review.id %>">

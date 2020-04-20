@@ -57,6 +57,13 @@
       </label>
     </div>
     <div class="field">
+      <label>
+        <%= check_box_tag('preferences[allow_image_upload]', "1", Spree::Reviews::Config[:allow_image_upload]) %>
+        <%= I18n.t("spree.spree_reviews.allow_image_upload") %>
+      </label>
+    </div>
+
+    <div class="field">
       <label><%= I18n.t("spree.spree_reviews.preview_size") %></label><br>
       <%= text_field_tag('preferences[preview_size]', Spree::Reviews::Config[:preview_size], size: 3) %>
     </div>
