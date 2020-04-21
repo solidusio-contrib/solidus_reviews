@@ -21,6 +21,8 @@
 	<div class="clear"></div>
 
 	<fieldset class="no-border-top">
-		<%= render 'spree/admin/shared/edit_resource_links' %>
+		<% if can? :manage, Spree::Review %>
+			<%= render 'spree/admin/shared/edit_resource_links' %>
+		<% end %>
 	</fieldset>
 <% end %>
