@@ -37,4 +37,8 @@ class Spree::ReviewsConfiguration < Spree::Preferences::Configuration
 
   # Approves star only reviews for verified purchasers only.
   preference :approve_star_only_for_verified_purchaser, :boolean, default: false
+
+  # Enables the Google Shopping product reviews feed.
+  # This will likely cause performance issues if you have a large number of reviews.
+  preference :enable_reviews_feed, :boolean, default: false
 end

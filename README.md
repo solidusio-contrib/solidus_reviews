@@ -42,12 +42,31 @@ That's all!
 
 ## Usage
 
+### Reviews
+
 The `Spree::ReviewsController` controller provides all the CRUD functionality for product reviews.
+
+You can approve, edit and delete reviews from the backend.
+
+### Feedback reviews
 
 The `Spree::FeedbackReviewsController` allows user to express their feedback on a specific review.
 You can think of these as meta-reviews (e.g. the classic "Was this useful?" modal).
 
-You can approve, edit and delete reviews and feedback reviews from the backend.
+### Reviews feed
+
+The `Spree::ReviewsFeedController` generates an XML feed compliant with the
+[Google Product Review Feeds](https://developers.google.com/product-review-feeds) schema, which can
+be imported into Google Merchant Center.
+
+By default, this functionality is disabled. The reason is that the gem ships with a very naive
+implementation that generates the XML feed on demand when the controller is called. This will cause
+performance issues and ultimately lead to timeouts in stores with a large number of reviews.
+
+If you have a lot of reviews, a better strategy is to generate the feed periodically and upload it
+to S3, then have Google pull it from there.
+
+You can enable the default implementation through the `enable_reviews_feed` option.
 
 ## Factories
 

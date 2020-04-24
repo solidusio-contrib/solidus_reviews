@@ -16,7 +16,12 @@ Spree::Core::Engine.routes.draw do
     resources :reviews, only: [:index, :new, :create, :edit, :update] do
     end
   end
+
   post '/reviews/:review_id/feedback(.:format)' => 'feedback_reviews#create', as: :feedback_reviews
+
+  if Spree::Reviews::Config[:enable_reviews_feed]
+    resource :reviews_feed, only: :show
+  end
 
   if SolidusSupport.api_available?
     namespace :api, defaults: { format: 'json' } do

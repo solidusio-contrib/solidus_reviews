@@ -19,6 +19,10 @@ FactoryBot.define do
       show_identifier { false }
     end
 
+    trait :anonymous do
+      user { nil }
+    end
+
     trait :with_image do
       images {
         [
