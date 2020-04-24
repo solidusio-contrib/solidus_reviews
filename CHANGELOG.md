@@ -1,5 +1,31 @@
 # Changelog
 
+## [Unreleased](https://github.com/solidusio-contrib/solidus_reviews/tree/HEAD)
+
+[Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.3.0...HEAD)
+
+**Closed issues:**
+
+- uninitialized constant SolidusReviews::Spree::Admin \(NameError\) [\#77](https://github.com/solidusio-contrib/solidus_reviews/issues/77)
+- Dependabot can't resolve your Ruby dependency files [\#75](https://github.com/solidusio-contrib/solidus_reviews/issues/75)
+- Dependabot can't resolve your Ruby dependency files [\#74](https://github.com/solidusio-contrib/solidus_reviews/issues/74)
+- Dependabot can't resolve your Ruby dependency files [\#73](https://github.com/solidusio-contrib/solidus_reviews/issues/73)
+- Dependabot can't resolve your Ruby dependency files [\#71](https://github.com/solidusio-contrib/solidus_reviews/issues/71)
+- Dependabot can't resolve your Ruby dependency files [\#70](https://github.com/solidusio-contrib/solidus_reviews/issues/70)
+- Dependabot can't resolve your Ruby dependency files [\#69](https://github.com/solidusio-contrib/solidus_reviews/issues/69)
+- Users should be able to upload images as part of their review [\#67](https://github.com/solidusio-contrib/solidus_reviews/issues/67)
+
+**Merged pull requests:**
+
+- Relax solidus\_support dependency [\#86](https://github.com/solidusio-contrib/solidus_reviews/pull/86) ([kennyadsl](https://github.com/kennyadsl))
+- Adds PermissionSets classes and checks for Reviews [\#85](https://github.com/solidusio-contrib/solidus_reviews/pull/85) ([memotoro](https://github.com/memotoro))
+- Add option to auto approve star only reviews [\#82](https://github.com/solidusio-contrib/solidus_reviews/pull/82) ([KaemonIsland](https://github.com/KaemonIsland))
+- Add touch to feedback review model [\#81](https://github.com/solidusio-contrib/solidus_reviews/pull/81) ([KaemonIsland](https://github.com/KaemonIsland))
+- Add feedback reviews to api [\#79](https://github.com/solidusio-contrib/solidus_reviews/pull/79) ([KaemonIsland](https://github.com/KaemonIsland))
+- Fix path for Spree::ProductsControllerDecorator [\#78](https://github.com/solidusio-contrib/solidus_reviews/pull/78) ([aldesantis](https://github.com/aldesantis))
+- Add edit and update methods to reviews controller [\#76](https://github.com/solidusio-contrib/solidus_reviews/pull/76) ([KaemonIsland](https://github.com/KaemonIsland))
+- Update to solidus\_dev\_support [\#72](https://github.com/solidusio-contrib/solidus_reviews/pull/72) ([aldesantis](https://github.com/aldesantis))
+
 ## [v1.3.0](https://github.com/solidusio-contrib/solidus_reviews/tree/v1.3.0) (2019-11-27)
 
 [Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.2.0...v1.3.0)
