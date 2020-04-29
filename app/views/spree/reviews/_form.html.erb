@@ -21,10 +21,12 @@
     <%= f.text_area :review, wrap: "virtual", rows: "10", cols: "50" %>
   </p>
 
-  <p class="review_images_field">
-    <%= f.label :images %><br>
-    <%= f.file_field :images, :accept => "image/*", multiple: true %>
-  </p>
+  <% if Spree::Reviews::Config[:allow_image_upload] %>
+    <p class="review_images_field">
+      <%= f.label :images %><br>
+      <%= f.file_field :images, :accept => "image/*", multiple: true %>
+    </p>
+  <% end %>
 
   <% if Spree::Reviews::Config[:render_show_identifier_checkbox] %>
     <p class="review_show_identifier_field">

@@ -2,7 +2,7 @@
 
 class Spree::ReviewsConfiguration < Spree::Preferences::Configuration
   def self.boolean_preferences
-    %w(display_unapproved_reviews include_unapproved_reviews feedback_rating show_email require_login track_locale)
+    %w(display_unapproved_reviews include_unapproved_reviews feedback_rating show_email require_login track_locale allow_image_upload)
   end
 
   # include non-approved reviews in (public) listings
@@ -37,4 +37,7 @@ class Spree::ReviewsConfiguration < Spree::Preferences::Configuration
 
   # Approves star only reviews for verified purchasers only.
   preference :approve_star_only_for_verified_purchaser, :boolean, default: false
+
+  # allow customer to update image with the review
+  preference :allow_image_upload, :boolean, default: true
 end
