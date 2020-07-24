@@ -64,6 +64,7 @@ es:
       show_email: "Mostrar las direcciones de correo"
       show_verified_purchaser: Mostrar comprador verificado
       track_locale: "Rastrear el locale del usuario"
+      allow_image_upload: "Permitir adjuntar imagenes con el comentario"
     star:
       one: "1"
       other: "%{count}"

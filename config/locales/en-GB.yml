@@ -64,6 +64,7 @@ en-GB:
       show_email: Show email addresses
       show_verified_purchaser: Show verified purchaser
       track_locale: Track user's locale
+      allow_image_upload: Allow images to be attached to reviews
     star:
       one: "1"
       other: "%{count}"
