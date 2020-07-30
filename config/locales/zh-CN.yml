@@ -33,7 +33,7 @@ zh-CN:
       one: 以评论为基础
       other: "以 %{count} 個评论为基础"
     by: 由
-    editing_review_for_html: '正在修改 %{link} 的评论'
+    editing_review_for_html: '正在修改 %{product_name} 的评论'
     error_approve_review: 出错了，不能核准评论
     error_no_product: 被评论的产品不存在了。
     feedback: 回馈

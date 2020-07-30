@@ -39,7 +39,7 @@ uk:
       many: "на основі %{count} відгуків"
       other: "на основі %{count} відгуків"
     by: від
-    editing_review_for_html: 'Редагувати відгук на %{link}'
+    editing_review_for_html: 'Редагувати відгук на %{product_name}'
     error_approve_review: Не вдалось схвалити відгук
     error_no_product: Товару, на який писався відгук, більше не існує
     feedback: Корисність

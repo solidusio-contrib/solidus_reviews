@@ -34,7 +34,7 @@ it:
       one: basato su una recensione
       other: "basato su %{count} recensioni"
     by: da
-    editing_review_for_html: 'Modifica la recensione per %{link}'
+    editing_review_for_html: 'Modifica la recensione per %{product_name}'
     error_approve_review: Errore approvazione recensione
     error_no_product: "Il prodotto recensito non esiste più"
     feedback: Feedback

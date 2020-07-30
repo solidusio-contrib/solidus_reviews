@@ -35,7 +35,7 @@ tr:
       one: bir incelemeye göre
       other: "%{count} incelemeye göre"
     by: tarafından
-    editing_review_for_html: 'Yorumu düzenle %{link}'
+    editing_review_for_html: 'Yorumu düzenle %{product_name}'
     error_approve_review: Yorum onaylamada hata
     error_no_product: Yorumlanan ürün artık yok
     feedback: Geri bildirim

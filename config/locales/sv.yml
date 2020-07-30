@@ -35,7 +35,7 @@ sv:
       one: "baserad på en recension"
       other: "baserad på %{count} recensioner"
     by: av
-    editing_review_for_html: "Editerad recension för %{link}"
+    editing_review_for_html: "Editerad recension för %{product_name}"
     error_approve_review: "Problem med att godkänna recension"
     error_no_product: "Den betygsatta produkten finns inte längre"
     feedback: Återkoppling
