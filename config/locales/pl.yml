@@ -37,7 +37,7 @@ pl:
       few: "na podstawie %{count} opinii"
       other: "na podstawie %{count} opinii"
     by: "przez"
-    editing_review_for_html: 'Edycja opinii dla %{link}'
+    editing_review_for_html: 'Edycja opinii dla %{product_name}'
     error_approve_review: Błąd przy zatwierdzaniu opinii
     error_no_product: Oceniamy produkt nie istnieje
     feedback: Komentarz

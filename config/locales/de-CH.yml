@@ -36,7 +36,7 @@ de-CH:
       one: basiert auf einer Rezension
       other: "basiert auf %{count} Rezensionen"
     by: Von
-    editing_review_for_html: 'Rezension über %{link} bearbeiten'
+    editing_review_for_html: 'Rezension über %{product_name} bearbeiten'
     error_approve_review: Fehler bei der Freischaltung
     error_no_product: Das rezensierte Produkt existiert nicht mehr.
     feedback: Feedback

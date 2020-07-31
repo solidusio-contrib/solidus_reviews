@@ -35,7 +35,7 @@ es:
       one: "basado en una valoración"
       other: "basado en %{count} valoraciones"
     by: por
-    editing_review_for_html: 'Editando la valoración para %{link}'
+    editing_review_for_html: 'Editando la valoración para %{product_name}'
     error_approve_review: "Error aprobando la valoración"
     error_no_product: "El producto valorado ya no existe"
     feedback: Feedback

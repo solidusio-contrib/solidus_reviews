@@ -33,7 +33,7 @@ zh-TW:
       one: 以評論為基礎
       other: '以 %{count} 個評論為基礎'
     by: 由
-    editing_review_for_html: '正在修改 %{link} 的評論'
+    editing_review_for_html: '正在修改 %{product_name} 的評論'
     error_approve_review: 出錯了，不能核準評論
     error_no_product: 被評論的產品不存在了。
     feedback: 回饋

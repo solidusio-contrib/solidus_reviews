@@ -35,7 +35,7 @@ fr:
       one: basé sur un commentaire
       other: "basé sur %{count} commentaires"
     by: par
-    editing_review_for_html: 'Modification du commentaire pour %{link}'
+    editing_review_for_html: 'Modification du commentaire pour %{product_name}'
     error_approve_review: Erreur en approuvant le commentaire
     error_no_product: Le produit commenté n'existe plus
     feedback: Réaction

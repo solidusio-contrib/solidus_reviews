@@ -39,7 +39,7 @@ ro:
       other: "bazată pe %{count} recenzii"
       many: "bazată pe %{count} de recenzii"
     by: de
-    editing_review_for_html: 'Editare recenzie pentru %{link}'
+    editing_review_for_html: 'Editare recenzie pentru %{product_name}'
     error_approve_review: Eroare la aprobarea recenziei
     error_no_product: Produsul recenziat nu mai există
     feedback: Feedback

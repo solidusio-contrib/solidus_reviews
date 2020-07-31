@@ -35,7 +35,7 @@ pt:
       one: baseada numa avaliação
       other: "baseada em %{count} avaliações"
     by: por
-    editing_review_for_html: 'Editando a avaliação para %{link}'
+    editing_review_for_html: 'Editando a avaliação para %{product_name}'
     error_approve_review: Erro aprovando a avaliação
     error_no_product: O produto avaliado já não existe
     feedback: Feedback
