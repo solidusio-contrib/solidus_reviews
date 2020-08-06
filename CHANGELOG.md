@@ -1,11 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/solidusio-contrib/solidus_reviews/tree/HEAD)
+## [v1.4.0](https://github.com/solidusio-contrib/solidus_reviews/tree/v1.4.0) (2020-08-06)
 
-[Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.3.0...HEAD)
+[Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.3.0...v1.4.0)
 
 **Closed issues:**
 
+- Cannot select star rating when creating or editing a review [\#88](https://github.com/solidusio-contrib/solidus_reviews/issues/88)
 - uninitialized constant SolidusReviews::Spree::Admin \(NameError\) [\#77](https://github.com/solidusio-contrib/solidus_reviews/issues/77)
 - Dependabot can't resolve your Ruby dependency files [\#75](https://github.com/solidusio-contrib/solidus_reviews/issues/75)
 - Dependabot can't resolve your Ruby dependency files [\#74](https://github.com/solidusio-contrib/solidus_reviews/issues/74)
@@ -17,8 +18,13 @@
 
 **Merged pull requests:**
 
+- Replace deprected ` SolidusSupport::EngineExtensions::Decorators` with ` SolidusSupport::EngineExtensions` [\#93](https://github.com/solidusio-contrib/solidus_reviews/pull/93) ([marcrohloff](https://github.com/marcrohloff))
+- Allow solidus\_support 0.4 [\#92](https://github.com/solidusio-contrib/solidus_reviews/pull/92) ([mamhoff](https://github.com/mamhoff))
+- Fixes review title [\#91](https://github.com/solidusio-contrib/solidus_reviews/pull/91) ([memotoro](https://github.com/memotoro))
+- remove extraneous .css file [\#90](https://github.com/solidusio-contrib/solidus_reviews/pull/90) ([dhughesbc](https://github.com/dhughesbc))
 - Relax solidus\_support dependency [\#86](https://github.com/solidusio-contrib/solidus_reviews/pull/86) ([kennyadsl](https://github.com/kennyadsl))
 - Adds PermissionSets classes and checks for Reviews [\#85](https://github.com/solidusio-contrib/solidus_reviews/pull/85) ([memotoro](https://github.com/memotoro))
+- Adds controls for image uploads [\#83](https://github.com/solidusio-contrib/solidus_reviews/pull/83) ([memotoro](https://github.com/memotoro))
 - Add option to auto approve star only reviews [\#82](https://github.com/solidusio-contrib/solidus_reviews/pull/82) ([KaemonIsland](https://github.com/KaemonIsland))
 - Add touch to feedback review model [\#81](https://github.com/solidusio-contrib/solidus_reviews/pull/81) ([KaemonIsland](https://github.com/KaemonIsland))
 - Add feedback reviews to api [\#79](https://github.com/solidusio-contrib/solidus_reviews/pull/79) ([KaemonIsland](https://github.com/KaemonIsland))
