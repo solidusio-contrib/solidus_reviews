@@ -4,7 +4,7 @@ require 'spree/core'
 
 module SolidusReviews
   class Engine < Rails::Engine
-    include SolidusSupport::EngineExtensions
+    include SolidusSupport::EngineExtensions::Decorators
 
     isolate_namespace Spree
 
