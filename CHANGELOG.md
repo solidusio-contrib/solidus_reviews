@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.4.1](https://github.com/solidusio-contrib/solidus_reviews/tree/v1.4.1) (2020-08-10)
+
+[Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.4.0...v1.4.1)
+
+**Merged pull requests:**
+
+- Revert "Replace deprected ` SolidusSupport::EngineExtensions::Decorat [\#94](https://github.com/solidusio-contrib/solidus_reviews/pull/94) ([tvdeyen](https://github.com/tvdeyen))
+
 ## [v1.4.0](https://github.com/solidusio-contrib/solidus_reviews/tree/v1.4.0) (2020-08-06)
 
 [Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.3.0...v1.4.0)
