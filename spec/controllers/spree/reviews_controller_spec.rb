@@ -69,7 +69,6 @@ describe Spree::ReviewsController, type: :controller do
   end
 
   describe '#edit' do
-
     context 'for a product that does not exist' do
       it 'responds with a 404' do
         expect {
@@ -96,8 +95,8 @@ describe Spree::ReviewsController, type: :controller do
     it 'doesn\'t allow another user to update a users review' do
       other_user = create(:user)
       allow(controller).to receive(:spree_current_user).and_return(other_user)
-      get :edit, params: {id: review.id, product_id: product.slug }
-      expect(response).to_not render_template(:edit)
+      get :edit, params: { id: review.id, product_id: product.slug }
+      expect(response).not_to render_template(:edit)
       expect(flash[:error]).to eq "Authorization Failure"
     end
   end
@@ -198,9 +197,11 @@ describe Spree::ReviewsController, type: :controller do
   describe '#update' do
     before {
       allow(controller).to receive(:spree_current_user).and_return(user)
-      @review_params = { product_id: product.slug,
+      @review_params = {
+        product_id: product.slug,
         id: review.id,
-        review: { title: 'Amazing Product' } }
+        review: { title: 'Amazing Product' }
+      }
     }
 
     context 'for a product that does not exist' do
@@ -213,7 +214,7 @@ describe Spree::ReviewsController, type: :controller do
 
     it 'updates a review' do
       post :update, params: @review_params
-      
+
       expect(assigns[:review].title).to eq 'Amazing Product'
       expect(assigns[:review].product).to eq product
       expect(assigns[:review].user).to eq user
@@ -238,7 +239,8 @@ describe Spree::ReviewsController, type: :controller do
         review: {
           images: [
             fixture_file_upload(File.new(Spree::Core::Engine.root + 'spec/fixtures/thinking-cat.jpg')),
-          ] }
+          ]
+        }
       }
       expect(assigns[:review].images.count).to eq 1
     end
@@ -288,7 +290,7 @@ describe Spree::ReviewsController, type: :controller do
         @review_params[:review][:rating] = 'not_a_number'
         @review_params[:review][:title] = true
         post :update, params: @review_params
-        
+
         review.reload
         expect(review.rating).to eq original_rating
         expect(review.title).to eq original_title
