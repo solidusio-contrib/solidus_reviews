@@ -40,7 +40,7 @@ describe Spree::Review do
       end
 
       (1..5).each do |i|
-        it 'validates when the rating is #{i}' do
+        it "validates when the rating is #{i}" do
           expect(build(:review, rating: i)).to be_valid
         end
       end
