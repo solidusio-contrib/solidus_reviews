@@ -26,11 +26,14 @@ Naming/MethodParameterName:
   Exclude:
     - 'app/helpers/spree/reviews_helper.rb'
 
-# Offense count: 2
+# Offense count: 17
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: snake_case, normalcase, non_integer
 Naming/VariableNumber:
   Exclude:
+    - 'spec/controllers/spree/admin/feedback_reviews_controller_spec.rb'
+    - 'spec/models/feedback_review_spec.rb'
+    - 'spec/models/product_spec.rb'
     - 'spec/models/review_spec.rb'
 
 # Offense count: 3
@@ -104,6 +107,12 @@ RSpec/NamedSubject:
 RSpec/NestedGroups:
   Max: 4
 
+# Offense count: 3
+RSpec/StubbedMock:
+  Exclude:
+    - 'spec/controllers/spree/admin/reviews_controller_spec.rb'
+    - 'spec/controllers/spree/reviews_controller_spec.rb'
+
 # Offense count: 1
 RSpec/UnspecifiedException:
   Exclude:
@@ -174,6 +183,11 @@ Style/GuardClause:
     - 'app/controllers/spree/admin/reviews_controller.rb'
     - 'lib/controllers/spree/api/feedback_reviews_controller.rb'
     - 'lib/controllers/spree/api/reviews_controller.rb'
+
+# Offense count: 1
+Style/OptionalBooleanParameter:
+  Exclude:
+    - 'app/helpers/spree/reviews_helper.rb'
 
 # Offense count: 10
 # Cop supports --auto-correct.
