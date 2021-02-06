@@ -58,7 +58,7 @@ describe Spree::FeedbackReviewsController do
 
       expect {
         post :create, params: valid_attributes
-      }.to raise_error
+      }.to raise_error(RuntimeError)
     end
 
     it 'removes all non-numbers from ratings parameter' do

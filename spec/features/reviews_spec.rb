@@ -98,7 +98,7 @@ describe 'Reviews', js: true do
           fill_in 'review_name', with: user.email
           fill_in 'review_title', with: 'Great product!'
           fill_in 'review_review', with: 'Some big review text..'
-          attach_file 'review_images', Spree::Core::Engine.root + 'spec/fixtures/thinking-cat.jpg'
+          attach_file 'review_images', 'spec/fixtures/thinking-cat.jpg'
           click_on 'Submit your review'
         end
 
