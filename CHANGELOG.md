@@ -1,5 +1,28 @@
 # Changelog
 
+## [v1.5.0](https://github.com/solidusio-contrib/solidus_reviews/tree/v1.5.0) (2021-09-20)
+
+[Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.4.1...v1.5.0)
+
+**Closed issues:**
+
+- Dependabot can't resolve your Ruby dependency files [\#105](https://github.com/solidusio-contrib/solidus_reviews/issues/105)
+- Prepare Solidus Reviews for Solidus 3.0 [\#101](https://github.com/solidusio-contrib/solidus_reviews/issues/101)
+- Installing fresh solidus and solidus\_reviews, rails g solidus\_reviews:install fails [\#100](https://github.com/solidusio-contrib/solidus_reviews/issues/100)
+- Dependabot can't resolve your Ruby dependency files [\#97](https://github.com/solidusio-contrib/solidus_reviews/issues/97)
+- Dependabot can't resolve your Ruby dependency files [\#96](https://github.com/solidusio-contrib/solidus_reviews/issues/96)
+
+**Merged pull requests:**
+
+- bump to support ruby 3 and solidus 3 [\#103](https://github.com/solidusio-contrib/solidus_reviews/pull/103) ([peterberkenbosch](https://github.com/peterberkenbosch))
+- Fix specs to allow support for solidus 3 [\#102](https://github.com/solidusio-contrib/solidus_reviews/pull/102) ([seriousammy](https://github.com/seriousammy))
+- Update gem to latest solidus\_dev\_support [\#99](https://github.com/solidusio-contrib/solidus_reviews/pull/99) ([nirebu](https://github.com/nirebu))
+- Make reviews:config like the config in solidus-frontend [\#98](https://github.com/solidusio-contrib/solidus_reviews/pull/98) ([marcrohloff](https://github.com/marcrohloff))
+
+## [v1.4.1](https://github.com/solidusio-contrib/solidus_reviews/tree/v1.4.1) (2020-08-10)
+
+[Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.4.0...v1.4.1)
+
 ## [v1.4.0](https://github.com/solidusio-contrib/solidus_reviews/tree/v1.4.0) (2020-08-06)
 
 [Full Changelog](https://github.com/solidusio-contrib/solidus_reviews/compare/v1.3.0...v1.4.0)
