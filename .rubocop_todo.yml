@@ -162,7 +162,6 @@ Style/ClassAndModuleChildren:
     - 'app/models/spree/feedback_review.rb'
     - 'app/models/spree/review.rb'
     - 'app/models/spree/reviews_ability.rb'
-    - 'app/models/spree/reviews_configuration.rb'
 
 # Offense count: 2
 Style/ClassVars:

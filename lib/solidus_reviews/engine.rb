@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'spree/core'
+require 'solidus_reviews/config'
 
 module SolidusReviews
   class Engine < Rails::Engine
@@ -21,6 +22,12 @@ module SolidusReviews
 
     if SolidusSupport.api_available?
       paths["app/controllers"] << "lib/controllers"
+    end
+
+    initializer "spree.reviews.environment", before: :load_config_initializers do; end
+
+    config.after_initialize do
+      ::Spree::Reviews::Config.check_load_defaults_called('Spree::Reviews::Config')
     end
   end
 end
