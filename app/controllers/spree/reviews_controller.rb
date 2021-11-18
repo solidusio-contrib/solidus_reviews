@@ -36,11 +36,19 @@ class Spree::ReviewsController < Spree::StoreController
     end
 
     authorize! :create, @review
-    if @review.save
-      flash[:notice] = I18n.t('spree.review_successfully_submitted')
-      redirect_to spree.product_path(@product)
-    else
-      render :new
+
+    respond_to do |format|
+      if @review.save
+        format.html {
+          redirect_to spree.product_path(@product), notice: I18n.t('spree.review_successfully_submitted')
+        }
+        format.js
+        format.json { render json: @review, status: :created, location: @review }
+      else
+        format.html { render action: "new" }
+        format.js
+        format.json { render json: @review.errors, status: :unprocessable_entity }
+      end
     end
   end
 
