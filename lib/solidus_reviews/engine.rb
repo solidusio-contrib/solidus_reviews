@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'spree/core'
+require 'solidus_reviews/config'
 
 module SolidusReviews
   class Engine < Rails::Engine
