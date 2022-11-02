@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-module Spree
-  module Reviews
-    Config = Spree::ReviewsConfiguration.new
+Rails.application.reloader.to_prepare do
+  module Spree
+    module Reviews
+      Config = Spree::ReviewsConfiguration.new
+    end
   end
 end
