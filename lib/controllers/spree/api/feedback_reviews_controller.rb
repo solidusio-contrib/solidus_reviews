@@ -84,7 +84,7 @@ module Spree
       # Converts rating strings like "5 units" to "5"
       # Operates on params
       def sanitize_rating
-        params[:rating].to_s.sub!(/\s*[^0-9]*\z/, '') unless params[:feedback_review] && params[:feedback_review][:rating].blank?
+        params[:rating].to_s.dup.sub!(/\s*[^0-9]*\z/, '') unless params[:feedback_review] && params[:feedback_review][:rating].blank?
       end
     end
   end

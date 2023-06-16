@@ -4,4 +4,5 @@ require:
   - solidus_dev_support/rubocop
 
 AllCops:
+  TargetRubyVersion: 3.0
   NewCops: disable
