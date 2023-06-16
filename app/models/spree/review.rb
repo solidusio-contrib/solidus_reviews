@@ -5,7 +5,7 @@ class Spree::Review < ApplicationRecord
   belongs_to :user, class_name: Spree.user_class.to_s, optional: true
   has_many   :feedback_reviews, dependent: :destroy
   has_many   :images, -> { order(:position) }, as: :viewable,
-                                               dependent: :destroy, class_name: "Spree::Image"
+    dependent: :destroy, class_name: "Spree::Image"
 
   before_save :verify_purchaser
   before_save :approve_review, unless: :approved?
