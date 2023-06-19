@@ -32,7 +32,7 @@ class Spree::ReviewsController < Spree::StoreController
     @review.locale = I18n.locale.to_s if Spree::Reviews::Config[:track_locale]
     # Handle images
     params[:review][:images]&.each do |image|
-      @review.images.new(attachment: image)
+      @review.images.new(attachment: image) if image.present?
     end
 
     authorize! :create, @review
@@ -51,7 +51,7 @@ class Spree::ReviewsController < Spree::StoreController
 
     # Handle images
     params[:review][:images]&.each do |image|
-      @review.images.new(attachment: image)
+      @review.images.new(attachment: image) if image.present?
     end
 
     authorize! :update, @review
