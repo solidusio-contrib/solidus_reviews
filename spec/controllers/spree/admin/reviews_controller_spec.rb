@@ -15,10 +15,7 @@ describe Spree::Admin::ReviewsController do
 
   describe '#index' do
     it 'list reviews' do
-      reviews = [
-        create(:review, product: product),
-        create(:review, product: product)
-      ]
+      reviews = create_list(:review, 2, product: product)
       get :index, params: { product_id: product.slug }
       expect(assigns[:reviews]).to match_array reviews
     end

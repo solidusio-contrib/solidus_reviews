@@ -16,7 +16,7 @@ describe Spree::Admin::ReviewSettingsController do
       expect(response).to redirect_to spree.edit_admin_review_settings_path
     end
 
-    context 'For parameters:
+    context 'with parameters:
             preview_size: 4,
             show_email: false,
             feedback_rating: false,

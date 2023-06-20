@@ -1,29 +1,23 @@
 #!/usr/bin/env bash
 
 set -e
+test -z "${DEBUG+empty_string}" || set -x
 
-case "$DB" in
-postgres|postgresql)
-  RAILSDB="postgresql"
-  ;;
-mysql)
-  RAILSDB="mysql"
-  ;;
-sqlite|'')
-  RAILSDB="sqlite3"
-  ;;
-*)
-  echo "Invalid DB specified: $DB"
-  exit 1
-  ;;
-esac
+test "$DB" = "sqlite" && export DB="sqlite3"
 
-if [ ! -z $SOLIDUS_BRANCH ]
+if [ -z "$SOLIDUS_BRANCH" ]
 then
-  BRANCH=$SOLIDUS_BRANCH
-else
-  BRANCH="master"
+  echo "~~> Use 'export SOLIDUS_BRANCH=[main|v3.2|...]' to control the Solidus branch"
+  SOLIDUS_BRANCH="main"
 fi
+echo "~~> Using branch $SOLIDUS_BRANCH of solidus"
+
+if [ -z "$SOLIDUS_FRONTEND" ]
+then
+  echo "~~> Use 'export SOLIDUS_FRONTEND=[solidus_frontend|solidus_starter_frontend]' to control the Solidus frontend"
+  SOLIDUS_FRONTEND="solidus_frontend"
+fi
+echo "~~> Using branch $SOLIDUS_FRONTEND as the solidus frontend"
 
 extension_name="solidus_reviews"
 
@@ -33,7 +27,8 @@ function unbundled {
 }
 
 rm -rf ./sandbox
-unbundled bundle exec rails new sandbox --database="$RAILSDB" \
+unbundled bundle exec rails new sandbox \
+  --database="${DB:-sqlite3}" \
   --skip-bundle \
   --skip-git \
   --skip-keeps \
@@ -49,8 +44,7 @@ fi
 
 cd ./sandbox
 cat <<RUBY >> Gemfile
-gem 'solidus', github: 'solidusio/solidus', branch: '$BRANCH'
-gem 'solidus_auth_devise', '>= 2.1.0'
+gem 'solidus', github: 'solidusio/solidus', branch: '$SOLIDUS_BRANCH'
 gem 'rails-i18n'
 gem 'solidus_i18n'
 
@@ -67,20 +61,18 @@ unbundled bundle install --gemfile Gemfile
 
 unbundled bundle exec rake db:drop db:create
 
-unbundled bundle exec rails generate spree:install \
+unbundled bundle exec rails generate solidus:install \
   --auto-accept \
   --user_class=Spree::User \
   --enforce_available_locales=true \
-  --with-authentication=false \
-  --payment-method=none
+  --with-authentication=true \
+  --payment-method=none \
+  --frontend=${SOLIDUS_FRONTEND} \
   $@
 
-unbundled bundle exec rails generate solidus:auth:install
-unbundled bundle exec rails generate ${extension_name}:install
+unbundled bundle exec rails generate solidus:auth:install --auto-run-migrations
+unbundled bundle exec rails generate ${extension_name}:install --auto-run-migrations
 
 echo
 echo "🚀 Sandbox app successfully created for $extension_name!"
-echo "🚀 Using $RAILSDB and Solidus $BRANCH"
-echo "🚀 Use 'export DB=[postgres|mysql|sqlite]' to control the DB adapter"
-echo "🚀 Use 'export SOLIDUS_BRANCH=<BRANCH-NAME>' to control the Solidus version"
-echo "🚀 This app is intended for test purposes."
+echo "🧪 This app is intended for test purposes."

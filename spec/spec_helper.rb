@@ -3,6 +3,9 @@
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
 
+require 'rails-controller-testing'
+Rails::Controller::Testing.install
+
 # Run Coverage report
 require 'solidus_dev_support/rspec/coverage'
 
@@ -18,8 +21,9 @@ require 'solidus_dev_support/rspec/feature_helper'
 # in spec/support/ and its subdirectories.
 Dir["#{__dir__}/support/**/*.rb"].sort.each { |f| require f }
 
-# Requires factories defined in lib/solidus_reviews/factories.rb
-require 'solidus_reviews/factories'
+# Requires factories defined in Solidus core and this extension.
+# See: lib/solidus_reviews/testing_support/factories.rb
+SolidusDevSupport::TestingSupport::Factories.load_for(SolidusReviews::Engine)
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
