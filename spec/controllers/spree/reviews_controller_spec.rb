@@ -33,10 +33,7 @@ describe Spree::ReviewsController, type: :controller do
 
     context 'for a valid product' do
       it 'list approved reviews' do
-        approved_reviews = [
-          create(:review, :approved, product: product),
-          create(:review, :approved, product: product)
-        ]
+        approved_reviews = create_list(:review, 2, :approved, product: product)
         get :index, params: { product_id: product.slug }
         expect(assigns[:approved_reviews]).to match_array approved_reviews
       end

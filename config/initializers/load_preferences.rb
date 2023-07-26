@@ -2,6 +2,9 @@
 
 module Spree
   module Reviews
-    Config = Spree::ReviewsConfiguration.new
   end
+end
+
+Rails.application.reloader.to_prepare do
+  Spree::Reviews.const_set(:Config, Spree::ReviewsConfiguration.new)
 end
