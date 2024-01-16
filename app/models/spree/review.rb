@@ -27,6 +27,23 @@ class Spree::Review < ApplicationRecord
   scope :not_approved, -> { where(approved: false) }
   scope :default_approval_filter, -> { Spree::Reviews::Config[:include_unapproved_reviews] ? all : approved }
 
+  def self.ransackable_attributes(auth_object = nil)
+    [
+      "approved",
+      "name",
+      "review",
+      "title"
+    ]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    [
+      "feedback_reviews",
+      "product",
+      "user"
+    ]
+  end
+
   def feedback_stars
     return 0 if feedback_reviews.size <= 0
 
