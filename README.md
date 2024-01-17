@@ -30,6 +30,14 @@ You can think of these as meta-reviews (e.g. the classic "Was this useful?" moda
 
 You can approve, edit and delete reviews and feedback reviews from the backend.
 
+## Adding reviews to your frontend
+
+Add the following line to your PDP:
+
+```erb
+<%= render "spree/shared/reviews", product: product %>
+```
+
 ## Development
 
 ### Testing the extension
