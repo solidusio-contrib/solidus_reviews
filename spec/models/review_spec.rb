@@ -123,6 +123,18 @@ describe Spree::Review do
     end
   end
 
+  describe '.ransackable_attributes' do
+    subject { described_class.ransackable_attributes }
+
+    it { is_expected.to contain_exactly("approved", "name", "review", "title") }
+  end
+
+  describe '.ransackable_associations' do
+    subject { described_class.ransackable_associations }
+
+    it { is_expected.to contain_exactly("feedback_reviews", "product", "user") }
+  end
+
   describe '#recalculate_product_rating' do
     let(:product) { create(:product) }
     let!(:review) { create(:review, product: product) }
