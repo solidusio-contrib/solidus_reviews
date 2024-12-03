@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require 'spree/testing_support/authorization_helpers'
 
 describe 'Reviews', js: true do
   let!(:someone) { create(:user, email: 'ryan@spree.com') }
@@ -125,12 +126,11 @@ describe 'Reviews', js: true do
   private
 
   def sign_in_as!(user)
-    visit spree.login_path
-    within '#new_spree_user' do
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-    end
-    click_button 'Login'
+    # rubocop:disable RSpec/AnyInstance
+    allow_any_instance_of(ApplicationController).to receive_messages current_user: user
+    allow_any_instance_of(ApplicationController).to receive_messages spree_current_user: user
+    allow_any_instance_of(ApplicationController).to receive_messages spree_user_signed_in?: true
+    # rubocop:enable RSpec/AnyInstance
   end
 
   def click_star(num)
