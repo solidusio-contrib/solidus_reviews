@@ -20,10 +20,6 @@ zh-CN:
           attributes:
             rating:
               you_must_enter_value_for_rating: "您必需输入评级"
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "您必需输入评级"
   spree:
     approve: 核准
     approved_reviews: 核准
@@ -36,8 +32,6 @@ zh-CN:
     editing_review_for_html: '正在修改 %{product_name} 的评论'
     error_approve_review: 出错了，不能核准评论
     error_no_product: 被评论的产品不存在了。
-    feedback: 回馈
-    feedback_review_for: "评论： '%{review}'"
     for: 給
     from: 由
     info_approve_review: 已核准评论
@@ -52,7 +46,6 @@ zh-CN:
         review_management: 评论
     review_successfully_submitted: 已成功递交评论。
     spree_reviews:
-      feedback_rating: 评级回馈
       display_unapproved: 在列表中显示未经批准的评论
       include_unapproved: 包括未核准评论在列表中
       manage_review_settings: 控制评论的显示

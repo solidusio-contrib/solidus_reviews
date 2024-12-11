@@ -20,10 +20,6 @@ pt-BR:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Você tem que preencher um valor para avaliar."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Você tem que preencher um valor para avaliar."
   spree:
     approval_status: 'Estado de aprovação'
     approve: 'Aprovar'
@@ -38,8 +34,6 @@ pt-BR:
     editing_review_for_html: 'Editando avaliação para %{product_name}'
     error_approve_review: 'Erro aprovando avaliação'
     error_no_product: "O produto avaliado não existe mais"
-    feedback: 'Parecer'
-    feedback_review_for: "Avaliação: '%{review}'"
     for: 'para'
     from: 'de'
     info_approve_review: 'Avaliação aprovada'
@@ -54,7 +48,6 @@ pt-BR:
         review_management: 'Avaliações'
     review_successfully_submitted: 'Avaliação enviada com sucesso'
     spree_reviews:
-      feedback_rating: 'Classifique um parecer'
       display_unapproved: 'Exibir avaliações não aprovadas nas listagens'
       include_unapproved: 'Incluir avaliações não aprovadas na listagem'
       manage_review_settings: 'Controlar aparições das avaliações'

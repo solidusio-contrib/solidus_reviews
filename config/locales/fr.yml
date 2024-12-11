@@ -20,10 +20,6 @@ fr:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Vous devez entrer une valeur pour noter."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Vous devez entrer une valeur pour noter."
   spree:
     approval_status: Statut de l'approbation
     approve: Approuver
@@ -38,8 +34,6 @@ fr:
     editing_review_for_html: 'Modification du commentaire pour %{product_name}'
     error_approve_review: Erreur en approuvant le commentaire
     error_no_product: Le produit commenté n'existe plus
-    feedback: Réaction
-    feedback_review_for: "Commentaire: '%{review}'"
     for: pour
     from: de la part de
     info_approve_review: Commentaire approuvé
@@ -54,7 +48,6 @@ fr:
         review_management: Commentaires
     review_successfully_submitted: Votre commentaire a été envoyé avec succès
     spree_reviews:
-      feedback_rating: Note de réaction
       display_unapproved: Afficher les commentaires non approuvés dans les listes
       include_unapproved: Afficher les commentaires non modérés
       manage_review_settings: Contrôler l'affichage des commentaires

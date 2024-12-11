@@ -20,10 +20,6 @@ sv:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Du måste ange ett värde för betyg."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Du måste ange ett värde för betyg."
   spree:
     anonymous: Anonym
     approval_status: Status för godkännande
@@ -38,8 +34,6 @@ sv:
     editing_review_for_html: "Editerad recension för %{product_name}"
     error_approve_review: "Problem med att godkänna recension"
     error_no_product: "Den betygsatta produkten finns inte längre"
-    feedback: Återkoppling
-    feedback_review_for: "Recension: '%{review}'"
     for: för
     from: från
     info_approve_review: "Recensionen godkänd"
@@ -54,7 +48,6 @@ sv:
     review_successfully_submitted: "Recension har skapats"
     reviews: Recensioner
     spree_reviews:
-      feedback_rating: Betygsåterkoppling
       display_unapproved: "Visa ej godkända recensioner i listor"
       include_unapproved: "Inkludera inte godkända recensioner i listan"
       manage_review_settings: "Kontrollera visningen av recensionerna"

@@ -1,0 +1,43 @@
+<%= form_for review, url: product_reviews_path(product), remote: true, html: { method: :post, multipart: true } do |f| %>
+
+  <%= render "reviews/error_messages", target: review %>
+
+  <div class="mt-4">
+    <%= f.label :rating, class: "text-xl mb-4" %> <span class="required text-red-500">*</span><br />
+    <%= render "reviews/stars", stars: review.rating, edit_enabled: true %>
+  </div>
+
+  <div class="text-input">
+    <%= f.label :name, class: "text-xl mb-4" %><br />
+    <%= f.text_field :name, maxlength: "255", size: "50"%>
+  </div>
+
+  <div class="text-input">
+    <%= f.label :title, class: "text-xl mb-4" %><br />
+    <%= f.text_field :title, maxlength: "255", size: "50"%>
+  </div>
+
+  <div class="textarea-input">
+    <%= f.label :review, class: "text-xl mb-4" %><br />
+    <%= f.text_area :review, wrap: "virtual", rows: "10", cols: "50" %>
+  </div>
+
+  <% if Spree::Reviews::Config[:allow_image_upload] %>
+    <div class="text-input">
+      <%= f.label :images, class: "text-xl mb-4" %><br>
+      <%= f.file_field :images, accept: "image/*", multiple: true %>
+    </div>
+  <% end %>
+
+  <% if Spree::Reviews::Config[:render_show_identifier_checkbox] %>
+    <div class="text-input">
+      <%= f.label :show_identifier, class: "text-xl mb-4" %><br />
+      <%= f.check_box :show_identifier, wrap: "virtual", rows: "10", cols: "50", checked: true %>
+    </div>
+  <% end %>
+
+  <div class="mt-12 text-center mb-4">
+    <%= f.submit I18n.t("spree.submit_your_review"), class: "w-fit py-3 px-7 rounded-full text-body-sm font-sans-md tracking-wider leading-none uppercase whitespace-nowrap transition-colors duration-200 bg-red-500 text-white hover:bg-red-700" %>
+  </div>
+
+<% end %>

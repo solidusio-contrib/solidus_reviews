@@ -28,12 +28,6 @@
     </div>
     <div class="field">
       <label>
-        <%= check_box_tag('preferences[feedback_rating]', "1", Spree::Reviews::Config[:feedback_rating]) %>
-        <%= I18n.t("spree.spree_reviews.feedback_rating") %>
-      </label>
-    </div>
-    <div class="field">
-      <label>
         <%= check_box_tag('preferences[show_email]', "1", Spree::Reviews::Config[:show_email]) %>
         <%= I18n.t("spree.spree_reviews.show_email") %>
       </label>

@@ -2,7 +2,7 @@
 
 class Spree::ReviewsConfiguration < Spree::Preferences::Configuration
   def self.boolean_preferences
-    %w(display_unapproved_reviews include_unapproved_reviews feedback_rating show_email require_login track_locale allow_image_upload)
+    %w(display_unapproved_reviews include_unapproved_reviews show_email require_login track_locale allow_image_upload)
   end
 
   # include non-approved reviews in (public) listings
@@ -19,9 +19,6 @@ class Spree::ReviewsConfiguration < Spree::Preferences::Configuration
 
   # show if a reviewer actually purchased the product
   preference :show_verified_purchaser, :boolean, default: false
-
-  # show helpfullness rating form elements
-  preference :feedback_rating, :boolean, default: false
 
   # require login to post reviews
   preference :require_login, :boolean, default: true

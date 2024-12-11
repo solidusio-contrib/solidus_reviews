@@ -20,10 +20,6 @@ pt:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Tem de incluir uma pontuação."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Tem de incluir uma pontuação."
   spree:
     approval_status: Estado de aprovação
     approve: Aprovar
@@ -38,8 +34,6 @@ pt:
     editing_review_for_html: 'Editando a avaliação para %{product_name}'
     error_approve_review: Erro aprovando a avaliação
     error_no_product: O produto avaliado já não existe
-    feedback: Feedback
-    feedback_review_for: "Avaliação: '%{review}'"
     for: para
     from: de
     info_approve_review: Avaliação aprovada
@@ -55,7 +49,6 @@ pt:
     review_successfully_submitted: A avaliação foi enviada com sucesso
     submission_guidelines: Diretrizes para enviar boas avaliações
     spree_reviews:
-      feedback_rating: Pontuação de feedback
       display_unapproved: Exibir avaliações não aprovadas nas listagens
       include_unapproved: Incluir avaliaçoes não-aprovadas nas lista
       manage_review_settings: Gerir a publicação de avaliações

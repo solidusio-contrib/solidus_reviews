@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Ensure the dummy app is properly set up
+bin/rails-dummy-app
+bin/rails-dummy-app generate solidus_reviews:install --force  --auto-run-migrations --specs=all
+
+
+cd dummy-app/
+rspec "$@"
+exit_status=$?
+cd -
+exit $exit_status
