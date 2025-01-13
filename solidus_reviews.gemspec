@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'deface', ['>= 1.9.0', '< 2.0']
+  spec.add_dependency 'flickwerk', "~> 0.3.1"
   spec.add_dependency 'solidus_core', ['>= 2.0.0', '< 5']
   spec.add_dependency 'solidus_support', '~> 0.8'
 
