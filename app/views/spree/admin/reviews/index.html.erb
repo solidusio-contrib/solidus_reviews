@@ -70,9 +70,10 @@
     <thead>
       <tr>
         <th><%= I18n.t("spree.product") %></th>
-        <th><%= "#{Spree::Review.human_attribute_name(:rating)}/#{I18n.t("spree.feedback")}" %></th>
         <th><%= I18n.t("spree.verified_purchaser") %></th>
         <th><%= Spree::Review.human_attribute_name(:user) %></th>
+        <th> <%= I18n.t("spree.upvote_counts") %></th>
+        <th> <%= I18n.t("spree.downvote_counts") %></th>
         <th><%= Spree::Review.human_attribute_name(:created_at) %></th>
         <th><%= Spree::Review.human_attribute_name(:images) %></th>
         <th class="actions"></th>
@@ -83,12 +84,8 @@
         <tr id="<%= dom_id review %>">
           <td>
             <% if review.product %>
-              <%= link_to review.product.name, product_path(review.product) %>
+              <%= link_to review.product.name, admin_product_path(review.product) %>
             <% end %>
-            </td>
-          <td class="align-center">
-            <%= txt_stars(review.rating) %><br />
-            <%= link_to "(#{review.feedback_stars}/#{review.feedback_reviews.size})", admin_review_feedback_reviews_path(review) %>
           </td>
           <td class="align-center">
             <% if review.verified_purchaser? %>
@@ -98,6 +95,12 @@
           <td class="align-center">
             <p><%= review.user_id ? link_to(review.user.try(:email), [:admin, review.user]) : I18n.t("spree.anonymous") %></p>
             <p><%= Spree::Review.human_attribute_name(:ip_address) %>: <%= review.ip_address ? link_to(review.ip_address, "http://whois.domaintools.com/#{review.ip_address}") : '-' %></p>
+          </td>
+          <td class="align-center">
+          <p><%= review.positive_count %></p>
+          </td>
+          <td class="align-center">
+          <p><%= review.negative_count %></p>
           </td>
           <td class="align-center">
             <%= l review.created_at, format: :short %>

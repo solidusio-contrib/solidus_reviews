@@ -1,0 +1,28 @@
+<div class="flex justify-left gap-2 mb-3">
+  <div class="mt-1 flex justify-start gap-2">
+    <% stars = product.stars %>
+    <% reviews_count = product.reviews_count %>
+    <div class="ratings flex items-center">
+      <% if stars > 0 %>
+        <p class="ratings-stars flex items-center mr-2">
+          <span>
+            <%= render 'reviews/stars', stars: stars %>
+          </span>
+        </p>
+        <span class="ml-2 text-sm">
+          (<%= reviews_count %> <%= I18n.t("spree.reviews") %>)
+        </span>
+      <% else %>
+        <p class="ratings-stars flex items-center mr-2">
+          <span>
+            No reviews yet
+          </span>
+        </p>
+      <% end %>
+    </div>
+    <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+      <meta itemprop="ratingValue" content="<%= stars %>" />
+      <meta itemprop="reviewCount" content="<%= reviews_count %>" />
+    </div>
+  </div>
+</div>

@@ -10,28 +10,47 @@ orbs:
   # or goes EOL.
   solidusio_extensions: solidusio/extensions@volatile
 
-jobs:
-  run-specs-with-sqlite:
-    executor:
-      name: solidusio_extensions/sqlite
-      ruby_version: "3.2"
+commands:
+  test-with-starter-frontend:
     steps:
+      - checkout
       - browser-tools/install-chrome
-      - solidusio_extensions/run-tests
+      - run:
+          name: Install libvips
+          command: |
+            sudo apt-get update
+            sudo apt-get install -yq libvips-dev
+      - solidusio_extensions/test-branch:
+          branch: main
+          command: |
+            export FRONTEND=starter
+            sudo gem update --system
+            gem install bundler rails:'~>7.2'
+            bundle exec rake
+      - solidusio_extensions/store-test-results
+
+jobs:
   run-specs-with-postgres:
     executor:
       name: solidusio_extensions/postgres
       ruby_version: "3.2"
     steps:
-      - browser-tools/install-chrome
-      - solidusio_extensions/run-tests
+      - test-with-starter-frontend
+
   run-specs-with-mysql:
     executor:
       name: solidusio_extensions/mysql
       ruby_version: "3.2"
     steps:
-      - browser-tools/install-chrome
-      - solidusio_extensions/run-tests
+      - test-with-starter-frontend
+
+  run-specs-with-sqlite:
+    executor:
+      name: solidusio_extensions/sqlite
+      ruby_version: "3.1"
+    steps:
+      - test-with-starter-frontend
+
   lint-code:
     executor:
       name: solidusio_extensions/sqlite-memory
@@ -42,20 +61,20 @@ jobs:
 workflows:
   "Run specs on supported Solidus versions":
     jobs:
-      - run-specs-with-sqlite
       - run-specs-with-postgres
       - run-specs-with-mysql
+      - run-specs-with-sqlite
       - lint-code
 
-  "Weekly run specs against master":
+  "Weekly run specs against main":
     triggers:
       - schedule:
           cron: "0 0 * * 4" # every Thursday
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
-      - run-specs-with-sqlite
       - run-specs-with-postgres
       - run-specs-with-mysql
+      - run-specs-with-sqlite

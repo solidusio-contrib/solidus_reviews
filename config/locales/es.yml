@@ -20,10 +20,6 @@ es:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Debes incluir una puntuación."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Debes incluir una puntuación."
   spree:
     approval_status: Estado de aprobación
     approve: Aprobar
@@ -38,8 +34,6 @@ es:
     editing_review_for_html: 'Editando la valoración para %{product_name}'
     error_approve_review: "Error aprobando la valoración"
     error_no_product: "El producto valorado ya no existe"
-    feedback: Feedback
-    feedback_review_for: "Review: '%{review}'"
     for: para
     from: desde
     info_approve_review: "Valoración aprobada"
@@ -54,7 +48,6 @@ es:
         review_management: "Valoraciones"
     review_successfully_submitted: "La valoración se ha enviado correctamente"
     spree_reviews:
-      feedback_rating: "Puntuación en el feedback"
       display_unapproved: "Mostrar comentarios no aprobados en los listados"
       include_unapproved: "Incluir en los listados las valoraciones sin aprobar"
       manage_review_settings: "Gestionar la publicación de valoraciones"

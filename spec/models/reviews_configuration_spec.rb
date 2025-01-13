@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 
-describe Spree::ReviewsConfiguration do
+RSpec.describe Spree::ReviewsConfiguration do
   subject { described_class.new }
 
   before do
@@ -31,12 +31,6 @@ describe Spree::ReviewsConfiguration do
     expect(subject).to respond_to(:preferred_show_verified_purchaser)
     expect(subject).to respond_to(:preferred_show_verified_purchaser=)
     expect(subject.preferred_show_verified_purchaser).to be false
-  end
-
-  it 'has the feedback_rating preference' do
-    expect(subject).to respond_to(:preferred_feedback_rating)
-    expect(subject).to respond_to(:preferred_feedback_rating=)
-    expect(subject.preferred_feedback_rating).to be false
   end
 
   it 'has the require_login preference' do

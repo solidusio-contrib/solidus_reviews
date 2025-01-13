@@ -1,0 +1,53 @@
+<div class="col-span-full pt-12">
+  <section class="wrapper mb-12">
+    <div class="flex items-center justify-between mb-7">
+      <h3 class="font-serif text-h4 md:text-h3">Reviews</h3>
+
+      <% if !Spree::Reviews::Config[:require_login] || spree_current_user %>
+        <button
+          id="openReviewModal"
+          data-remote="<%= new_product_review_path(@product) %>"
+          class="w-fit py-3 px-7 rounded-full text-body-sm font-sans-md tracking-wider leading-none uppercase whitespace-nowrap transition-colors duration-200 bg-red-500 text-white hover:bg-red-700"
+        >
+          <%= I18n.t("spree.write_your_own_review") %>
+        </button>
+      <% end %>
+    </div>
+
+    <div class="h-full flex flex-col">
+      <section class="h-full">
+        <div class="flex items-start">
+          <div class="ml-6">
+            <% if Spree::Reviews::Config[:include_unapproved_reviews] == false && @product.reviews.approved.count == 0 %>
+              <p class="reviews-none"><%= I18n.t("spree.no_reviews_available") %></p>
+            <% else %>
+              <% for review in (Spree::Reviews::Config[:track_locale] ? @product.reviews.localized(I18n.locale) : @product.reviews).default_approval_filter.preview %>
+                <%= render 'products/shared/review', review: review %>
+
+                <% if !Spree::Reviews::Config[:require_login] || spree_current_user %>
+                  <%= render 'products/shared/thumbs', review: review, product: @product %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+</div>
+
+<div id="reviewModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-4/5 sm:w-fit">
+    <button type="button" id="closeReviewModal" class="float-right">
+      <svg class="w-6 h-6">
+        <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-close-fill"></use>
+      </svg>
+    </button>
+    <br>
+    <div id="modalContent" class="flex flex-col"></div>
+  </div>
+</div>
+
+<script>
+  setupModal("openReviewModal", "reviewModal", "closeReviewModal", "<%= new_product_review_path(@product) %>");
+</script>

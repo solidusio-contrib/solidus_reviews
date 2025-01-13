@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 
-describe Spree::Api::ReviewsController, type: :controller do
+RSpec.describe Spree::Api::ReviewsController, type: :controller do
+  routes { Spree::Core::Engine.routes }
   render_views
 
   let!(:user) { create(:user) }
-  let!(:review) { create(:review, rating: 5) }
+  let(:store) { create(:store) }
+  let!(:review) { create(:review, rating: 5, store: store) }
   let!(:product) { review.product }
 
   before do
@@ -34,12 +36,10 @@ describe Spree::Api::ReviewsController, type: :controller do
         it 'returns all approved reviews for the product' do
           review.update(approved: true)
           review.images << create(:image)
-          review.feedback_reviews << create(:feedback_review, review: review)
           expect(Spree::Review.count).to be >= 2
           expect(subject.size).to eq(2)
           expect(subject["reviews"][0]["id"]).to eq(review.id)
           expect(subject["reviews"][0]["images"].count).to eq(1)
-          expect(subject["reviews"][0]["feedback_reviews"].count).to eq(1)
           expect(subject["reviews"][0]["verified_purchaser"]).to eq(false)
           expect(subject["avg_rating"]).to eq("5.0")
         end
@@ -89,7 +89,6 @@ describe Spree::Api::ReviewsController, type: :controller do
         expect(subject["title"]).to eq(review[:title])
         expect(subject["verified_purchaser"]).to eq(false)
         expect(subject["images"]).to eq([])
-        expect(subject["feedback_reviews"]).to eq([])
       end
     end
 
@@ -109,7 +108,6 @@ describe Spree::Api::ReviewsController, type: :controller do
           expect(subject["review"]).to eq(review[:review])
           expect(subject["title"]).to eq(review[:title])
           expect(subject["images"]).to eq([])
-          expect(subject["feedback_reviews"]).to eq([])
         end
       end
     end
@@ -151,7 +149,6 @@ describe Spree::Api::ReviewsController, type: :controller do
         expect(subject["review"]).to eq(review_params[:review])
         expect(subject["title"]).to eq(review_params[:title])
         expect(subject["images"]).to eq([])
-        expect(subject["feedback_reviews"]).to eq([])
       end
     end
   end
@@ -184,7 +181,6 @@ describe Spree::Api::ReviewsController, type: :controller do
         expect(subject["product_id"]).to eq(original.product_id)
         expect(subject["approved"]).to be false
         expect(subject["images"]).to eq([])
-        expect(subject["feedback_reviews"]).to eq([])
       end
     end
 
@@ -232,6 +228,58 @@ describe Spree::Api::ReviewsController, type: :controller do
       it 'returns an error' do
         expect(subject["error"]).not_to be_empty
         expect(subject["error"]).to match(/not authorized/i)
+      end
+    end
+  end
+
+  describe 'POST #set_positive_vote' do
+    context 'when the vote update is successful' do
+      let!(:vote) { create(:review_vote, :negative, review: review, user: user) }
+
+      it 'marks the review as positive' do
+        post :set_positive_vote, params: { id: review.id, token: user.spree_api_key, format: 'json' }
+
+        expect(response).to have_http_status(:ok)
+        json_response = JSON.parse(response.body)
+        expect(json_response['message']).to eq('Review marked as positive.')
+        expect(json_response['positive_count']).to eq(review.reload.positive_count)
+        expect(vote.reload.vote_type).to eq(Spree::ReviewVote::POSITIVE)
+        expect(vote.report_reason).to be_nil
+        expect(review.reload.positive_count).to eq(1)
+      end
+    end
+  end
+
+  describe 'POST #set_negative_vote' do
+    context 'when the vote update is successful' do
+      let!(:vote) { create(:review_vote, review: review, user: user) }
+
+      it 'marks the review as negative' do
+        post :set_negative_vote, params: { id: review.id, token: user.spree_api_key, format: 'json' }
+
+        expect(response).to have_http_status(:ok)
+        json_response = JSON.parse(response.body)
+        expect(json_response['message']).to eq('Review marked as negative.')
+        expect(json_response['negative_count']).to eq(review.reload.negative_count)
+        expect(vote.reload.vote_type).to eq(Spree::ReviewVote::NEGATIVE)
+        expect(vote.report_reason).to be_nil
+        expect(review.reload.negative_count).to eq(1)
+      end
+    end
+  end
+
+  describe 'POST #flag_review' do
+    context 'when the vote update is successful' do
+      let!(:vote) { create(:review_vote, review: review, user: user) }
+
+      it 'marks the review as flagged' do
+        post :flag_review, params: { id: review.id, token: user.spree_api_key, report_reason: 'Abusive Content', format: 'json' }
+
+        expect(response).to have_http_status(:ok)
+        expect(vote.reload.vote_type).to eq(Spree::ReviewVote::REPORT)
+        expect(vote.reload.report_reason).to eq('Abusive Content')
+        expect(JSON.parse(response.body)['message']).to eq('Review marked as flagged.')
+        expect(review.reload.flag_count).to eq(1)
       end
     end
   end

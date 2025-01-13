@@ -1,7 +1,7 @@
 # Solidus Reviews
 
 [![CircleCI](https://circleci.com/gh/solidusio-contrib/solidus_reviews.svg?style=svg)](https://circleci.com/gh/solidusio-contrib/solidus_reviews)
-[![codecov](https://codecov.io/gh/solidusio-contrib/solidus_reviews/branch/master/graph/badge.svg)](https://codecov.io/gh/solidusio-contrib/solidus_reviews)
+[![codecov](https://codecov.io/gh/solidusio-contrib/solidus_reviews/branch/main/graph/badge.svg)](https://codecov.io/gh/solidusio-contrib/solidus_reviews)
 
 Straightforward review/rating functionality, updated for [Solidus](https://solidus.io).
 

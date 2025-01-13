@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-class Spree::Review < ApplicationRecord
+class Spree::Review < Spree::Base
   belongs_to :product, touch: true, optional: true
   belongs_to :user, class_name: Spree.user_class.to_s, optional: true
-  has_many   :feedback_reviews, dependent: :destroy
-  has_many   :images, -> { order(:position) }, as: :viewable,
+  belongs_to :store
+  has_many :review_votes, dependent: :destroy
+  has_many :images, -> { order(:position) }, as: :viewable,
     dependent: :destroy, class_name: "Spree::Image"
 
   before_save :verify_purchaser
@@ -22,33 +23,13 @@ class Spree::Review < ApplicationRecord
   scope :localized, ->(lc) { where('spree_reviews.locale = ?', lc) }
   scope :most_recent_first, -> { order('spree_reviews.created_at DESC') }
   scope :oldest_first, -> { reorder('spree_reviews.created_at ASC') }
-  scope :preview, -> { limit(Spree::Reviews::Config[:preview_size]).oldest_first }
+  scope :preview, -> { oldest_first.limit(Spree::Reviews::Config[:preview_size]) }
   scope :approved, -> { where(approved: true) }
   scope :not_approved, -> { where(approved: false) }
   scope :default_approval_filter, -> { Spree::Reviews::Config[:include_unapproved_reviews] ? all : approved }
 
-  def self.ransackable_attributes(*)
-    [
-      "approved",
-      "name",
-      "review",
-      "title"
-    ]
-  end
-
-  def self.ransackable_associations(*)
-    [
-      "feedback_reviews",
-      "product",
-      "user"
-    ]
-  end
-
-  def feedback_stars
-    return 0 if feedback_reviews.size <= 0
-
-    ((feedback_reviews.sum(:rating) / feedback_reviews.size) + 0.5).floor
-  end
+  self.allowed_ransackable_associations = %w[product user]
+  self.allowed_ransackable_attributes = %w[approved name review title]
 
   def recalculate_product_rating
     product.recalculate_rating if product.present?

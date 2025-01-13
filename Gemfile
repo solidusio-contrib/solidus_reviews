@@ -6,22 +6,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 branch = ENV.fetch('SOLIDUS_BRANCH', 'main')
 gem 'solidus', github: 'solidusio/solidus', branch: branch
 
-# The solidus_frontend gem has been pulled out since v3.2
-if branch >= 'v3.2'
-  gem 'solidus_frontend'
-elsif branch == 'main'
-  gem 'solidus_frontend', github: 'solidusio/solidus_frontend', branch: branch
-else
-  gem 'solidus_frontend', github: 'solidusio/solidus', branch: branch
-end
+# Needed for Rails 7.0
+gem 'concurrent-ruby', '< 1.3.5'
 
+gem 'faraday-retry', '~> 2.0'
+
+gem 'rubocop-rails-omakase'
 # Needed to help Bundler figure out how to resolve dependencies,
 # otherwise it takes forever to resolve them.
 # See https://github.com/bundler/bundler/issues/6677
 gem 'rails', '>0.a'
-
-# Provides basic authentication functionality for testing parts of your engine
-gem 'solidus_auth_devise'
 
 case ENV.fetch('DB', nil)
 when 'mysql'

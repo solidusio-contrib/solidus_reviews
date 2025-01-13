@@ -20,10 +20,6 @@ zh-TW:
           attributes:
             rating:
               you_must_enter_value_for_rating: 您必需輸入評級
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: 您必需輸入評級
   spree:
     approve: 核準
     approved_reviews: 核準
@@ -36,8 +32,6 @@ zh-TW:
     editing_review_for_html: '正在修改 %{product_name} 的評論'
     error_approve_review: 出錯了，不能核準評論
     error_no_product: 被評論的產品不存在了。
-    feedback: 回饋
-    feedback_review_for: "評論： '%{review}'"
     for: 給
     from: 由
     info_approve_review: 已核準評論
@@ -52,7 +46,6 @@ zh-TW:
         review_management: 評論
     review_successfully_submitted: 已成功遞交評論。
     spree_reviews:
-      feedback_rating: 評級回饋
       display_unapproved: 在列表中顯示未經批准的評論
       include_unapproved: 包括未核準評論在列表中
       manage_review_settings: 控制評論的顯示

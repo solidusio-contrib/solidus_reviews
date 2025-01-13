@@ -5,6 +5,12 @@ module SolidusReviews
     # Define here the settings for this extension, e.g.:
     #
     # attr_accessor :my_setting
+    attr_accessor :report_reasons
+
+    def initialize
+      # Set default report reasons
+      @report_reasons = ['offensive-content', 'spam', 'inappropriate-language']
+    end
   end
 
   class << self

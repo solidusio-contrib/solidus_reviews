@@ -22,10 +22,6 @@ ro:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Trebuie să introduci o valoare pentru evaluare."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Trebuie să introduci o valoare pentru evaluare."
   spree:
     approval_status: Starea de aprobare
     approve: Aprobă
@@ -42,8 +38,6 @@ ro:
     editing_review_for_html: 'Editare recenzie pentru %{product_name}'
     error_approve_review: Eroare la aprobarea recenziei
     error_no_product: Produsul recenziat nu mai există
-    feedback: Feedback
-    feedback_review_for: "Recenzie: '%{review}'"
     for: pentru
     from: de la
     info_approve_review: Recenzie aprobată
@@ -58,7 +52,6 @@ ro:
         review_management: Recenzii
     review_successfully_submitted: Recenzia a fost trimisă cu succes
     spree_reviews:
-      feedback_rating: Evaluează feedback
       display_unapproved: Afișați recenzii neaprobate în înregistrări
       include_unapproved: Includeți recenzii neaprobate în listări
       manage_review_settings: Controlează afișarea recenziilor

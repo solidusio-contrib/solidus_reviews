@@ -20,10 +20,6 @@ it:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Devi indicare una valutazione per questa recensione."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Devi indicare una valutazione per questa recensione."
   spree:
     approval_status: Stato
     approve: Approva
@@ -37,8 +33,6 @@ it:
     editing_review_for_html: 'Modifica la recensione per %{product_name}'
     error_approve_review: Errore approvazione recensione
     error_no_product: "Il prodotto recensito non esiste più"
-    feedback: Feedback
-    feedback_review_for: "Recensione: '%{review}'"
     for: per
     from: da
     info_approve_review: Recensione approvata
@@ -53,7 +47,6 @@ it:
         review_management: Recensioni
     review_successfully_submitted: La recensione è stata inviata con successo
     spree_reviews:
-      feedback_rating: Aggiungi la possibilità di votare una recensione
       display_unapproved: Visualizza recensioni non approvate negli elenchi
       include_unapproved: Mostra le recensioni non approvate
       manage_review_settings: Approva le recensioni prima della pubblicazione
