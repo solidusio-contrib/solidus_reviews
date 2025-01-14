@@ -3,7 +3,6 @@
 require 'solidus_core'
 require 'solidus_reviews/configuration'
 require 'solidus_support'
-require 'flickwerk'
 require 'deface'
 
 require 'solidus_reviews/version'
