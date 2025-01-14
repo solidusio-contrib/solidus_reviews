@@ -27,22 +27,8 @@ class Spree::Review < Spree::Base
   scope :not_approved, -> { where(approved: false) }
   scope :default_approval_filter, -> { Spree::Reviews::Config[:include_unapproved_reviews] ? all : approved }
 
-  def self.ransackable_attributes(*)
-    [
-      "approved",
-      "name",
-      "review",
-      "title"
-    ]
-  end
-
-  def self.ransackable_associations(*)
-    [
-      "feedback_reviews",
-      "product",
-      "user"
-    ]
-  end
+  self.allowed_ransackable_associations = %w[feedback_reviews product user]
+  self.allowed_ransackable_attributes = %w[approved name review title]
 
   def feedback_stars
     return 0 if feedback_reviews.size <= 0
