@@ -2,8 +2,6 @@
 	<%= I18n.t("spree.editing_review_for_html", product_name: @review.product.name) %>
 <% end %>
 
-<% render 'spree/admin/shared/product_sub_menu' %>
-
 <%= form_for([:admin, @review]) do |f| %>
 	<div class="alpha eight columns">
 		<% unless @review.title.blank? %>
