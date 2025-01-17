@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Rails.application.config.to_prepare do
+Rails.application.config.after_initialize do
   Spree::Backend::Config.configure do |config|
     config.menu_items = config.menu_items.map do |item|
       if item.label.to_sym == :settings
