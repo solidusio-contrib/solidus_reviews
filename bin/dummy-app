@@ -13,7 +13,8 @@ function unbundled {
 test "$DB" = "sqlite" && export DB="sqlite3"
 
 rm -rf ./dummy-app
-rails new dummy-app \
+rails_version=`bundle exec ruby -e'require "rails"; puts Rails.version'`
+rails _${rails_version}_ new dummy-app \
   --database=${DB:-sqlite3} \
   --skip-git \
   --skip-keeps \
@@ -28,13 +29,6 @@ if [ ! -d "dummy-app" ]; then
 fi
 
 cd ./dummy-app
-cat <<RUBY >> Gemfile
-group :test, :development do
-  platforms :mri do
-    gem 'pry'
-  end
-end
-RUBY
 unbundled bundle add solidus --github solidusio/solidus --branch "${BRANCH:-main}" --version '> 0.a'
 unbundled bundle exec rake db:drop db:create
 unbundled bundle exec rails generate solidus:install --auto-accept --payment-method=none --no-seed --no-sample "$@"
