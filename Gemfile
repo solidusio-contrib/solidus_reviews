@@ -32,6 +32,9 @@ else
   gem 'sqlite3', '~> 1.4'
 end
 
+# Temporarily use the `solidus_support` gem with Flickwerk support
+gem "solidus_support", github: "mamhoff/solidus_support", branch: "re-enable-flickwerk"
+
 # While we still support Ruby < 3 we need to workaround a limitation in
 # the 'async' gem that relies on the latest ruby, since RubyGems doesn't
 # resolve gems based on the required ruby version.

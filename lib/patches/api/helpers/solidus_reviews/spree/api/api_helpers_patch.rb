@@ -3,9 +3,10 @@
 module SolidusReviews
   module Spree
     module Api
-      module ApiHelpersDecorator
+      module ApiHelpersPatch
         def self.prepended(base)
           base.module_eval do
+            # rubocop:disable Style/ClassVars
             @@review_attributes = [
               :id, :product_id, :name, :location, :rating, :title, :review, :approved,
               :created_at, :updated_at, :user_id, :ip_address, :locale, :show_identifier,
@@ -15,6 +16,7 @@ module SolidusReviews
             @@feedback_review_attributes = [
               :id, :user_id, :review_id, :rating, :comment, :created_at, :updated_at, :locale
             ]
+            # rubocop:enable Style/ClassVars
 
             def review_attributes
               @@review_attributes
@@ -25,7 +27,6 @@ module SolidusReviews
             end
           end
         end
-
         ::Spree::Api::ApiHelpers.prepend self
       end
     end
