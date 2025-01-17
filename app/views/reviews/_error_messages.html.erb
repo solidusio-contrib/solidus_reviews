@@ -1,0 +1,10 @@
+<% if target.errors.any? %>
+  <div class="alert alert-danger">
+    <h4 class="font-semibold text-red-600">Please fix the following errors:</h4>
+    <ul class="list-inside list-disc">
+      <% target.errors.full_messages.each do |message| %>
+        <li class="text-red-500"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 require 'spree/testing_support/authorization_helpers'
 
-describe 'Reviews', js: true do
+RSpec.describe 'Reviews', js: true do
   let!(:someone) { create(:user, email: 'ryan@spree.com') }
   let!(:review) { create(:review, :approved, user: someone) }
   let!(:unapproved_review) { create(:review, product: review.product) }
@@ -16,7 +16,7 @@ describe 'Reviews', js: true do
     let!(:product_no_reviews) { create(:product) }
 
     it 'informs that no reviews has been written yet' do
-      visit spree.product_path(product_no_reviews)
+      visit product_path(product_no_reviews)
       expect(page).to have_text I18n.t('spree.no_reviews_available')
     end
 
@@ -28,7 +28,7 @@ describe 'Reviews', js: true do
       end
 
       it "displayed reviews are limited by the set preview size" do
-        visit spree.product_path(product_no_reviews)
+        visit product_path(product_no_reviews)
         expect(page.all(".review").count).to be(2)
       end
     end
@@ -41,7 +41,7 @@ describe 'Reviews', js: true do
 
     context 'visit product with review' do
       before do
-        visit spree.product_path(review.product)
+        visit product_path(review.product)
       end
 
       it 'sees review title' do
@@ -63,7 +63,7 @@ describe 'Reviews', js: true do
 
     context 'visit product with review' do
       before do
-        visit spree.product_path(review.product)
+        visit product_path(review.product)
       end
 
       it 'can see review title' do
@@ -74,7 +74,7 @@ describe 'Reviews', js: true do
         before do
           stub_spree_preferences(Spree::Reviews::Config, include_unapproved_reviews: true)
           stub_spree_preferences(Spree::Reviews::Config, display_unapproved_reviews: true)
-          visit spree.product_path(review.product)
+          visit product_path(review.product)
         end
 
         it 'can see unapproved content when allowed' do
@@ -114,7 +114,7 @@ describe 'Reviews', js: true do
     let!(:review) { create(:review, :approved, :hide_identifier, review: 'review text', user: user) }
 
     before do
-      visit spree.product_path(review.product)
+      visit product_path(review.product)
     end
 
     it 'show anonymous review' do

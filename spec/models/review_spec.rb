@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 
-describe Spree::Review do
+RSpec.describe Spree::Review do
   context 'validations' do
     it 'validates by default' do
       expect(build(:review)).to be_valid
@@ -132,7 +132,7 @@ describe Spree::Review do
   describe '.ransackable_associations' do
     subject { described_class.ransackable_associations }
 
-    it { is_expected.to contain_exactly("feedback_reviews", "product", "user") }
+    it { is_expected.to contain_exactly("product", "user") }
   end
 
   describe '#recalculate_product_rating' do
@@ -156,23 +156,6 @@ describe Spree::Review do
       expect(review.product).to receive(:recalculate_rating)
       review.approved = true
       review.save!
-    end
-  end
-
-  describe '#feedback_stars' do
-    let!(:review) { create(:review) }
-
-    before do
-      3.times do |i|
-        f = Spree::FeedbackReview.new
-        f.review = review
-        f.rating = (i + 1)
-        f.save
-      end
-    end
-
-    it 'returns the average rating from feedback reviews' do
-      expect(review.feedback_stars).to eq 2
     end
   end
 

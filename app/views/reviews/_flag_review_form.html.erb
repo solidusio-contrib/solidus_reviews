@@ -1,0 +1,29 @@
+<%= form_with url: flag_review_product_review_path(@product.slug, review),
+              method: :post,
+              remote: true,
+              local: false,
+              authenticity_token: false,
+              html: { class: "space-y-6" } do |form| %>
+
+  <div class="select-input">
+    <%= form.label :report_reason, "Report Reason", class: "block text-xl font-bold mb-2" %>
+    <%= form.select :report_reason,
+                    options_for_select(SolidusReviews.config.report_reasons.map { |reason| [reason.titleize, reason] }),
+                    { prompt: 'Select a reason' },
+                    class: "form-select block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" %>
+  </div>
+
+  <div class="textarea-input">
+    <%= form.label :comment, "Comment (optional)", class: "block text-xl font-bold mb-2" %>
+    <%= form.text_area :comment,
+                       rows: 3,
+                       class: "form-textarea block w-full mt-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500",
+                       placeholder: "Add any additional details here..." %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit "Submit",
+                    class: "w-fit py-3 px-7 rounded-full text-sm font-bold tracking-wider uppercase whitespace-nowrap bg-red-500 text-white hover:bg-red-700 transition-colors duration-200" %>
+  </div>
+
+<% end %>

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 
-describe Spree::Product do
+RSpec.describe Spree::Product do
   it { is_expected.to respond_to(:avg_rating) }
   it { is_expected.to respond_to(:reviews) }
   it { is_expected.to respond_to(:stars) }

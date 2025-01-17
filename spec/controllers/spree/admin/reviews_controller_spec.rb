@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 
-describe Spree::Admin::ReviewsController do
+RSpec.describe Spree::Admin::ReviewsController do
   stub_authorization!
 
   let(:product) { create(:product) }
