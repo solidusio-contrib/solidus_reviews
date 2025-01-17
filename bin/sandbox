@@ -51,8 +51,7 @@ unbundled bundle add solidus --github solidusio/solidus --branch "${BRANCH:-main
 unbundled bundle exec rake db:drop db:create
 unbundled bundle exec rails generate solidus:install --payment-method=none --auto-accept "$@"
 unbundled bundle add ${extension_name} --path '../'
-unbundled bundle exec rails generate $extension_name:install --auto-run-migrations
-bin/rails assets:precompile
+unbundled bundle exec rails generate ${extension_name}:install --frontend=starter --migrate=true
 
 echo
 echo "🚀 Sandbox app successfully created for ${extension_name}!"

@@ -2,10 +2,8 @@
 
 set -e
 
-# Ensure the dummy app is properly set up
-bin/rails-dummy-app
-bin/rails-dummy-app generate solidus_reviews:install --force  --auto-run-migrations --specs=all
-
+echo "Updating the dummy app..."
+bin/rails-dummy-app generate solidus_reviews:install --force --migrate --specs=all
 
 cd dummy-app/
 rspec "$@"

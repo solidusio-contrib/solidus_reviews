@@ -1,17 +1,17 @@
 #!/usr/bin/env ruby
 
-root = File.expand_path("#{__dir__}/..")
-app_root = File.expand_path("#{root}/dummy-app")
+root = "#{__dir__}/.."
+app_root = "#{root}/dummy-app"
 
-unless File.exist?("#{app_root}/bin/rails")
-  warn "Creating the dummy-app app..."
-  Dir.chdir(root) do
-    system("bash #{root}/bin/dummy-app") || begin
-      warn "Automatic creation of the dummy-app app failed"
+unless File.exist? "#{app_root}/bin/rails"
+  warn 'Creating the dummy-app app...'
+  Dir.chdir root do
+    system "#{root}/bin/dummy-app" or begin
+      warn 'Automatic creation of the dummy-app app failed'
       exit 1
     end
   end
 end
 
-Dir.chdir(app_root)
-exec("#{app_root}/bin/rails", *ARGV)
+Dir.chdir app_root
+exec "#{app_root}/bin/rails", *ARGV
