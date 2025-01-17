@@ -81,6 +81,7 @@ RSpec.describe ReviewsController, type: :controller do
 
       expect {
         post :edit, params: { id: review.id, product_id: product.slug }
+
         assert_match 'ryanbig', response.body
       }.to raise_error RuntimeError
     end
