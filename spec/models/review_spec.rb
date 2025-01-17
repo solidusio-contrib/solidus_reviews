@@ -126,7 +126,7 @@ describe Spree::Review do
   describe '.ransackable_attributes' do
     subject { described_class.ransackable_attributes }
 
-    it { is_expected.to contain_exactly("approved", "name", "review", "title") }
+    it { is_expected.to contain_exactly("id", "approved", "name", "review", "title") }
   end
 
   describe '.ransackable_associations' do
