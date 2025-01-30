@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 
 RSpec.describe 'Review Admin' do
   stub_authorization!

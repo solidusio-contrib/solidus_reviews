@@ -10,15 +10,6 @@ class Spree::ReviewsAbility
       review_ability_class.allow_anonymous_reviews? || user.email.present?
     end
 
-    can :create, Spree::FeedbackReview do |_review|
-      review_ability_class.allow_anonymous_reviews? || user.email.present?
-    end
-
-    # You can only change your own feedback_review
-    can [:update, :destroy], Spree::FeedbackReview do |feedback_review|
-      feedback_review.user == user
-    end
-
     # You can read your own reviews, and everyone can read approved ones
     can :read, Spree::Review do |review|
       review.user == user || review.approved?

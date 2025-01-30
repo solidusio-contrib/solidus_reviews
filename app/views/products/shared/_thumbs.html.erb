@@ -1,0 +1,45 @@
+<div class="flex items-center gap-3" data-review-id="<%= review.id %>">
+  <%= form_with url: set_positive_vote_product_review_path(@product.slug, review),
+                method: :post, remote: true, local: false, authenticity_token: false do |form| %>
+    <%= form.button class: "thumb-up-btn flex items-center justify-center", title: "UpVote" do %>
+      <svg class="w-6 h-6 <%= 'fill-primary' if Spree::ReviewVote.user_voted?(review, Spree::ReviewVote::POSITIVE, spree_current_user) %>">
+        <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-thumb-up-<%= Spree::ReviewVote.user_voted?(review, Spree::ReviewVote::POSITIVE, spree_current_user) ? 'fill' : 'line' %>"></use>
+      </svg>
+    <% end %>
+  <% end %>
+  <span class="positive-count flex items-center"><%= review.positive_count %></span>
+
+  <%= form_with url: set_negative_vote_product_review_path(@product.slug, review),
+                method: :post, remote: true, local: false, authenticity_token: false do |form| %>
+    <%= form.button class: "thumb-down-btn flex items-center justify-center", title: "DownVote" do %>
+      <svg class="w-6 h-6 <%= 'fill-primary' if Spree::ReviewVote.user_voted?(review, Spree::ReviewVote::NEGATIVE, spree_current_user) %>">
+        <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-thumb-down-<%= Spree::ReviewVote.user_voted?(review, Spree::ReviewVote::NEGATIVE, spree_current_user) ? 'fill' : 'line' %>"></use>
+      </svg>
+    <% end %>
+  <% end %>
+  <span class="negative-count flex items-center"><%= review.negative_count %></span>
+
+  <button id="openFlagReviewModal<%= review.id %>"
+          class="flag-review-btn flex items-center justify-center" title="Report"
+          <%= 'disabled' if Spree::ReviewVote.user_voted?(review, Spree::ReviewVote::REPORT, spree_current_user) %>>
+    <svg class="w-6 h-6 <%= 'fill-primary' if Spree::ReviewVote.user_voted?(review, Spree::ReviewVote::REPORT, spree_current_user) %>">
+      <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-flag-<%= Spree::ReviewVote.user_voted?(review, Spree::ReviewVote::REPORT, spree_current_user) ? 'fill' : 'line' %>"></use>
+    </svg>
+  </button>
+</div>
+
+<div id="flagReviewModal<%= review.id %>" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-lg shadow-lg w-6/12 p-6">
+    <button type="button" id="closeFlagReviewModal<%= review.id %>" class="float-right">
+      <svg class="w-6 h-6">
+        <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-close-fill"></use>
+      </svg>
+    </button>
+    <br>
+    <%= render 'reviews/flag_review_form', review: review, product: @product %>
+  </div>
+</div>
+
+<script>
+  setupModal("openFlagReviewModal<%= review.id %>", "flagReviewModal<%= review.id %>", "closeFlagReviewModal<%= review.id %>");
+</script>
