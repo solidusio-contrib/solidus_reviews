@@ -23,10 +23,6 @@ ru:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Вы должны оценить отзыв."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Вы должны оценить отзыв."
   spree:
     reviews: Отзывы
     write_your_own_review: Оставьте свой отзыв
@@ -50,7 +46,6 @@ ru:
       include_unapproved: Показывать неодобренные отзывы на странице товара
       your_name: Ваше имя
       your_location: Город
-      feedback_rating: Рейтинг отзыва
       show_email: Показывать электронную почту
       show_verified_purchaser: Показать подтвержденного покупателя
       require_login: Требовать вход
@@ -73,9 +68,7 @@ ru:
       other: "%{count} голосов"
       many: "%{count} голоса"
     star: "%{count}"
-    feedback: Обратная связь
     stars: Звёзды
-    feedback_review_for: "Отзывы: '%{review}'"
     out_of_5: "из 5"
     was_this_review_helpful: "Был ли Вам полезен этот отзыв?"
     editing_review_for_html: 'Редактирование отзыва для HTML'

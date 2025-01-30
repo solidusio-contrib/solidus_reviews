@@ -1,0 +1,9 @@
+<div id="reviews">
+  <%= render 'products/shared/rating', locals: @product, review: 0 %>
+  <% for review in (Spree::Reviews::Config[:track_locale] ? @product.reviews.localized(I18n.locale) : @product.reviews).default_approval_filter.preview %>
+    <%= render 'products/shared/review', review: review %>
+  <% end %>
+  <% if !Spree::Reviews::Config[:require_login] || spree_current_user %>
+    <%= link_to I18n.t("spree.write_your_own_review"), new_product_review_path(@product), class: "button" %>
+  <% end %>
+</div>

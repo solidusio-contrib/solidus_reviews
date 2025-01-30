@@ -20,10 +20,6 @@ tr:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Yorum yazmak için giriş yapmalısınız."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Yorum yazmak için giriş yapmalısınız."
   spree:
     approval_status: Onay Durumu
     approve: Onayla
@@ -38,8 +34,6 @@ tr:
     editing_review_for_html: 'Yorumu düzenle %{product_name}'
     error_approve_review: Yorum onaylamada hata
     error_no_product: Yorumlanan ürün artık yok
-    feedback: Geri bildirim
-    feedback_review_for: "Yorum: '%{review}'"
     for: için
     from: itibaren
     info_approve_review: Onaylanmış yorum
@@ -54,7 +48,6 @@ tr:
         review_management: Yorumlar
     review_successfully_submitted: Yorumunuz başarıyla iletildi
     spree_reviews:
-      feedback_rating: Geribildirimi değerlendir
       display_unapproved: Listelerde onaylanmayan yorumları göster
       include_unapproved: Listede ki onaylanmamış değerlendirmeleri dahil et
       manage_review_settings: Yorum ekranını kontrol edin

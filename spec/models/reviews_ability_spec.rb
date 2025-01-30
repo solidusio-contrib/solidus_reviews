@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 
 require "cancan/matchers"
 
-describe Spree::ReviewsAbility do
+RSpec.describe Spree::ReviewsAbility do
   describe '.allow_anonymous_reviews?' do
     it 'depends on Spree::Reviews::Config[:require_login]' do
       stub_spree_preferences(Spree::Reviews::Config, require_login: false)
@@ -23,10 +23,9 @@ describe Spree::ReviewsAbility do
         stub_spree_preferences(Spree::Reviews::Config, require_login: false)
       end
 
-      it 'lets anyone create a review or feedback review' do
+      it 'lets anyone create a review' do
         [user_without_email, user_with_email].each do |u|
           expect(described_class.new(u)).to be_able_to(:create, Spree::Review.new)
-          expect(described_class.new(u)).to be_able_to(:create, Spree::FeedbackReview.new)
         end
       end
     end
@@ -36,12 +35,10 @@ describe Spree::ReviewsAbility do
         stub_spree_preferences(Spree::Reviews::Config, require_login: true)
       end
 
-      it 'only allows users with an email to create a review or feedback review' do
+      it 'only allows users with an email to create a review' do
         expect(described_class.new(user_without_email)).not_to be_able_to(:create, Spree::Review.new)
-        expect(described_class.new(user_without_email)).not_to be_able_to(:create, Spree::FeedbackReview.new)
 
         expect(described_class.new(user_with_email)).to be_able_to(:create, Spree::Review.new)
-        expect(described_class.new(user_with_email)).to be_able_to(:create, Spree::FeedbackReview.new)
       end
     end
   end

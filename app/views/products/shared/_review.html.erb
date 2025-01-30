@@ -1,0 +1,39 @@
+<div class="review" itemprop="reviews" itemscope itemtype="http://schema.org/Review">
+  <% if review.approved? || Spree::Reviews::Config[:display_unapproved_reviews] %>
+    <br/>
+    <meta itemprop="datePublished" content="<%= review.created_at.to_date.to_s %>" />
+    <meta itemprop="reviewRating" content="<%= review.rating %>" />
+    <% if review.show_identifier %>
+      <% if Spree::Reviews::Config[:show_email] && review.user %>
+        <span class="text-gray-600 font-bold"><%= review.user.email %></span>
+      <% else %>
+        <p class="flex items-baseline">
+          <span class="text-gray-600 font-bold"><%= review.name %></span>
+          <% if Spree::Reviews::Config[:show_verified_purchaser] && review.verified_purchaser? %>
+            <span class="ml-2 text-green-600 text-xs"><%= I18n.t("spree.verified_purchaser") %></span>
+          <% end %>
+        </p>
+        <span itemprop="author"></span>
+      <% end %>
+    <% else %>
+      <span itemprop="author"><%= I18n.t("spree.anonymous") %></span>
+    <% end %>
+    <div class="mt-3 mb-3 flex justify-left gap-2">
+      <div class="flex">
+        <%= render "reviews/stars", stars: review.rating %>
+        <span class="ml-2 font-sans"><%= txt_stars(review.rating) %> <%= I18n.t("spree.stars") %></span>
+      </div>
+    </div>
+    <div class="mt-3">
+      <span class="font-bold"><%= review.title %></span>
+      <p class="mt-1"><%= simple_format(review.review) %></p>
+    </div>
+    <% if Spree::Reviews::Config[:allow_image_upload] %>
+      <% review.images.each do |image| %>
+        <div itemprop="image">
+          <%= link_to image_tag(image.url(:product)), image.url(:original) %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

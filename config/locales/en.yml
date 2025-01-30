@@ -21,10 +21,6 @@ en:
           attributes:
             rating:
               you_must_enter_value_for_rating: "You must enter a value for rating."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "You must enter a value for rating."
   spree:
     approval_status: Approval status
     approve: Approve
@@ -35,11 +31,10 @@ en:
       one: based upon one review
       other: "based upon %{count} reviews"
     by: by
+    downvote_counts: Down-votes
     editing_review_for_html: 'Editing review for %{product_name}'
     error_approve_review: Error approving review
     error_no_product: The reviewed product doesn't exist anymore
-    feedback: Feedback
-    feedback_review_for: "Review: '%{review}'"
     for: for
     from: from
     info_approve_review: Review approved
@@ -54,7 +49,6 @@ en:
         review_management: Reviews
     review_successfully_submitted: Review was successfully submitted
     spree_reviews:
-      feedback_rating: Rate feedback
       display_unapproved: Display unapproved reviews in listings
       include_unapproved: Include unapproved reviews in listings
       manage_review_settings: Control the display of reviews
@@ -72,6 +66,7 @@ en:
     submit_your_review: Submit your review
     submitted_on: Submitted on
     unapproved_reviews: Unapproved
+    upvote_counts: Up-Votes
     verified_purchaser: Verified purchaser
     voice:
       one: "1 voice"

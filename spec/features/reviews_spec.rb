@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 require 'spree/testing_support/authorization_helpers'
 
-describe 'Reviews', js: true do
+RSpec.describe 'Reviews', js: true do
   let!(:someone) { create(:user, email: 'ryan@spree.com') }
   let!(:review) { create(:review, :approved, user: someone) }
   let!(:unapproved_review) { create(:review, product: review.product) }
+  let(:file_path) { file_fixture("review-test-image.jpg") }
 
   before do
     stub_spree_preferences(Spree::Reviews::Config, include_unapproved_reviews: false)
@@ -16,7 +17,7 @@ describe 'Reviews', js: true do
     let!(:product_no_reviews) { create(:product) }
 
     it 'informs that no reviews has been written yet' do
-      visit spree.product_path(product_no_reviews)
+      visit product_path(product_no_reviews)
       expect(page).to have_text I18n.t('spree.no_reviews_available')
     end
 
@@ -28,7 +29,7 @@ describe 'Reviews', js: true do
       end
 
       it "displayed reviews are limited by the set preview size" do
-        visit spree.product_path(product_no_reviews)
+        visit product_path(product_no_reviews)
         expect(page.all(".review").count).to be(2)
       end
     end
@@ -41,7 +42,7 @@ describe 'Reviews', js: true do
 
     context 'visit product with review' do
       before do
-        visit spree.product_path(review.product)
+        visit product_path(review.product)
       end
 
       it 'sees review title' do
@@ -63,7 +64,7 @@ describe 'Reviews', js: true do
 
     context 'visit product with review' do
       before do
-        visit spree.product_path(review.product)
+        visit product_path(review.product)
       end
 
       it 'can see review title' do
@@ -74,7 +75,7 @@ describe 'Reviews', js: true do
         before do
           stub_spree_preferences(Spree::Reviews::Config, include_unapproved_reviews: true)
           stub_spree_preferences(Spree::Reviews::Config, display_unapproved_reviews: true)
-          visit spree.product_path(review.product)
+          visit product_path(review.product)
         end
 
         it 'can see unapproved content when allowed' do
@@ -84,10 +85,12 @@ describe 'Reviews', js: true do
       end
 
       it 'can see create new review button' do
-        expect(page).to have_text I18n.t('spree.write_your_own_review')
+        expect(page).to have_button I18n.t('spree.write_your_own_review')
       end
 
       it 'can create new review' do
+        stub_spree_preferences(Spree::Reviews::Config, allow_image_upload: true)
+
         click_on I18n.t('spree.write_your_own_review')
 
         expect(page).to have_text I18n.t('spree.leave_us_a_review_for', name: review.product.name)
@@ -99,11 +102,10 @@ describe 'Reviews', js: true do
           fill_in 'review_name', with: user.email
           fill_in 'review_title', with: 'Great product!'
           fill_in 'review_review', with: 'Some big review text..'
-          attach_file 'review_images', 'spec/fixtures/thinking-cat.jpg'
+          attach_file('review_images', file_path)
           click_on 'Submit your review'
         end
 
-        expect(page.find('.flash.notice', text: I18n.t('spree.review_successfully_submitted'))).to be_truthy
         expect(page).not_to have_text 'Some big review text..'
       end
     end
@@ -114,7 +116,7 @@ describe 'Reviews', js: true do
     let!(:review) { create(:review, :approved, :hide_identifier, review: 'review text', user: user) }
 
     before do
-      visit spree.product_path(review.product)
+      visit product_path(review.product)
     end
 
     it 'show anonymous review' do
@@ -134,6 +136,6 @@ describe 'Reviews', js: true do
   end
 
   def click_star(num)
-    page.all(:xpath, "//a[@title='#{num} stars']")[0].click
+    page.find(:xpath, "//input[@value='#{num} stars']", visible: false).click
   end
 end

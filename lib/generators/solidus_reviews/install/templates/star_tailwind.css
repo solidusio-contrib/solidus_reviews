@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .stars {
+    --s: 30px;
+  }
+
+  .stars-small {
+    --s: 20px;
+  }
+
+  .stars input {
+    @apply w-[var(--s)] h-[var(--s)];
+  }
+
+  .stars i {
+    inset: 0 0 calc(var(--s) * 0.1);
+    pointer-events: none;
+
+    --v1: transparent, #000 0.5deg 108deg, #0000 109deg;
+    --v2: transparent, #000 0.5deg 36deg, #0000 37deg;
+    -webkit-mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z'%3E%3C/path%3E%3C/svg%3E");
+    -webkit-mask-size: var(--s) var(--s);
+    -webkit-mask-composite: xor, destination-over;
+    mask-composite: exclude, add;
+
+    background:
+      linear-gradient(rgba(255, 0, 0, var(--o, 1)) 0 0),
+      linear-gradient(#ef3023 0 0) #cfcfcf;
+    background-size:
+      calc(var(--l, 0) * var(--s)) 100%,
+      calc(var(--p, 0) * var(--s)) 100%;
+    background-repeat: no-repeat;
+  }
+
+  input:active ~ i {
+    --o: 1;
+  }
+
+  input:disabled:hover ~ i {
+    --l: 0;
+  }
+
+  input:disabled ~ i {
+    pointer-events: none;
+  }
+
+  input:not(:disabled):nth-of-type(1):hover ~ i {
+    --l: 1;
+  }
+
+  input:not(:disabled):nth-of-type(2):hover ~ i {
+    --l: 2;
+  }
+
+  input:not(:disabled):nth-of-type(3):hover ~ i {
+    --l: 3;
+  }
+
+  input:not(:disabled):nth-of-type(4):hover ~ i {
+    --l: 4;
+  }
+
+  input:not(:disabled):nth-of-type(5):hover ~ i {
+    --l: 5;
+  }
+
+  input:not(:disabled):nth-of-type(1):checked ~ i {
+    --p: 1;
+  }
+
+  input:not(:disabled):nth-of-type(2):checked ~ i {
+    --p: 2;
+  }
+
+  input:not(:disabled):nth-of-type(3):checked ~ i {
+    --p: 3;
+  }
+
+  input:not(:disabled):nth-of-type(4):checked ~ i {
+    --p: 4;
+  }
+
+  input:not(:disabled):nth-of-type(5):checked ~ i {
+    --p: 5;
+  }
+
+  .textarea-input textarea {
+    @apply relative flex items-start justify-start border border-gray-mid rounded px-4 py-3 placeholder:text-gray-500 text-black w-full;
+    @apply dark:bg-gray-800 dark:border-gray-600 dark:text-sand dark:placeholder:text-gray-400 dark:focus:ring-white/30;
+  }
+
+  .textarea-input textarea:hover,
+  .textarea-input textarea:focus {
+    @apply border-gray-400 focus:outline-none focus:ring focus:ring-offset-1 focus:ring-black/20 focus:border-gray-400;
+  }
+
+  .textarea-input label {
+    @apply text-body-sm font-normal mb-1;
+  }
+}

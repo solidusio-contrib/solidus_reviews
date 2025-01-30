@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 
-describe Spree::Admin::ReviewSettingsController do
+RSpec.describe Spree::Admin::ReviewSettingsController do
+  routes { Spree::Core::Engine.routes }
   stub_authorization!
 
   before do
@@ -19,7 +20,6 @@ describe Spree::Admin::ReviewSettingsController do
     context 'with parameters:
             preview_size: 4,
             show_email: false,
-            feedback_rating: false,
             require_login: true,
             track_locale: true' do
       it 'sets preferred_preview_size to 4' do
@@ -30,11 +30,6 @@ describe Spree::Admin::ReviewSettingsController do
       it 'sets preferred_show_email to false' do
         put :update, params: { preferences: { show_email: false } }
         expect(Spree::Reviews::Config.preferred_show_email).to be false
-      end
-
-      it 'sets preferred_feedback_rating to false' do
-        put :update, params: { preferences: { feedback_rating: false } }
-        expect(Spree::Reviews::Config.preferred_feedback_rating).to be false
       end
 
       it 'sets preferred_require_login to true' do

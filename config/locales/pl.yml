@@ -21,10 +21,6 @@ pl:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Musisz wystawić jakąś ocenę."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Musisz wystawić jakąś ocenę."
   spree:
     approval_status: Status zatwierdzenia
     approve: Zatwierdź
@@ -40,8 +36,6 @@ pl:
     editing_review_for_html: 'Edycja opinii dla %{product_name}'
     error_approve_review: Błąd przy zatwierdzaniu opinii
     error_no_product: Oceniamy produkt nie istnieje
-    feedback: Komentarz
-    feedback_review_for: "Komentarz: '%{review}'"
     for: dla
     from: od
     info_approve_review: Opinia zatwierdzona
@@ -56,7 +50,6 @@ pl:
         review_management: Opinie
     review_successfully_submitted: Opinia została dodana
     spree_reviews:
-      feedback_rating: Oceń komentarz
       display_unapproved: Wyświetlaj niezatwierdzone recenzje we wpisach
       include_unapproved: Załącz niezaakceptowane do listy
       manage_review_settings: Zarządzaj wyśiwetlaniem opinii

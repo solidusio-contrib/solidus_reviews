@@ -10,7 +10,7 @@ module SolidusReviews
       end
 
       def stars
-        avg_rating.try(:round) || 0
+        avg_rating || 0
       end
 
       def recalculate_rating

@@ -23,10 +23,6 @@ uk:
           attributes:
             rating:
               you_must_enter_value_for_rating: 'Потрібно вибрати оцінку.'
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: 'Потрібно вибрати оцінку.'
   spree:
     approval_status: Підтвердження
     approve: Схвалити
@@ -42,8 +38,6 @@ uk:
     editing_review_for_html: 'Редагувати відгук на %{product_name}'
     error_approve_review: Не вдалось схвалити відгук
     error_no_product: Товару, на який писався відгук, більше не існує
-    feedback: Корисність
-    feedback_review_for: "Відгук: '%{review}'"
     for: для
     from: від
     info_approve_review: Відгук схвалено
@@ -58,7 +52,6 @@ uk:
         review_management: Відгуки
     review_successfully_submitted: Відгук надіслано
     spree_reviews:
-      feedback_rating: Оцінювати корисність
       display_unapproved: Показувати в списках не схвалені відгуки
       include_unapproved: Показувати незатверджені відгуки
       manage_review_settings: Керувати відображенням відгуків

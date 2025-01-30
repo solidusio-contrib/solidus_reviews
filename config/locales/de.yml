@@ -21,10 +21,6 @@ de:
           attributes:
             rating:
               you_must_enter_value_for_rating: "Bitte geben Sie eine Bewertung an."
-        spree/feedback_review:
-          attributes:
-            rating:
-              you_must_enter_value_for_rating: "Bitte geben Sie eine Bewertung an."
   spree:
     approval_status: Freischaltungsstatus
     approve: Freischalten
@@ -39,8 +35,6 @@ de:
     editing_review_for_html: 'Rezension über %{product_name} bearbeiten'
     error_approve_review: Fehler bei der Freischaltung
     error_no_product: Das rezensierte Produkt existiert nicht mehr.
-    feedback: Feedback
-    feedback_review_for: "Rezension: '%{review}'"
     for: über
     from: aus
     info_approve_review: Die Rezension wurde freigeschaltet.
@@ -55,7 +49,6 @@ de:
         review_management: Rezensionen
     review_successfully_submitted: Ihre Rezension wurde erfolgreich übertragen. Vielen Dank!
     spree_reviews:
-      feedback_rating: Feedback für Rezensionen erlauben
       display_unapproved: Zeigen Sie nicht genehmigte Bewertungen in Auflistungen an
       include_unapproved: Unveröffentlichte Rezensionen anzeigen
       manage_review_settings: Einstellungen für die Darstellung von Rezensionen

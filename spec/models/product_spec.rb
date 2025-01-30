@@ -1,22 +1,14 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require 'solidus_reviews_helper'
 
-describe Spree::Product do
+RSpec.describe Spree::Product do
   it { is_expected.to respond_to(:avg_rating) }
   it { is_expected.to respond_to(:reviews) }
   it { is_expected.to respond_to(:stars) }
 
   describe '#stars' do
     let(:product) { build(:product) }
-
-    it 'rounds' do
-      allow(product).to receive(:avg_rating).and_return(3.7)
-      expect(product.stars).to eq(4)
-
-      allow(product).to receive(:avg_rating).and_return(2.3)
-      expect(product.stars).to eq(2)
-    end
 
     it 'handles a nil value' do
       allow(product).to receive(:avg_rating).and_return(nil)
