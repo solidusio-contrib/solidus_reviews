@@ -3,7 +3,8 @@
  * Home: http://www.fyneworks.com/jquery/star-rating/
  * Code: http://code.google.com/p/jquery-star-rating-plugin/
  *
-	* Licensed under http://en.wikipedia.org/wiki/MIT_License
+ * Licensed under http://en.wikipedia.org/wiki/MIT_License
+ * Copyright by Fyneworks.com
  ###
 */
 
