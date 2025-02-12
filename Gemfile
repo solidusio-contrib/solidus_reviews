@@ -41,3 +41,6 @@ gemspec
 # We use `send` instead of calling `eval_gemfile` to work around an issue with
 # how Dependabot parses projects: https://github.com/dependabot/dependabot-core/issues/1658.
 send(:eval_gemfile, 'Gemfile-local') if File.exist? 'Gemfile-local'
+
+# Necessary for Ruby 3.4 support
+gem "csv", "~> 3.3"
