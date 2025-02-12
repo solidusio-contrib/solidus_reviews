@@ -9,6 +9,12 @@ Rails::Controller::Testing.install
 # Run Coverage report
 require 'solidus_dev_support/rspec/coverage'
 
+# Necessary for new codecov uploader
+if ENV["GITHUB_ACTIONS"]
+  require 'simplecov-cobertura'
+  SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+end
+
 # Create the dummy app if it's still missing.
 dummy_env = "#{__dir__}/dummy/config/environment.rb"
 system 'bin/rake extension:test_app' unless File.exist? dummy_env

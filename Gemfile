@@ -41,3 +41,8 @@ send(:eval_gemfile, 'Gemfile-local') if File.exist? 'Gemfile-local'
 
 # Necessary for Ruby 3.4 support
 gem "csv", "~> 3.3"
+
+# Necessary for Codecov reports
+if ENV["GITHUB_ACTIONS"]
+  gem "simplecov-cobertura", "~> 2.1"
+end
