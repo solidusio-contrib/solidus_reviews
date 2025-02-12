@@ -21,7 +21,8 @@ gem 'concurrent-ruby', '< 1.3.5'
 # Needed to help Bundler figure out how to resolve dependencies,
 # otherwise it takes forever to resolve them.
 # See https://github.com/bundler/bundler/issues/6677
-gem 'rails', '>0.a'
+rails_version = ENV.fetch('RAILS_VERSION', '7.2')
+gem 'rails', "~> #{rails_version}"
 
 case ENV.fetch('DB', nil)
 when 'mysql'
@@ -29,13 +30,8 @@ when 'mysql'
 when 'postgresql'
   gem 'pg'
 else
-  gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3', '~> 1.7'
 end
-
-# While we still support Ruby < 3 we need to workaround a limitation in
-# the 'async' gem that relies on the latest ruby, since RubyGems doesn't
-# resolve gems based on the required ruby version.
-gem 'async', '< 3' if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('3')
 
 gemspec
 
@@ -45,3 +41,6 @@ gemspec
 # We use `send` instead of calling `eval_gemfile` to work around an issue with
 # how Dependabot parses projects: https://github.com/dependabot/dependabot-core/issues/1658.
 send(:eval_gemfile, 'Gemfile-local') if File.exist? 'Gemfile-local'
+
+# Necessary for Ruby 3.4 support
+gem "csv", "~> 3.3"
