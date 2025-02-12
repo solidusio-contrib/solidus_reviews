@@ -1,7 +1,7 @@
 # Solidus Reviews
 
 [![Test](https://github.com/solidusio-contrib/solidus_reviews/actions/workflows/test.yml/badge.svg)](https://github.com/solidusio-contrib/solidus_reviews/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/solidusio-contrib/solidus_reviews/branch/main/graph/badge.svg)](https://codecov.io/gh/solidusio-contrib/solidus_reviews)
+[![codecov](https://codecov.io/gh/solidusio-contrib/solidus_reviews/graph/badge.svg?token=khhn97J549)](https://codecov.io/gh/solidusio-contrib/solidus_reviews)
 
 Straightforward review/rating functionality, updated for [Solidus](https://solidus.io).
 
