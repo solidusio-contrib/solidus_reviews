@@ -9,9 +9,6 @@ gem 'solidus', github: 'solidusio/solidus', branch: branch
 # The solidus_frontend gem has been pulled out since v3.2
 gem 'solidus_frontend'
 
-# Needed for Rails 7.0
-gem 'concurrent-ruby', '< 1.3.5'
-
 rails_requirement_string = ENV.fetch('RAILS_VERSION', '~> 7.0')
 gem 'rails', rails_requirement_string
 
