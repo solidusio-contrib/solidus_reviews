@@ -18,10 +18,8 @@ end
 # Needed for Rails 7.0
 gem 'concurrent-ruby', '< 1.3.5'
 
-# Needed to help Bundler figure out how to resolve dependencies,
-# otherwise it takes forever to resolve them.
-# See https://github.com/bundler/bundler/issues/6677
-gem 'rails', '>0.a'
+rails_requirement_string = ENV.fetch('RAILS_VERSION', '~> 7.0')
+gem 'rails', rails_requirement_string
 
 case ENV.fetch('DB', nil)
 when 'mysql'
@@ -29,7 +27,10 @@ when 'mysql'
 when 'postgresql'
   gem 'pg'
 else
-  gem 'sqlite3', '~> 1.4'
+  rails_version = Gem::Requirement.new(rails_requirement_string).requirements[0][1]
+  sqlite_version = rails_version < Gem::Version.new(7.2) ? "~> 1.4" : "~> 2.0"
+
+  gem 'sqlite3', sqlite_version
 end
 
 # While we still support Ruby < 3 we need to workaround a limitation in
