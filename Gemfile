@@ -16,7 +16,7 @@ else
 end
 
 # Needed for Rails 7.0
-gem 'concurrent-ruby', '< 1.3.5'
+gem 'concurrent-ruby', '< 1.3.6'
 
 # Needed to help Bundler figure out how to resolve dependencies,
 # otherwise it takes forever to resolve them.
