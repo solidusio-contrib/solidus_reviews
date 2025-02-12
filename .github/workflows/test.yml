@@ -53,7 +53,6 @@ jobs:
             rails-version: "7.0"
     env:
       TEST_RESULTS_PATH: coverage/coverage.xml
-      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: Run extension tests
@@ -63,3 +62,9 @@ jobs:
           rails-version: ${{ matrix.rails-version }}
           ruby-version: ${{ matrix.ruby-version }}
           solidus-branch: ${{ matrix.solidus-branch }}
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        continue-on-error: true
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ${{ env.TEST_RESULTS_PATH }}
