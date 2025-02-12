@@ -2,7 +2,7 @@
 
 module SolidusReviews
   module Spree
-    module UserDecorator
+    module UserPatch
       def self.prepended(base)
         base.class_eval do
           has_many :reviews, class_name: 'Spree::Review'

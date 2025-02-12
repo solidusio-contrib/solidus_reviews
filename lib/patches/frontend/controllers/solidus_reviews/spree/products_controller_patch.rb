@@ -2,7 +2,7 @@
 
 module SolidusReviews
   module Spree
-    module ProductsControllerDecorator
+    module ProductsControllerPatch
       def self.prepended(base)
         base.class_eval do
           helper ::Spree::ReviewsHelper
