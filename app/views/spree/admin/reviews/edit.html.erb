@@ -1,26 +1,26 @@
 <% content_for :page_title do %>
-	<%= I18n.t("spree.editing_review_for_html", product_name: @review.product.name) %>
+  <%= I18n.t("spree.editing_review_for_html", product_name: @review.product.name) %>
 <% end %>
 
 <%= form_for([:admin, @review]) do |f| %>
-	<div class="alpha eight columns">
-		<% unless @review.title.blank? %>
-			<h2><%= @review.title %></h2>
-		<% end %>
-		<p>
-			<%= simple_format(@review.review) %>
-		</p>
-	</div>
+  <div class="alpha eight columns">
+    <% unless @review.title.blank? %>
+      <h2><%= @review.title %></h2>
+    <% end %>
+    <p>
+      <%= simple_format(@review.review) %>
+    </p>
+  </div>
 
-	<div class="omega eight columns">
-		<%= render 'form', f: f %>
-	</div>
+  <div class="omega eight columns">
+    <%= render 'form', f: f %>
+  </div>
 
-	<div class="clear"></div>
+  <div class="clear"></div>
 
-	<fieldset class="no-border-top">
-		<% if can? :manage, Spree::Review %>
-			<%= render 'spree/admin/shared/edit_resource_links' %>
-		<% end %>
-	</fieldset>
+  <fieldset class="no-border-top">
+    <% if can? :manage, Spree::Review %>
+      <%= render 'spree/admin/shared/edit_resource_links' %>
+    <% end %>
+  </fieldset>
 <% end %>
