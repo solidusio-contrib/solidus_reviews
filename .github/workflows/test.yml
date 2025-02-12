@@ -56,7 +56,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run extension tests
-        uses: friendlycart/action-solidus-extension@main
+        uses: solidusio/test-solidus-extension@main
         with:
           database: ${{ matrix.database }}
           rails-version: ${{ matrix.rails-version }}
