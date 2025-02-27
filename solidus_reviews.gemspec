@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'solidus_support', ['>= 0.14.1', '< 1']
 
   spec.add_development_dependency 'rails-controller-testing'
-  spec.add_development_dependency 'solidus_dev_support', '~> 2.7'
+  spec.add_development_dependency 'solidus_dev_support', ['>= 2.11', '< 3']
 end
