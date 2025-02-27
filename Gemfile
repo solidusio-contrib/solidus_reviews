@@ -41,5 +41,3 @@ send(:eval_gemfile, 'Gemfile-local') if File.exist? 'Gemfile-local'
 
 # Necessary for Ruby 3.4 support
 gem "csv", "~> 3.3"
-
-gem "solidus_dev_support", github: "tvdeyen/solidus_dev_support", branch: "new-codecov-uploader"
