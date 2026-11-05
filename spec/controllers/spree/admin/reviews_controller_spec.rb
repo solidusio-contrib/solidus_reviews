@@ -59,4 +59,26 @@ describe Spree::Admin::ReviewsController do
       end
     end
   end
+
+  describe "#update" do
+    subject { put :update, params: {id: review.id, review: review_params} }
+
+    let(:review_params) do
+      {name: "New name", title: "New title", review: "New review", locale: "fr", approved: true}
+    end
+
+    it "updates the permitted attributes" do
+      subject
+      expect(review.reload).to have_attributes(
+        name: "New name",
+        title: "New title",
+        review: "New review",
+        locale: "fr"
+      )
+    end
+
+    it "ignores attributes the form does not submit" do
+      expect { subject }.not_to change { review.reload.approved }
+    end
+  end
 end
