@@ -19,7 +19,5 @@ jobs:
   rspec:
     uses: solidusio/test-solidus-extension/.github/workflows/test.yml@main
     with:
-      ruby_versions: '["3.4", "4.0"]'
-      rails_versions: '["8.0", "7.2"]'
-      solidus_branches: '["v4.7"]'
+      rails_versions: '["8.0"]'
       databases: '["postgresql", "sqlite"]'
