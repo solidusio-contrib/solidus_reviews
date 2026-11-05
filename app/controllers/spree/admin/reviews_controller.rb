@@ -28,6 +28,10 @@ class Spree::Admin::ReviewsController < Spree::Admin::ResourceController
 
   private
 
+  def permitted_resource_params
+    params.require(:review).permit(:name, :title, :review, :locale)
+  end
+
   def collection
     params[:q] ||= {}
 
