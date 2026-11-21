@@ -15,22 +15,22 @@
     <%= search_form_for [:admin, @search] do |f| %>
       <div class="alpha three columns">
         <div class="field">
-          <%= f.label :name_cont, I18n.t("spree.user") %><br />
-          <%= f.text_field :name_cont, class: 'fullwidth' %>
+          <%= f.label :name_i_cont, I18n.t("spree.user") %><br />
+          <%= f.text_field :name_i_cont, class: 'fullwidth' %>
         </div>
       </div>
 
       <div class="seven columns">
         <div class="field">
-          <%= f.label :title_cont, I18n.t("spree.title") -%><br/>
-          <%= f.text_field :title_cont, class: 'fullwidth'  -%>
+          <%= f.label :title_i_cont, I18n.t("spree.title") -%><br/>
+          <%= f.text_field :title_i_cont, class: 'fullwidth'  -%>
         </div>
       </div>
 
       <div class="four columns">
         <div class="field">
-          <%= f.label :review_cont, I18n.t("spree.review") -%><br/>
-          <%= f.text_field :review_cont, class: 'fullwidth'  -%>
+          <%= f.label :review_i_cont, I18n.t("spree.review") -%><br/>
+          <%= f.text_field :review_i_cont, class: 'fullwidth'  -%>
         </div>
       </div>
 
