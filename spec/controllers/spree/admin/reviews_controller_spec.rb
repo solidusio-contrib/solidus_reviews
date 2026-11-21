@@ -19,6 +19,15 @@ describe Spree::Admin::ReviewsController do
       get :index, params: {product_id: product.slug}
       expect(assigns[:reviews]).to match_array reviews
     end
+
+    it "filters reviews by title regardless of case" do
+      matching_review = create(:review, product: product, title: "Great product")
+      create(:review, product: product, title: "Not for me")
+
+      get :index, params: {q: {title_i_cont: "GREAT"}}
+
+      expect(assigns[:reviews]).to eq [matching_review]
+    end
   end
 
   describe "#approve" do
