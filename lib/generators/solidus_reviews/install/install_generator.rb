@@ -33,7 +33,7 @@ module SolidusReviews
         if run_migrations
           run "bin/rails db:migrate"
         else
-          puts "Skipping bin/rails db:migrate, don't forget to run it!" # rubocop:disable Rails/Output
+          puts "Skipping bin/rails db:migrate, don't forget to run it!"
         end
       end
     end
