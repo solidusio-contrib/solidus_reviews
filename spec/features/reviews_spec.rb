@@ -126,11 +126,9 @@ describe "Reviews", js: true do
   private
 
   def sign_in_as!(user)
-    # rubocop:disable RSpec/AnyInstance
     allow_any_instance_of(ApplicationController).to receive_messages current_user: user
     allow_any_instance_of(ApplicationController).to receive_messages spree_current_user: user
     allow_any_instance_of(ApplicationController).to receive_messages spree_user_signed_in?: true
-    # rubocop:enable RSpec/AnyInstance
   end
 
   def click_star(num)
